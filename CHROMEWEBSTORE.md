@@ -19,8 +19,9 @@ Edge Trim crops transparent pictures right to the edge of what's in them, so cut
 
 FEATURES
 • Trim in the toolbar popup: drop pictures, choose files, or paste a copied picture.
-• Trim straight from a web page: right-click any picture and choose "Trim and copy image" or "Trim and save image".
+• Trim straight from a web page: right-click any picture and choose "Trim and copy image" or "Trim and save image", or right-click a download link and choose "Trim and download linked image" to get the full picture behind a preview.
 • Trim several pictures at once and download them all with one click, or open Edge Trim in a tab for bigger batches.
+• Optional: trim pictures as you download them. Turn on "Trim downloaded pictures" and every PNG, WebP, AVIF or GIF you download from a website is replaced by a trimmed copy with the same name, also on sites where you wait for a countdown or fill in a captcha first.
 • Choose how to treat nearly invisible pixels: keep them for an exact edge, trim faint haze left by background removal, or trim soft shadows and glow too.
 • The result is always a lossless PNG with the original file name, for example "logo.png" stays "logo.png".
 • Works with PNG, WebP, AVIF and GIF.
@@ -30,14 +31,14 @@ HOW TO USE
 1. Click the Edge Trim icon in the toolbar.
 2. Drop a picture into the box, click to choose one, or paste a copied picture.
 3. Click Copy or Download next to the trimmed result.
-Or right-click a picture on any web page and pick one of the two Edge Trim options.
+Or right-click a picture or a download link on any web page and pick an Edge Trim option.
 
 PRIVACY
-Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your two settings (how to treat nearly invisible pixels, and the interface language), stored in your browser.
+Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your three settings (how to treat nearly invisible pixels, whether to trim downloaded pictures, and the interface language), stored in your browser.
 
 PERMISSIONS
-• "Read and change all your data on all websites": when you right-click a picture and choose an Edge Trim option, the extension loads that one picture from where the page already loads it and shows a short note on the page saying what happened. It does nothing on a page until you choose an Edge Trim option there.
-• "Manage your downloads": to save the trimmed picture to your Downloads folder.
+• "Read and change all your data on all websites": when you right-click a picture or a download link and choose an Edge Trim option, the extension loads that one picture from where the page points to it and shows a short note on the page saying what happened. With "Trim downloaded pictures" turned on, it also loads a picture you have just downloaded once more from the same address, and shows the note on the page you downloaded it from. Otherwise it does nothing on a page.
+• "Manage your downloads": to save the trimmed picture to your Downloads folder, and with "Trim downloaded pictures" turned on, to replace a picture you downloaded with its trimmed copy.
 
 SUPPORT
 Questions or bugs: TODO (support email or URL).
@@ -73,11 +74,11 @@ English
 
 | Permission | Type | Justification |
 |------------|------|---------------|
-| `contextMenus` | permissions | Adds "Trim and copy image" and "Trim and save image" to the right-click menu on pictures, the extension's main way to trim a picture from a web page. |
-| `downloads` | permissions | Saves the trimmed picture to the user's Downloads folder when they click Download or "Download all" in the popup, or choose "Trim and save image". Also used when a page blocks copying, so the result is saved instead of lost. |
-| `scripting` | permissions | After the user chooses an Edge Trim menu item on a picture, runs a small one-off script in that page to: copy the trimmed picture to the clipboard, load the picture with the page's own access when the server refuses a direct load (pictures behind a login), and show a short on-page note saying what happened. Nothing runs on a page unless the user picked the menu item there. |
-| `storage` | permissions | Remembers two settings on this device: how to treat nearly invisible pixels and the interface language. |
-| `<all_urls>` | host_permissions | Pictures on a page are very often served from a different site than the page itself (image hosts, CDNs). To trim the picture the user right-clicked, the extension must load it from wherever it is hosted, which can be any site. The picture is only loaded after the user picks an Edge Trim menu item on it, and it is processed locally; nothing is sent anywhere else. |
+| `contextMenus` | permissions | Adds "Trim and copy image" and "Trim and save image" to the right-click menu on pictures, and "Trim and download linked image" on links, the extension's main way to trim a picture from a web page. |
+| `downloads` | permissions | Saves the trimmed picture to the user's Downloads folder when they click Download or "Download all" in the popup, or choose "Trim and save image". Also used when a page blocks copying, so the result is saved instead of lost. With the optional "Trim downloaded pictures" setting turned on (off by default), it notices when a picture download finishes and replaces that file with its trimmed copy under the same name; JPEGs, animated pictures and pictures with nothing to trim are left alone. |
+| `scripting` | permissions | After the user chooses an Edge Trim menu item on a picture, or a picture download finishes while "Trim downloaded pictures" is on, runs a small one-off script in that page to: copy the trimmed picture to the clipboard, load the picture with the page's own access when the server refuses a direct load (pictures behind a login), and show a short on-page note saying what happened. Nothing runs on a page otherwise. |
+| `storage` | permissions | Remembers three settings on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, and the interface language. |
+| `<all_urls>` | host_permissions | Pictures on a page are very often served from a different site than the page itself (image hosts, CDNs). To trim the picture (or download link) the user right-clicked, or a picture they just downloaded with "Trim downloaded pictures" on, the extension must load it again from wherever it is hosted, which can be any site. The picture is processed locally; nothing is sent anywhere else. |
 
 ## Privacy & Data Use
 
@@ -95,11 +96,11 @@ English
 | Location | No | No | | No |
 | Web history | No | No | | No |
 | User activity | No | No | | No |
-| Website content | No | No | The right-clicked picture is loaded and trimmed in the browser only; it is never sent to the developer or anyone else. | No |
+| Website content | No | No | The right-clicked picture, or a picture the user just downloaded, is loaded and trimmed in the browser only; it is never sent to the developer or anyone else. | No |
 
 Notes for the disclosure form:
 - Settings use local browser storage only (not synced), so nothing goes to Google's servers.
-- The only network request is loading the picture the user right-clicked, from the site that already hosts it.
+- The only network requests load the picture the user right-clicked, or (with "Trim downloaded pictures" on) the picture they just downloaded, from the site that already hosts it.
 - The "Support the creator" screen only shows payment links and QR codes. Opening one is the user's choice and goes to that payment service; the extension sends nothing.
 
 ### Data Use Certification
@@ -121,9 +122,9 @@ Edge Trim does not collect, store or transmit any personal data or browsing info
 
 Pictures you trim, whether dropped, chosen, pasted or right-clicked on a web page, are processed entirely in your browser on your computer. They are never uploaded to the developer or any other service.
 
-When you right-click a picture and choose an Edge Trim option, the extension loads that picture from the website that already hosts it, the same way the page itself does. No other requests are made.
+When you right-click a picture or a download link and choose an Edge Trim option, the extension loads that picture from the website that hosts it, the same way the page itself does. If you turn on "Trim downloaded pictures", the extension also loads each picture you download once more from the same address, to trim it. No other requests are made.
 
-Edge Trim stores two settings in your browser on this device: how to treat nearly invisible pixels and the interface language. Removing the extension deletes them.
+Edge Trim stores three settings in your browser on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, and the interface language. Removing the extension deletes them.
 
 Edge Trim does not use cookies, analytics, advertising or third-party services. The optional "Support the creator" screen contains links to payment services; they are only opened if you click them.
 
@@ -168,6 +169,7 @@ mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.
 - Colour profiles and metadata are dropped when the PNG is re-encoded.
 - Copy from the right-click menu needs a secure (https) page; elsewhere the picture is saved instead.
 - On pages extensions can't touch (browser settings pages, the Web Store, the PDF viewer), the result note shows on the toolbar icon instead of the page.
+- "Trim downloaded pictures" loads the picture a second time and only replaces the download when that copy has the same size in bytes. Links that work only once, and pictures a page hands over as a blob and discards right away, stay untrimmed (the original is kept). The trimmed copy always goes to the Downloads folder.
 - `<all_urls>` brings a more thorough review. A narrower alternative (asking for site access only when needed) was considered but not tested.
 - The support screen lists crypto wallet addresses (Solana, Sui). Not known whether reviewers question this; if they do, those two tabs can be removed.
 

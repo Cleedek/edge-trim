@@ -1,4 +1,5 @@
 // Edge Trim: the background worker. Right-click a picture on a page -> trim it, then copy or save it.
+// With "Trim downloaded pictures" on, pictures downloaded from any page are trimmed too.
 
 importScripts('lib/i18n.js', 'lib/locales.js', 'lib/trim.js');
 const t = TrimI18n.t;
@@ -9,6 +10,8 @@ async function createMenus() {
   await chrome.contextMenus.removeAll();
   chrome.contextMenus.create({ id: 'copy', title: t('Trim and copy image'), contexts: ['image'] });
   chrome.contextMenus.create({ id: 'save', title: t('Trim and save image'), contexts: ['image'] });
+  // A site's "Download" link, which often leads to the full picture behind a small or watermarked preview.
+  chrome.contextMenus.create({ id: 'link', title: t('Trim and download linked image'), contexts: ['link'] });
 }
 chrome.runtime.onInstalled.addListener(createMenus);
 chrome.storage.onChanged.addListener((changes, area) => { if (area === 'local' && changes.uiLang) createMenus(); });
@@ -17,16 +20,21 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   // Chrome leaves out the tab for some places the menu can open (not a normal web page).
   const target = tab?.id >= 0 ? { tabId: tab.id, frameIds: [info.frameId || 0] } : null;
   resetIcon();
-  run(info.menuItemId, info.srcUrl, target).catch((e) => toast(target, e.message, true));
+  run(info.menuItemId, info.menuItemId === 'link' ? info.linkUrl : info.srcUrl, target).catch((e) => toast(target, e.message, true));
 });
 
 async function run(action, src, target) {
   await TrimI18n.load();
   const { faint } = await chrome.storage.local.get({ faint: 'exact' });
-  const blob = await loadImage(src, target);
+  const { blob, name } = await loadImage(src, target);
   let res;
   try { res = await EdgeTrim.trimBlob(blob, faint); }
-  catch (e) { throw new Error(t('This file type can’t be trimmed.')); }
+  catch (e) {
+    // Many "Download" buttons lead to a page with a countdown first, not to the picture.
+    throw new Error(action === 'link'
+      ? t('This link doesn’t lead straight to a picture. Download it as usual with "Trim downloaded pictures" turned on.')
+      : t('This file type can’t be trimmed.'));
+  }
   if (res.status === 'empty') throw new Error(t('The picture is fully transparent, there’s nothing to keep.'));
   if (res.status === 'tight') return toast(target, t('Already tight, nothing to trim.'));
 
@@ -35,28 +43,118 @@ async function run(action, src, target) {
   if (action === 'copy' && target) {
     const [{ result: copied } = {}] = await chrome.scripting.executeScript({ target, func: copyInPage, args: [dataUrl] }).catch(() => []);
     if (copied) return toast(target, t('Copied the trimmed image ({w} × {h} px).', size));
-    await save(dataUrl, src);
+    await save(dataUrl, name);
     return toast(target, t('This page doesn’t allow copying, so the image was saved instead.'));
   }
-  await save(dataUrl, src);
+  await save(dataUrl, name);
   toast(target, t('Saved the trimmed image ({w} × {h} px).', size));
 }
 
 // From the worker first (it can reach any site). If the server says no, the page tries
 // itself, since it has the site's cookies (pictures behind a login).
+// Also returns the file's name: the one the server gives it, else the address it was loaded from.
 async function loadImage(src, target) {
   try {
     const r = await fetch(src, { credentials: 'include' });
-    if (r.ok) return await r.blob();
+    if (r.ok) return { blob: await r.blob(), name: serverName(r) };
   } catch (e) { /* try the page */ }
   if (!target) throw new Error(t('Couldn’t load this picture.'));
   const [{ result } = {}] = await chrome.scripting.executeScript({ target, func: fetchInPage, args: [src] }).catch(() => []);
   if (!result) throw new Error(t('Couldn’t load this picture.'));
-  return (await fetch(result)).blob();
+  return { blob: await (await fetch(result)).blob(), name: src };
 }
 
-function save(dataUrl, src) {
-  return chrome.downloads.download({ url: dataUrl, filename: EdgeTrim.outputName(src), conflictAction: 'uniquify' });
+// A download link like /download/123 usually names the file in a header or redirects to it.
+function serverName(r) {
+  const header = r.headers.get('content-disposition') || '';
+  const m = header.match(/filename\*=UTF-8''([^;]+)/i) || header.match(/filename="?([^";]+)"?/i);
+  if (!m) return r.url;
+  try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+}
+
+function save(dataUrl, name) {
+  return chrome.downloads.download({ url: dataUrl, filename: EdgeTrim.outputName(name), conflictAction: 'uniquify' });
+}
+
+// ---------- pictures downloaded from any page ----------
+// Reacts to the finished download, not to the site's button, so it works the same after
+// a countdown or a captcha (which you still get through yourself, as always).
+
+const TRIMMABLE = /\.(png|webp|avif|gif)$/i;
+
+chrome.downloads.onChanged.addListener((delta) => {
+  if (delta.state?.current === 'complete') trimDownload(delta.id).catch(() => {});
+});
+
+async function trimDownload(id) {
+  const { autoTrim, faint } = await chrome.storage.local.get({ autoTrim: false, faint: 'exact' });
+  if (!autoTrim) return;
+  const [item] = await chrome.downloads.search({ id });
+  // Our own saves (popup, right-click and the trimmed downloads) are left alone; JPEG has no transparency.
+  if (!item?.exists || item.byExtensionId === chrome.runtime.id) return;
+  if (!TRIMMABLE.test(item.filename) && !/^image\/(png|webp|avif|gif)$/.test(item.mime)) return;
+  await TrimI18n.load();
+  const target = await pageOf(item);
+  const kept = t('Couldn’t trim this download, so it stays as it was.');
+
+  const blob = await loadDownload(item, target);
+  if (!blob) return toast(target, kept, true);
+  if (await isAnimated(blob)) return toast(target, t('Animated picture, so it stays as it was.'));
+  const res = await EdgeTrim.trimBlob(blob, faint).catch(() => null);
+  if (res?.status === 'tight') return toast(target, t('Already tight, nothing to trim.'));
+  if (res?.status !== 'trimmed') return toast(target, kept, true);
+
+  // The original makes room first, so the trimmed picture gets its exact name in Downloads.
+  const name = item.filename.split(/[\\/]/).pop();
+  const [trimmedUrl, originalUrl] = await Promise.all([toDataUrl(res.blob), toDataUrl(blob)]);
+  await chrome.downloads.removeFile(id);
+  await chrome.downloads.erase({ id });
+  try {
+    await chrome.downloads.download({ url: trimmedUrl, filename: EdgeTrim.outputName(name), conflictAction: 'uniquify', saveAs: false });
+  } catch (e) {
+    // Never lose the download: the original goes back.
+    await chrome.downloads.download({ url: originalUrl, filename: name, conflictAction: 'uniquify', saveAs: false });
+    return toast(target, kept, true);
+  }
+  toast(target, t('Trimmed the downloaded picture ({w} × {h} px).', { w: res.box.w, h: res.box.h }));
+}
+
+// The tab the download came from: a blob: link only opens there, and it has the site's cookies.
+async function pageOf(item) {
+  const origin = (u) => { try { return new URL(u).origin; } catch (e) { return null; } };
+  const from = [origin(item.referrer), origin(item.url)].filter((o) => o && o !== 'null');
+  const tabs = (await chrome.tabs.query({})).filter((tab) => from.includes(origin(tab.url)));
+  const tab = tabs.sort((a, b) => (b.lastAccessed || 0) - (a.lastAccessed || 0))[0];
+  return tab ? { tabId: tab.id, frameIds: [0] } : null;
+}
+
+// The downloaded file loaded once more: from the worker first, then from the page.
+// Only the very same file counts, since a server can answer a second request with an
+// error page or a different picture (a link that only works once).
+async function loadDownload(item, target) {
+  const url = item.finalUrl || item.url;
+  const tries = [
+    async () => (url.startsWith('blob:') ? null : (await fetch(url, { credentials: 'include' })).blob()),
+    async () => {
+      const [{ result } = {}] = target ? await chrome.scripting.executeScript({ target, func: fetchInPage, args: [url] }) : [];
+      return result ? (await fetch(result)).blob() : null;
+    },
+  ];
+  for (const load of tries) {
+    const blob = await load().catch(() => null);
+    if (blob && (item.fileSize < 0 || blob.size === item.fileSize)) return blob;
+  }
+  return null;
+}
+
+// Trimming keeps only the first frame, so animated GIF, WebP, AVIF and PNG stay as they are.
+async function isAnimated(blob) {
+  const head = new TextDecoder('latin1').decode(await blob.slice(0, 65536).arrayBuffer());
+  const actl = head.indexOf('acTL'), idat = head.indexOf('IDAT');
+  return (head.startsWith('GIF') && head.includes('NETSCAPE2.0'))
+    || (head.slice(12, 16) === 'VP8X' && (head.charCodeAt(20) & 2) !== 0)
+    || head.slice(8, 12) === 'avis'
+    || (head.slice(1, 4) === 'PNG' && actl > 0 && (idat < 0 || actl < idat));
 }
 
 function toDataUrl(blob) {

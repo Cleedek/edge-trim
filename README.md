@@ -10,7 +10,9 @@ The code is public so anyone can check what the extension does. It is plain Java
 
 - **In the popup:** drop pictures, click to choose files, or paste a copied picture (⌘V / Ctrl+V). Each one gets Copy and Download; several at once get "Download all".
 - **On a web page:** right-click a picture → *Trim and copy image* or *Trim and save image*. A small note at the bottom of the page says what happened.
+- **On a download link:** right-click a site's "Download" link → *Trim and download linked image*. Handy when the picture on the page is a small or watermarked preview and the full one sits behind the link. The file keeps the name the site gives it. If the link leads to a page with a countdown first, there's no picture to trim yet: download as usual with *Trim downloaded pictures* on.
 - **Open in a tab** (popup link) for bigger batches.
+- **Trim downloaded pictures** (popup switch, off by default): every PNG, WebP, AVIF or GIF you download from a website is replaced by a trimmed copy, with the "Nearly invisible pixels" setting you have chosen. It reacts to the finished download, not to the site's button, so it also works after a countdown or a captcha (which you still get through yourself). A note on the page says what happened.
 
 The result is always a lossless PNG with the original name: `logo.png` stays `logo.png`, `photo.webp` becomes `photo.png`. If a file with that name is already in Downloads, the browser adds a number, for example `logo (1).png`.
 
@@ -30,10 +32,11 @@ The result is always a lossless PNG with the original name: `logo.png` stays `lo
 - JPEG has no transparency, so there's nothing to trim.
 - The PNG is re-encoded by the browser, so embedded colour profiles and metadata are dropped.
 - Copy from the right-click menu needs a secure (https) page; elsewhere the image is saved instead.
+- **Trim downloaded pictures** has to load the picture once more from the same address (an extension can't read your Downloads folder). It only replaces the download when that second copy is byte for byte the same size as the file you got. Otherwise the download stays as it was, for example with links that work only once, or pictures a page hands over and then throws away right away. Animated pictures, JPEGs and pictures with nothing to trim stay as they are too. The trimmed copy always goes to the Downloads folder, even if you picked another folder for the original.
 
 ## Privacy
 
-Everything is trimmed on this computer. Nothing is uploaded, no analytics, no accounts. The right-click menu downloads the picture from where the page already loads it; that's why the extension asks for access to all sites (`<all_urls>`).
+Everything is trimmed on this computer. Nothing is uploaded, no analytics, no accounts. The right-click menu downloads the picture from where the page already loads it, and "Trim downloaded pictures" loads a picture you just downloaded once more from the same address; that's why the extension asks for access to all sites (`<all_urls>`).
 
 ## Install while developing
 

@@ -13,7 +13,11 @@ async function init() {
   if (await chrome.tabs.getCurrent()) document.documentElement.classList.add('page');
   await TrimI18n.load();
   TrimI18n.translatePage(document.body);
-  ({ faint } = await chrome.storage.local.get({ faint: 'exact' }));
+  const stored = await chrome.storage.local.get({ faint: 'exact', autoTrim: false });
+  faint = stored.faint;
+  // Read by the background worker, which trims finished downloads.
+  $('autoTrim').checked = stored.autoTrim;
+  $('autoTrim').addEventListener('change', () => chrome.storage.local.set({ autoTrim: $('autoTrim').checked }));
 
   document.querySelectorAll('[data-faint][role=radio]').forEach((b) => b.addEventListener('click', () => {
     faint = b.dataset.faint;

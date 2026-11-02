@@ -109,11 +109,18 @@
         <p class="hint" data-for="light" hidden>Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.</p>
         <p class="hint" data-for="strong" hidden>Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.</p>
       </div>
+      <div class="setting">
+        <div class="setting-head">
+          <label for="autoTrim" class="setting-label">Trim downloaded pictures</label>
+          <label class="toggle"><input id="autoTrim" type="checkbox" role="switch"><span></span></label>
+        </div>
+        <p class="hint">When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.</p>
+      </div>
     </div>
   </section>
 
   <section>
-    <p class="small first">On a web page, right-click any picture and choose "Trim and copy image" or "Trim and save image". Everything is trimmed on this computer, nothing is uploaded.</p>
+    <p class="small first">On a web page, right-click any picture and choose "Trim and copy image" or "Trim and save image", or right-click a download link and choose "Trim and download linked image". Everything is trimmed on this computer, nothing is uploaded.</p>
     <button id="openTab" class="ghost link">Open in a tab</button>
   </section>
 
