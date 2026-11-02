@@ -221,6 +221,35 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 /* ---------- shadow, added after trimming ---------- */
 
 .shadow-panel { gap: 12px; }
+/* The first picture, large. It stays in view while the settings under it are scrolled;
+   the ring in the page colour hides what scrolls past it. */
+.stage {
+  position: sticky; top: 8px; z-index: 2; height: 190px; padding: 14px; border: 1px solid var(--line); border-radius: 12px;
+  outline: 8px solid var(--bg);
+  background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 12px 12px;
+}
+.stage canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+/* The preview background: small, on the preview itself, since it never reaches the file. */
+.stage-bg, .stage-nav {
+  position: absolute; bottom: 8px; display: flex; align-items: center; border-radius: 999px;
+  background: color-mix(in oklch, var(--panel) 88%, transparent); border: 1px solid var(--line); box-shadow: 0 1px 3px var(--shadow);
+}
+.stage-bg { right: 8px; gap: 4px; padding: 4px; }
+/* Which picture is shown, with arrows to the others. */
+.stage-nav { left: 8px; max-width: calc(100% - 118px); gap: 4px; padding: 1px; font-size: 11px; color: var(--muted); }
+.stage-nav button { flex: none; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%; background: transparent; display: grid; place-items: center; }
+.stage-nav button:hover { background: var(--panel-hover); }
+.stage-nav button::before { content: ""; width: 10px; height: 6px; background: var(--chevron) center / contain no-repeat; transform: rotate(90deg); }
+#stageNext::before { transform: rotate(-90deg); }
+.stage-nav button:disabled { opacity: .35; background: transparent; }
+#stageName { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
+#stageCount { flex: none; font-variant-numeric: tabular-nums; }
+.stage-bg button, .stage-bg button:hover { width: 16px; height: 16px; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong); }
+.stage-bg [data-bg="white"] { background: #fff; }
+.stage-bg [data-bg="grey"] { background: #e9e9ec; }
+.stage-bg [data-bg="black"] { background: #1d1d21; }
+.stage-bg [data-bg="checker"] { background: repeating-conic-gradient(#fff 0 25%, #c9c9cf 0 50%) 0 0 / 8px 8px; }
+.stage-bg button[aria-checked="true"] { box-shadow: 0 0 0 2px var(--accent); }
 /* One small preview per look, drawn from the first picture. */
 .presets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
 .preset { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; padding: 4px 4px 6px; border-radius: 10px; font-size: 11px; color: var(--muted); }
@@ -230,9 +259,27 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 .preset canvas, .preset:hover canvas { background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 8px 8px; }
 
 /* While "Add shadow" is on, pictures sit on the chosen preview background (never saved into the file). */
-[data-shadow-bg="white"] :is(.thumb, .thumb:hover, .thumb:active, .preset canvas) { background: #fff; }
-[data-shadow-bg="grey"] :is(.thumb, .thumb:hover, .thumb:active, .preset canvas) { background: #e9e9ec; }
-[data-shadow-bg="black"] :is(.thumb, .thumb:hover, .thumb:active, .preset canvas) { background: #1d1d21; }
+[data-shadow-bg="white"] :is(.thumb, .thumb:hover, .thumb:active, .preset canvas, .stage) { background: #fff; }
+[data-shadow-bg="grey"] :is(.thumb, .thumb:hover, .thumb:active, .preset canvas, .stage) { background: #e9e9ec; }
+[data-shadow-bg="black"] :is(.thumb, .thumb:hover, .thumb:active, .preset canvas, .stage) { background: #1d1d21; }
+
+/* My shadows: saved looks, then the tile that saves the current one. */
+.mine { display: flex; flex-direction: column; gap: 6px; }
+.mine-label { font-size: 11.5px; color: var(--muted); font-weight: 500; }
+.mine-item { position: relative; min-width: 0; display: grid; }
+.remove {
+  position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; opacity: 0; transition: opacity .15s var(--ease), background-color .15s var(--ease);
+}
+.remove::before, .save-look .plus::before { content: ""; width: 8px; height: 8px; background:
+  linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat, linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat; }
+.remove::before { transform: rotate(45deg); }
+.mine-item:hover .remove, .remove:focus-visible { opacity: 1; }
+.save-look { justify-content: center; border-style: dashed; }
+.save-look .plus { width: 100%; aspect-ratio: 128 / 110; display: grid; place-items: center; color: var(--muted); }
+.save-look .plus::before { width: 12px; height: 12px; }
+.save-look:hover .plus { color: var(--text); }
+.save-look:disabled { opacity: .45; cursor: default; }
 
 .adjust summary {
   display: flex; align-items: center; gap: 6px; width: max-content; list-style: none; cursor: pointer;
@@ -253,17 +300,36 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 .light-grid button[aria-checked="true"]::after { width: 10px; height: 10px; background: oklch(0.99 0.003 290); }
 .light-grid button:disabled { opacity: .3; }
 .colour-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
-.swatches { display: flex; gap: 8px; }
-.swatch, .swatch:hover { width: 26px; height: 26px; padding: 0; border-radius: 50%; border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--line-strong); }
+.swatches { display: flex; gap: 6px; }
+.swatch, .swatch:hover { width: 24px; height: 24px; padding: 0; border-radius: 50%; border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--line-strong); }
 .swatch[aria-checked="true"] { box-shadow: 0 0 0 2px var(--accent); }
 input.hex { width: 82px; font-variant-numeric: tabular-nums; }
 
 .slider { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 6px 8px; }
 .slider output { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
-.slider input { grid-column: 1 / -1; width: 100%; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.slider input { grid-column: 1 / -1; }
 .slider:has(input:disabled) { opacity: .45; }
-.preview-bg { display: flex; flex-direction: column; gap: 8px; }
-.preview-bg .segmented { grid-template-columns: repeat(4, 1fr); }
+
+/* Minimal slider, same as Subtitle Overlay: thin track filled up to the thumb at --fill (set from popup.js). */
+input[type=range] {
+  -webkit-appearance: none; appearance: none; width: 100%; min-width: 0; height: 18px; margin: 0;
+  background: transparent; cursor: pointer; --fill: 50%;
+}
+input[type=range]:disabled { cursor: default; }
+input[type=range]::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 999px;
+  background: linear-gradient(to right, var(--accent) var(--fill), var(--line-strong) var(--fill));
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%;
+  background: var(--thumb); border: 0;
+  box-shadow: 0 1px 3px var(--shadow), 0 0 0 0 var(--accent-soft);
+  transition: box-shadow .15s var(--ease), transform .15s var(--ease);
+}
+input[type=range]:hover:not(:disabled)::-webkit-slider-thumb { box-shadow: 0 1px 3px var(--shadow), 0 0 0 5px var(--accent-soft); }
+input[type=range]:active:not(:disabled)::-webkit-slider-thumb { transform: scale(1.12); }
+input[type=range]:focus-visible { outline: none; box-shadow: none; }
+input[type=range]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }

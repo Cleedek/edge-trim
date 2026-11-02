@@ -23,7 +23,7 @@ FEATURES
 • Trim several pictures at once and download them all with one click, or open Edge Trim in a tab for bigger batches.
 • Optional: trim pictures as you download them. Turn on "Trim downloaded pictures" and every PNG, WebP, AVIF or GIF you download from a website is replaced by a trimmed copy with the same name, also on sites where you wait for a countdown or fill in a captcha first.
 • Choose how to treat nearly invisible pixels: keep them for an exact edge, trim faint haze left by background removal, or trim soft shadows and glow too.
-• Optional: add a shadow after trimming. Pick a look (Soft, Strong, Floating, Above or Side), then adjust where the light comes from, the colour, intensity, softness and distance while the previews follow. The shadow is drawn from the picture's own outline on your computer: no AI, no upload.
+• Optional: add a shadow after trimming. Pick a look (Soft, Strong, Floating, Above or Side), then adjust where the light comes from, the colour, intensity, softness and distance while the previews follow, and save your favourite looks for next time. The shadow is drawn from the picture's own outline on your computer: no AI, no upload.
 • The result is always a lossless PNG with the original file name, for example "logo.png" stays "logo.png".
 • Works with PNG, WebP, AVIF and GIF.
 • Interface in English, Czech, Slovak, German, French, Spanish, Vietnamese and Simplified Chinese.
@@ -35,7 +35,7 @@ HOW TO USE
 Or right-click a picture or a download link on any web page and pick an Edge Trim option.
 
 PRIVACY
-Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your settings (how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance, and the shadow look and preview background you last used), stored in your browser.
+Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your settings (how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance, the shadow look and preview background you last used, and the shadow looks you saved), stored in your browser.
 
 PERMISSIONS
 • "Read and change all your data on all websites": when you right-click a picture or a download link and choose an Edge Trim option, the extension loads that one picture from where the page points to it and shows a short note on the page saying what happened. With "Trim downloaded pictures" turned on, it also loads a picture you have just downloaded once more from the same address, and shows the note on the page you downloaded it from. Otherwise it does nothing on a page.
@@ -79,7 +79,7 @@ English
 | `contextMenus` | permissions | Adds "Trim and copy image" and "Trim and save image" to the right-click menu on pictures, and "Trim and download linked image" on links, the extension's main way to trim a picture from a web page. |
 | `downloads` | permissions | Saves the trimmed picture to the user's Downloads folder when they click Download or "Download all" in the popup, or choose "Trim and save image". Also used when a page blocks copying, so the result is saved instead of lost. With the optional "Trim downloaded pictures" setting turned on (off by default), it notices when a picture download finishes and replaces that file with its trimmed copy under the same name; JPEGs, animated pictures and pictures with nothing to trim are left alone. |
 | `scripting` | permissions | After the user chooses an Edge Trim menu item on a picture, or a picture download finishes while "Trim downloaded pictures" is on, runs a small one-off script in that page to: copy the trimmed picture to the clipboard, load the picture with the page's own access when the server refuses a direct load (pictures behind a login), and show a short on-page note saying what happened. Nothing runs on a page otherwise. |
-| `storage` | permissions | Remembers the settings on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, and the shadow look and preview background last used. |
+| `storage` | permissions | Remembers the settings on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the shadow look and preview background last used, and the shadow looks the user saved. |
 | `<all_urls>` | host_permissions | Pictures on a page are very often served from a different site than the page itself (image hosts, CDNs). To trim the picture (or download link) the user right-clicked, or a picture they just downloaded with "Trim downloaded pictures" on, the extension must load it again from wherever it is hosted, which can be any site. The picture is processed locally; nothing is sent anywhere else. |
 
 ## Privacy & Data Use
@@ -126,7 +126,7 @@ Pictures you trim, whether dropped, chosen, pasted or right-clicked on a web pag
 
 When you right-click a picture or a download link and choose an Edge Trim option, the extension loads that picture from the website that hosts it, the same way the page itself does. If you turn on "Trim downloaded pictures", the extension also loads each picture you download once more from the same address, to trim it. No other requests are made.
 
-Edge Trim stores its settings in your browser on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance (dark, light or same as the browser), and the shadow look and preview background you last used. Removing the extension deletes them.
+Edge Trim stores its settings in your browser on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance (dark, light or same as the browser), the shadow look and preview background you last used, and the shadow looks you saved. Removing the extension deletes them.
 
 Edge Trim does not use cookies, analytics, advertising or third-party services. The optional "Support the creator" screen contains links to payment services; they are only opened if you click them.
 

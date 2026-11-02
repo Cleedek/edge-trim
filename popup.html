@@ -106,9 +106,25 @@
           <label for="shadowOn" class="setting-label">Add shadow</label>
           <label class="toggle"><input id="shadowOn" type="checkbox" role="switch"><span></span></label>
         </div>
-        <p class="hint">Made from each trimmed picture’s own outline, on this computer. Copy and Download then include the shadow.</p>
+        <p class="hint">Made from each trimmed picture’s own outline, on this computer. Copy and Download give the picture with its shadow, on a transparent background.</p>
       </div>
       <div id="shadowPanel" class="setting shadow-panel" hidden>
+        <!-- The first picture, large, on a background that's only for looking: the file stays transparent. -->
+        <div class="stage">
+          <canvas id="stage" role="img" aria-label="Preview with shadow"></canvas>
+          <!-- With two pictures or more: which one is shown, and arrows to the others. -->
+          <div id="stageNav" class="stage-nav" hidden>
+            <button id="stagePrev" title="Previous picture" aria-label="Previous picture"></button>
+            <span id="stageName"></span><span id="stageCount"></span>
+            <button id="stageNext" title="Next picture" aria-label="Next picture"></button>
+          </div>
+          <div id="previewBg" class="stage-bg" role="radiogroup" aria-label="Preview background">
+            <button data-bg="white" data-name="White" role="radio"></button>
+            <button data-bg="grey" data-name="Grey" role="radio"></button>
+            <button data-bg="black" data-name="Black" role="radio"></button>
+            <button data-bg="checker" data-name="Transparent" role="radio"></button>
+          </div>
+        </div>
         <div class="presets" role="radiogroup" aria-label="Shadow style">
           <button class="preset" data-preset="soft" role="radio"><canvas width="128" height="110"></canvas><span>Soft</span></button>
           <button class="preset" data-preset="hard" role="radio"><canvas width="128" height="110"></canvas><span>Strong</span></button>
@@ -116,8 +132,16 @@
           <button class="preset" data-preset="above" role="radio"><canvas width="128" height="110"></canvas><span>Above</span></button>
           <button class="preset" data-preset="side" role="radio"><canvas width="128" height="110"></canvas><span>Side</span></button>
         </div>
+        <!-- Looks saved from the settings below, drawn like the ones above. -->
+        <div class="mine">
+          <span id="mineLabel" class="mine-label">My shadows</span>
+          <div id="mine" class="presets" role="group" aria-labelledby="mineLabel">
+            <button id="saveLook" class="preset save-look"><span class="plus" aria-hidden="true"></span><span>Save</span></button>
+          </div>
+          <template id="mineTpl"><div class="mine-item"><button class="preset" role="radio"><canvas width="128" height="110"></canvas><span></span></button><button class="remove"></button></div></template>
+        </div>
         <details class="adjust">
-          <summary>Adjust</summary>
+          <summary>Advanced shadow settings</summary>
           <div class="adjust-body">
             <div id="shadowType" class="segmented pick" role="radiogroup" aria-label="Shadow type">
               <button data-type="ground" role="radio">On a surface</button>
@@ -146,6 +170,9 @@
                     <button class="swatch" data-color="#000000" role="radio" style="background:#000000" title="Neutral" aria-label="Neutral"></button>
                     <button class="swatch" data-color="#2b1708" role="radio" style="background:#2b1708" title="Warm" aria-label="Warm"></button>
                     <button class="swatch" data-color="#0b1733" role="radio" style="background:#0b1733" title="Cool" aria-label="Cool"></button>
+                    <button class="swatch" data-color="#0f2614" role="radio" style="background:#0f2614" title="Green" aria-label="Green"></button>
+                    <button class="swatch" data-color="#231033" role="radio" style="background:#231033" title="Purple" aria-label="Purple"></button>
+                    <button class="swatch" data-color="#330d10" role="radio" style="background:#330d10" title="Red" aria-label="Red"></button>
                   </div>
                   <input id="shadowHex" class="hex" type="text" maxlength="7" spellcheck="false" autocomplete="off" title="Shadow colour (hex code)" aria-label="Shadow colour (hex code)">
                 </div>
@@ -163,15 +190,6 @@
             <div class="slider">
               <label for="distance" id="distanceLabel" class="setting-label">Distance</label><output id="distanceOut" for="distance"></output>
               <input id="distance" type="range" min="0" max="100">
-            </div>
-            <div class="preview-bg">
-              <span class="setting-label">Preview background</span>
-              <div id="previewBg" class="segmented pick" role="radiogroup" aria-label="Preview background">
-                <button data-bg="white" role="radio">White</button>
-                <button data-bg="grey" role="radio">Grey</button>
-                <button data-bg="black" role="radio">Black</button>
-                <button data-bg="checker" role="radio">Transparent</button>
-              </div>
             </div>
           </div>
         </details>

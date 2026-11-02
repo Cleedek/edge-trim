@@ -6,8 +6,9 @@ let faint = 'exact';
 // One entry per picture: the original file stays, so a new setting can trim it again.
 const items = [];
 // "Add shadow" lasts while the popup is open, like the pictures; the look itself is remembered.
-// guess: no look chosen yet, so the first one comes from the first picture.
-const shadow = { on: false, look: null, guess: false, bg: 'white' };
+// guess: no look chosen yet, so the first one comes from the first picture. saved: My shadows.
+// shown: the picture in the large preview, picked with its arrows (the first one otherwise).
+const shadow = { on: false, look: null, guess: false, bg: 'white', saved: [], shown: null };
 
 init();
 
@@ -16,7 +17,7 @@ async function init() {
   if (await chrome.tabs.getCurrent()) document.documentElement.classList.add('page');
   await TrimI18n.load();
   TrimI18n.translatePage(document.body);
-  const stored = await chrome.storage.local.get({ faint: 'exact', autoTrim: false, shadowLook: null, shadowBg: 'white' });
+  const stored = await chrome.storage.local.get({ faint: 'exact', autoTrim: false, shadowLook: null, shadowBg: 'white', shadowSaved: [] });
   faint = stored.faint;
   // Read by the background worker, which trims finished downloads.
   $('autoTrim').checked = stored.autoTrim;
@@ -115,7 +116,7 @@ async function showItem(item) {
     if (!shadow.on) withShadow = false;
     if (withShadow) {
       drawShadow(item);
-      if (items.find((i) => i.small) === item) drawPresets();
+      if (item === shownItem()) drawStage(item);
     }
   }
   el.querySelector('img').hidden = !item.url || withShadow;
@@ -155,6 +156,10 @@ function showBar() {
   $('downloadAll').hidden = items.filter(hasOutput).length < 2;
   // A shadow is offered once there's a picture to put it under.
   $('shadowSection').hidden = !items.some((i) => i.url);
+  if (shadow.on) {
+    showStageNav();
+    if (presetSource() !== presetsFrom) drawPresets();
+  }
 }
 
 function revoke(item) {
@@ -203,12 +208,15 @@ function flash(btn, mark, title, failTitle) {
 // ---------- shadow, added after trimming (lib/shadow.js) ----------
 
 const DISTANCE = { ground: 'Shadow length', float: 'Height above ground', drop: 'Distance' };
+const MAX_SAVED = 5; // one row
 let drawQueued = false;
+let presetsFrom = null, neutral = null;
 
 function setupShadow(stored) {
   shadow.look = stored.shadowLook || { ...structuredClone(EdgeShadow.PRESETS.soft), color: '#000000' };
   shadow.guess = !stored.shadowLook;
   shadow.bg = stored.shadowBg;
+  shadow.saved = stored.shadowSaved;
 
   $('shadowOn').addEventListener('change', async () => {
     shadow.on = $('shadowOn').checked;
@@ -240,12 +248,55 @@ function setupShadow(stored) {
     $(key).addEventListener('input', () => setLook({ [key]: Number($(key).value) }, { save: false }));
     $(key).addEventListener('change', () => chrome.storage.local.set({ shadowLook: shadow.look }));
   }
-  $('previewBg').querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
-    shadow.bg = b.dataset.bg;
-    chrome.storage.local.set({ shadowBg: shadow.bg });
-    showShadow();
-  }));
+  $('previewBg').querySelectorAll('button').forEach((b) => {
+    b.title = b.ariaLabel = `${t('Preview background')}: ${t(b.dataset.name)}`;
+    b.addEventListener('click', () => {
+      shadow.bg = b.dataset.bg;
+      chrome.storage.local.set({ shadowBg: shadow.bg });
+      showShadow();
+    });
+  });
+  for (const [id, step] of [['stagePrev', -1], ['stageNext', 1]]) $(id).addEventListener('click', () => {
+    const list = items.filter((i) => i.url);
+    shadow.shown = list[list.indexOf(shownItem()) + step];
+    showStageNav();
+    if (shadow.shown?.preview) drawStage(shadow.shown);
+    else $('stage').width = 0; // drawn by showItem once it's ready
+  });
+  $('saveLook').addEventListener('click', () => {
+    shadow.saved.push(structuredClone(shadow.look));
+    saveMine();
+  });
+  showMine();
   showShadow();
+}
+
+// My shadows: one tile per saved look, each with a small x to remove it.
+function showMine() {
+  document.querySelectorAll('.mine-item').forEach((el) => el.remove());
+  shadow.saved.forEach((look, i) => {
+    const el = $('mineTpl').content.firstElementChild.cloneNode(true);
+    const name = t('Shadow {n}', { n: i + 1 });
+    const pick = el.querySelector('.preset');
+    pick.dataset.saved = i;
+    pick.querySelector('span').textContent = name;
+    pick.addEventListener('click', () => setLook(structuredClone(look)));
+    const remove = el.querySelector('.remove');
+    remove.title = remove.ariaLabel = t('Remove {name}', { name });
+    remove.addEventListener('click', () => {
+      shadow.saved.splice(i, 1);
+      saveMine();
+    });
+    $('saveLook').before(el);
+  });
+  $('saveLook').hidden = shadow.saved.length >= MAX_SAVED;
+}
+
+function saveMine() {
+  chrome.storage.local.set({ shadowSaved: shadow.saved });
+  showMine();
+  showShadow();
+  drawPresets();
 }
 
 function setLook(change, { save = true, typing = false } = {}) {
@@ -271,7 +322,13 @@ function showShadow({ typing = false } = {}) {
   const s = shadow.look;
   if (shadow.on) document.body.dataset.shadowBg = shadow.bg;
   else delete document.body.dataset.shadowBg;
-  document.querySelectorAll('[data-preset]').forEach((b) => b.setAttribute('aria-checked', String(sameLook(EdgeShadow.PRESETS[b.dataset.preset], s))));
+  // A saved look is chosen only with its own colour; a built-in one with any colour, unless a saved one is.
+  const savedAt = shadow.saved.findIndex((l) => sameLook(l, s) && l.color === s.color);
+  document.querySelectorAll('[data-saved]').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.saved) === savedAt)));
+  document.querySelectorAll('[data-preset]').forEach((b) => b.setAttribute('aria-checked', String(savedAt < 0 && sameLook(EdgeShadow.PRESETS[b.dataset.preset], s))));
+  const known = savedAt >= 0 || (s.color === '#000000' && Object.values(EdgeShadow.PRESETS).some((p) => sameLook(p, s)));
+  $('saveLook').disabled = known;
+  $('saveLook').title = known ? t('You already have this look.') : t('Save this look to My shadows');
   check($('shadowType'), (b) => b.dataset.type === s.type);
   $('light').querySelectorAll('button').forEach((b) => {
     const x = Number(b.dataset.x), y = Number(b.dataset.y);
@@ -282,6 +339,7 @@ function showShadow({ typing = false } = {}) {
   if (!typing) $('shadowHex').value = s.color;
   for (const key of ['intensity', 'softness', 'distance']) {
     $(key).value = s[key];
+    $(key).style.setProperty('--fill', `${s[key]}%`);
     $(`${key}Out`).textContent = s[key];
   }
   $('distanceLabel').textContent = t(DISTANCE[s.type]);
@@ -368,14 +426,62 @@ function drawShadow(item) {
   canvas.style.setProperty('--ratio', r.canvas.width / r.canvas.height);
 }
 
-// Every look drawn small from the first picture, which takes the same room in each, whatever its shadow adds.
+// The picture in the large preview: the one picked with the arrows while it's still there, else the first.
+function shownItem() {
+  const list = items.filter((i) => i.url);
+  return list.includes(shadow.shown) ? shadow.shown : list[0];
+}
+
+function showStageNav() {
+  const list = items.filter((i) => i.url), item = shownItem(), at = list.indexOf(item);
+  $('stageNav').hidden = list.length < 2;
+  if (!item) return;
+  $('stageName').textContent = $('stageNav').title = item.file.name || t('Pasted picture');
+  $('stageCount').textContent = `${at + 1} / ${list.length}`;
+  $('stagePrev').disabled = at <= 0;
+  $('stageNext').disabled = at >= list.length - 1;
+}
+
+// The large preview: the same drawing as the picture's row, which drawShadow has just made.
+function drawStage(item) {
+  const from = item.el.querySelector('canvas'), canvas = $('stage');
+  canvas.width = from.width;
+  canvas.height = from.height;
+  canvas.getContext('2d').drawImage(from, 0, 0);
+}
+
+// The looks are drawn small on the only picture or, with several, on a plain grey bottle,
+// so they show the shadow rather than one of the pictures.
+function presetSource() {
+  if (items.filter((i) => i.url).length > 1) return neutralObject();
+  return items.find((i) => i.small)?.small || null;
+}
+
+function neutralObject() {
+  if (neutral) return neutral;
+  neutral = new OffscreenCanvas(90, 160);
+  const ctx = neutral.getContext('2d');
+  const grey = ctx.createLinearGradient(0, 0, 90, 0);
+  grey.addColorStop(0, '#a9a9b4');
+  grey.addColorStop(0.45, '#dedee5');
+  grey.addColorStop(1, '#8f8f9b');
+  ctx.fillStyle = grey;
+  ctx.beginPath(); ctx.roundRect(8, 54, 74, 106, 16); ctx.fill(); // body
+  ctx.beginPath(); ctx.roundRect(30, 18, 30, 46, 6); ctx.fill(); // neck
+  ctx.fillStyle = '#74747f';
+  ctx.beginPath(); ctx.roundRect(27, 4, 36, 18, 4); ctx.fill(); // cap
+  return neutral;
+}
+
+// Every look takes the same room, whatever its shadow adds.
+// The built-in looks in the colour in use, the saved ones in their own.
 function drawPresets() {
-  const first = items.find((i) => i.small);
-  if (!first) return;
-  const pic = first.small;
-  document.querySelectorAll('[data-preset]').forEach((b) => {
+  const pic = presetsFrom = presetSource();
+  if (!pic) return;
+  document.querySelectorAll('[data-preset], [data-saved]').forEach((b) => {
     const canvas = b.querySelector('canvas'), ctx = canvas.getContext('2d');
-    const r = EdgeShadow.render(pic, { ...EdgeShadow.PRESETS[b.dataset.preset], color: shadow.look.color });
+    const look = b.dataset.preset ? { ...EdgeShadow.PRESETS[b.dataset.preset], color: shadow.look.color } : shadow.saved[b.dataset.saved];
+    const r = EdgeShadow.render(pic, look);
     const k = Math.min(canvas.width * 0.5 / pic.width, canvas.height * 0.5 / pic.height);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(r.canvas, canvas.width / 2 - (r.x + pic.width / 2) * k, canvas.height * 0.45 - (r.y + pic.height / 2) * k, r.canvas.width * k, r.canvas.height * k);
@@ -391,6 +497,8 @@ function queueDraw() {
     if (!shadow.on) return;
     for (const item of items) if (item.preview && item.url) drawShadow(item);
     drawPresets();
+    const shown = shownItem();
+    if (shown?.preview) drawStage(shown);
   });
 }
 
