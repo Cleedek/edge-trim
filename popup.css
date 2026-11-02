@@ -66,6 +66,9 @@ button.link:hover { color: var(--text); background: transparent; }
 button:disabled { opacity: .5; cursor: default; pointer-events: none; }
 .icon-btn { display: grid; place-items: center; width: 30px; height: 28px; padding: 0; flex: none; color: var(--muted); }
 .icon-btn:hover { color: var(--text); }
+/* Brief ✓ / ! after Copy or Download. */
+.icon-btn.ok, .icon-btn.ok:hover { color: var(--success); font-weight: 700; }
+.icon-btn.fail, .icon-btn.fail:hover { color: var(--danger); font-weight: 700; }
 
 /* ---------- fields ---------- */
 

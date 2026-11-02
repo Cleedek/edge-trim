@@ -112,10 +112,15 @@ function revoke(item) {
   item.url = null;
 }
 
+// Chrome resolves with the download's id only once the download has started, so the ✓ is real.
 async function download(item) {
+  const btn = item.el.querySelector('.save-img');
   try {
-    await chrome.downloads.download({ url: item.url, filename: EdgeTrim.trimmedName(item.file.name || 'image'), conflictAction: 'uniquify' });
+    const id = await chrome.downloads.download({ url: item.url, filename: EdgeTrim.trimmedName(item.file.name || 'image'), conflictAction: 'uniquify' });
+    if (id === undefined) throw new Error('not started');
+    flash(btn, '✓', t('Download'));
   } catch (e) {
+    flash(btn, '!', t('Download'), t('Download failed'));
     const sizeEl = item.el.querySelector('.result-size');
     sizeEl.textContent = t('Download failed');
     sizeEl.classList.add('error');
@@ -123,15 +128,23 @@ async function download(item) {
 }
 
 async function copy(item, btn) {
-  const icon = btn.innerHTML;
   try {
     await navigator.clipboard.write([new ClipboardItem({ 'image/png': item.result.blob })]);
-    btn.textContent = '✓';
+    flash(btn, '✓', t('Copy'));
   } catch (e) {
-    btn.textContent = '!';
-    btn.title = t('Copy failed');
+    flash(btn, '!', t('Copy'), t('Copy failed'));
   }
-  setTimeout(() => { btn.innerHTML = icon; btn.title = t('Copy'); }, 1500);
+}
+
+// Swaps an icon button for ✓ or ! for a moment, then puts its icon back.
+function flash(btn, mark, title, failTitle) {
+  clearTimeout(btn.flashTimer);
+  if (!btn.icon) btn.icon = btn.innerHTML;
+  btn.textContent = mark;
+  btn.title = failTitle || title;
+  btn.classList.toggle('ok', !failTitle);
+  btn.classList.toggle('fail', !!failTitle);
+  btn.flashTimer = setTimeout(() => { btn.innerHTML = btn.icon; btn.title = title; btn.classList.remove('ok', 'fail'); }, 1500);
 }
 
 // ---------- interface language (same as Snap Translate) ----------
