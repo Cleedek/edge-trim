@@ -22,7 +22,7 @@ FEATURES
 • Trim straight from a web page: right-click any picture and choose "Trim and copy image" or "Trim and save image".
 • Trim several pictures at once and download them all with one click, or open Edge Trim in a tab for bigger batches.
 • Choose how to treat nearly invisible pixels: keep them for an exact edge, trim faint haze left by background removal, or trim soft shadows and glow too.
-• The result is always a lossless PNG named after the original, for example "logo-trimmed.png".
+• The result is always a lossless PNG with the original file name, for example "logo.png" stays "logo.png".
 • Works with PNG, WebP, AVIF and GIF.
 • Interface in English, Czech, Slovak, German, French, Spanish, Vietnamese and Simplified Chinese.
 

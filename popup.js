@@ -116,7 +116,7 @@ function revoke(item) {
 async function download(item) {
   const btn = item.el.querySelector('.save-img');
   try {
-    const id = await chrome.downloads.download({ url: item.url, filename: EdgeTrim.trimmedName(item.file.name || 'image'), conflictAction: 'uniquify' });
+    const id = await chrome.downloads.download({ url: item.url, filename: EdgeTrim.outputName(item.file.name || 'image'), conflictAction: 'uniquify' });
     if (id === undefined) throw new Error('not started');
     flash(btn, '✓', t('Download'));
   } catch (e) {

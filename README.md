@@ -12,7 +12,7 @@ The code is public so anyone can check what the extension does. It is plain Java
 - **On a web page:** right-click a picture → *Trim and copy image* or *Trim and save image*. A small note at the bottom of the page says what happened.
 - **Open in a tab** (popup link) for bigger batches.
 
-The result is always a lossless PNG named `<name>-trimmed.png`.
+The result is always a lossless PNG with the original name: `logo.png` stays `logo.png`, `photo.webp` becomes `photo.png`. If a file with that name is already in Downloads, the browser adds a number, for example `logo (1).png`.
 
 **Fake transparency:** many stock and AI pictures have the grey-and-white checkerboard painted in as ordinary opaque pixels. When the picture's outer edge follows such a pattern, rows and columns holding nothing but the pattern are cut away too, with a 1 px safety margin. Pixels are never changed: the pattern left in the corners of the box stays.
 

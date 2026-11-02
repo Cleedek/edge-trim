@@ -56,7 +56,7 @@ async function loadImage(src, target) {
 }
 
 function save(dataUrl, src) {
-  return chrome.downloads.download({ url: dataUrl, filename: EdgeTrim.trimmedName(src), conflictAction: 'uniquify' });
+  return chrome.downloads.download({ url: dataUrl, filename: EdgeTrim.outputName(src), conflictAction: 'uniquify' });
 }
 
 function toDataUrl(blob) {
