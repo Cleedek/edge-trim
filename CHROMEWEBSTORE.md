@@ -158,7 +158,7 @@ mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 0.1.0 | 2026-11-02 | First version. | Draft |
+| 1.0.0 | 2026-11-02 | First version. | Draft |
 
 ## Review Notes
 
