@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Edge Trim</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="supportView" class="support" hidden>
+    <div class="support-head">
+      <button id="supportBack" class="round-btn" title="Back" aria-label="Back"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <h1>Support the creator</h1>
+    </div>
+    <p class="muted support-intro">Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!</p>
+    <div class="segmented" role="tablist">
+      <button id="tabBankCz" role="tab" aria-selected="false" aria-controls="payBankCz" hidden>Czech bank</button>
+      <button id="tabBankVn" role="tab" aria-selected="false" aria-controls="payBankVn" hidden>VietQR</button>
+      <button id="tabRevolut" role="tab" aria-selected="true" aria-controls="payRevolut">Revolut</button>
+      <button id="tabPaypal" role="tab" aria-selected="false" aria-controls="payPaypal">PayPal</button>
+      <button id="tabSolana" role="tab" aria-selected="false" aria-controls="paySolana">Solana</button>
+      <button id="tabSui" role="tab" aria-selected="false" aria-controls="paySui">Sui</button>
+    </div>
+    <div id="payBankCz" class="pay-card" role="tabpanel" hidden>
+      <img class="qr" src="icons/support/qr-bank-cz.svg" width="196" height="196" alt="QR payment code for Czech bank account 249948403/0600">
+      <p class="pay-id"><span>Moneta</span> · 249948403/0600</p>
+      <p class="muted pay-note">Scan with any Czech banking app. Pick any amount you like.</p>
+      <div class="row pay-actions">
+        <button class="copy primary" data-copy="249948403/0600">Copy account number</button>
+      </div>
+    </div>
+    <div id="payBankVn" class="pay-card" role="tabpanel" hidden>
+      <img class="qr" src="icons/support/qr-bank-vn.svg" width="196" height="196" alt="VietQR code for Timo account 9021284549310">
+      <p class="pay-id"><span>Timo</span> · 9021284549310</p>
+      <p class="muted pay-note">Scan with any Vietnamese banking app (Napas 247). You choose the amount.</p>
+      <div class="row pay-actions">
+        <button class="copy primary" data-copy="9021284549310">Copy account number</button>
+      </div>
+    </div>
+    <div id="payRevolut" class="pay-card" role="tabpanel">
+      <img class="qr" src="icons/support/qr-revolut.svg" width="196" height="196" alt="QR code for revolut.me/cleedek">
+      <p class="pay-id">revolut.me/cleedek</p>
+      <p class="muted pay-note">Scan with your phone camera. You can pay by card, no Revolut account needed.</p>
+      <div class="row pay-actions">
+        <a class="btn primary" href="https://revolut.me/cleedek" target="_blank" rel="noopener">Open link</a>
+        <button class="copy" data-copy="https://revolut.me/cleedek">Copy link</button>
+      </div>
+    </div>
+    <div id="payPaypal" class="pay-card" role="tabpanel" hidden>
+      <img class="qr" src="icons/support/qr-paypal.svg" width="196" height="196" alt="QR code for paypal.me/cleedek">
+      <p class="pay-id">paypal.me/cleedek</p>
+      <p class="muted pay-note">Scan with your phone camera and pay with PayPal.</p>
+      <div class="row pay-actions">
+        <a class="btn primary" href="https://paypal.me/cleedek" target="_blank" rel="noopener">Open link</a>
+        <button class="copy" data-copy="https://paypal.me/cleedek">Copy link</button>
+      </div>
+    </div>
+    <div id="paySolana" class="pay-card" role="tabpanel" hidden>
+      <img class="qr" src="icons/support/qr-solana.svg" width="196" height="196" alt="QR code for the Solana wallet address">
+      <p class="pay-id" title="FFgwPSNtmU21M1qvpiX5mH5nZgYdy6qtNwPrsm5pvcMD"><span>Solana</span> · FFgwPS…5pvcMD</p>
+      <p class="muted pay-note">Scan with Phantom or any Solana wallet. Send only on the Solana network.</p>
+      <div class="row pay-actions">
+        <button class="copy primary" data-copy="FFgwPSNtmU21M1qvpiX5mH5nZgYdy6qtNwPrsm5pvcMD">Copy address</button>
+      </div>
+    </div>
+    <div id="paySui" class="pay-card" role="tabpanel" hidden>
+      <img class="qr" src="icons/support/qr-sui.svg" width="196" height="196" alt="QR code for the Sui wallet address">
+      <p class="pay-id" title="0x05078cf6b8c593c64d39270d78fbdf9a01f46a2511f097738e346ddfc82e59ff"><span>Sui</span> · 0x0507…59ff</p>
+      <p class="muted pay-note">Scan with any Sui wallet. Send only on the Sui network.</p>
+      <div class="row pay-actions">
+        <button class="copy primary" data-copy="0x05078cf6b8c593c64d39270d78fbdf9a01f46a2511f097738e346ddfc82e59ff">Copy address</button>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <h1>Edge Trim</h1>
+    <p class="muted">Crops transparent pictures right to the edge of what’s in them.</p>
+  </header>
+
+  <section>
+    <label id="drop" class="drop" for="files">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v14h14" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 7h14v14" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+      <span class="drop-title">Drop pictures here or click to choose</span>
+      <span class="small">You can also paste a copied picture. PNG, WebP, AVIF or GIF.</span>
+    </label>
+    <input id="files" type="file" accept="image/*" multiple hidden>
+
+    <div id="resultsBar" class="results-bar" hidden>
+      <span id="count" class="muted"></span>
+      <div class="row">
+        <button id="clear" class="ghost">Clear</button>
+        <button id="downloadAll" class="primary">Download all</button>
+      </div>
+    </div>
+    <ul id="results" class="results"></ul>
+  </section>
+
+  <section>
+    <h2>Trimming</h2>
+    <div class="settings">
+      <div class="setting first">
+        <span class="setting-label">Nearly invisible pixels</span>
+        <div class="segmented faint" role="radiogroup" aria-label="Nearly invisible pixels">
+          <button data-faint="exact" role="radio">Keep</button>
+          <button data-faint="light" role="radio">Trim haze</button>
+          <button data-faint="strong" role="radio">Trim more</button>
+        </div>
+        <p class="hint" data-for="exact">Cuts right after the last pixel that isn’t fully transparent.</p>
+        <p class="hint" data-for="light" hidden>Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.</p>
+        <p class="hint" data-for="strong" hidden>Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="small first">On a web page, right-click any picture and choose "Trim and copy image" or "Trim and save image". Everything is trimmed on this computer, nothing is uploaded.</p>
+    <button id="openTab" class="ghost link">Open in a tab</button>
+  </section>
+
+  <footer class="credit">
+    <div class="setting-head ui-lang">
+      <label for="uiLang" class="setting-label">Interface language</label>
+      <select id="uiLang" class="compact"></select>
+    </div>
+    <button id="supportOpen" class="ghost wide support-open"><svg class="heart" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Support the creator <svg class="chev" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <p id="credit"></p>
+    <a id="starGithub" class="star-link" href="https://github.com/Cleedek/edge-trim" target="_blank" rel="noopener" title="Open source: read the code yourself"><svg class="gh" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg> Open source on GitHub</a>
+  </footer>
+
+  <template id="resultTpl">
+    <li class="result">
+      <div class="thumb"><img alt=""></div>
+      <div class="result-info">
+        <span class="result-name"></span>
+        <span class="result-size"></span>
+      </div>
+      <div class="row nowrap result-actions">
+        <button class="icon-btn copy-img" title="Copy" aria-label="Copy"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+        <button class="icon-btn save-img" title="Download" aria-label="Download"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </li>
+  </template>
+
+  <script src="lib/i18n.js"></script>
+  <script src="lib/locales.js"></script>
+  <script src="lib/trim.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

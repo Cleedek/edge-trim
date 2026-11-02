@@ -1,0 +1,8 @@
+<!-- Source of icon128/48/32.png. Same violet, corner radius and square-ended white shapes as Snap Translate and Subtitle Overlay: a crop mark hugging a solid shape. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="27" fill="#7c3aed"/>
+  <g fill="none" stroke="#fff" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter">
+    <path d="M42 22V86H106"/><path d="M22 42H86V106"/>
+  </g>
+  <rect x="56" y="56" width="16" height="16" fill="#fff"/>
+</svg>
