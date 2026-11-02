@@ -62,6 +62,10 @@ function addFiles(fileList) {
     el.querySelector('.save-img').title = el.querySelector('.save-img').ariaLabel = t('Download');
     el.querySelector('.copy-img').addEventListener('click', (e) => copy(item, e.currentTarget));
     el.querySelector('.save-img').addEventListener('click', () => download(item));
+    const img = el.querySelector('img');
+    img.addEventListener('load', () => img.style.setProperty('--ratio', img.naturalWidth / img.naturalHeight));
+    el.querySelector('.thumb').addEventListener('click', () => expand(item, !el.classList.contains('expanded')));
+    expand(item, false);
     items.push(item);
     $('results').append(el);
     trimItem(item);
@@ -86,6 +90,8 @@ async function trimItem(item) {
   item.url = shown ? URL.createObjectURL(shown) : null;
   el.querySelector('img').src = item.url || '';
   el.querySelector('img').hidden = !item.url;
+  el.querySelector('.thumb').disabled = !item.url;
+  if (!item.url) expand(item, false);
 
   const { before, box } = result;
   const messages = {
@@ -98,6 +104,14 @@ async function trimItem(item) {
   sizeEl.classList.toggle('error', result.status === 'empty' || result.status === 'unsupported');
   el.querySelector('.result-actions').hidden = !result.blob;
   showBar();
+}
+
+// Clicking the picture shows it across the whole width, with the name and buttons under it; another click shrinks it back.
+function expand(item, on) {
+  const thumb = item.el.querySelector('.thumb');
+  item.el.classList.toggle('expanded', on);
+  thumb.setAttribute('aria-expanded', String(on));
+  thumb.title = thumb.ariaLabel = on ? t('Show smaller') : t('Show larger');
 }
 
 function showBar() {
