@@ -263,22 +263,26 @@ function setupShadow(stored) {
     if (shadow.shown?.preview) drawStage(shadow.shown);
     else $('stage').width = 0; // drawn by showItem once it's ready
   });
-  $('saveLook').addEventListener('click', () => {
-    shadow.saved.push(structuredClone(shadow.look));
-    saveMine();
+  $('lookNew').addEventListener('click', () => toggleSaveForm(true));
+  $('lookCancel').addEventListener('click', () => toggleSaveForm(false));
+  $('lookSave').addEventListener('click', saveLook);
+  $('lookName').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') saveLook();
+    if (e.key === 'Escape') { e.preventDefault(); toggleSaveForm(false); }
   });
   showMine();
   showShadow();
 }
 
-// My shadows: one tile per saved look, each with a small x to remove it.
+// My shadows: one tile per saved look, with its name and a small x to remove it. Hidden while there are none.
 function showMine() {
-  document.querySelectorAll('.mine-item').forEach((el) => el.remove());
-  shadow.saved.forEach((look, i) => {
+  $('mine').replaceChildren();
+  shadow.saved.forEach(({ name: saved, ...look }, i) => {
     const el = $('mineTpl').content.firstElementChild.cloneNode(true);
-    const name = t('Shadow {n}', { n: i + 1 });
+    const name = saved || t('My shadow {n}', { n: i + 1 });
     const pick = el.querySelector('.preset');
     pick.dataset.saved = i;
+    pick.title = name;
     pick.querySelector('span').textContent = name;
     pick.addEventListener('click', () => setLook(structuredClone(look)));
     const remove = el.querySelector('.remove');
@@ -287,9 +291,34 @@ function showMine() {
       shadow.saved.splice(i, 1);
       saveMine();
     });
-    $('saveLook').before(el);
+    $('mine').append(el);
   });
-  $('saveLook').hidden = shadow.saved.length >= MAX_SAVED;
+  $('mineBox').hidden = !shadow.saved.length;
+}
+
+function toggleSaveForm(open) {
+  $('saveForm').hidden = !open;
+  $('lookNew').hidden = open;
+  if (open) {
+    // A suggested name that isn't taken, so saving it doesn't replace another look.
+    let n = shadow.saved.length + 1;
+    while (shadow.saved.some((l) => l.name === t('My shadow {n}', { n }))) n++;
+    $('lookName').value = t('My shadow {n}', { n });
+    $('lookName').focus();
+    $('lookName').select();
+  }
+}
+
+// A name that's already there replaces that look.
+function saveLook() {
+  const name = $('lookName').value.trim();
+  if (!name) return $('lookName').focus();
+  shadow.saved = shadow.saved.filter((l) => l.name !== name);
+  shadow.saved.push({ ...structuredClone(shadow.look), name });
+  toggleSaveForm(false);
+  saveMine();
+  const motion = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  $('mineBox').scrollIntoView({ behavior: motion, block: 'center' });
 }
 
 function saveMine() {
@@ -326,9 +355,13 @@ function showShadow({ typing = false } = {}) {
   const savedAt = shadow.saved.findIndex((l) => sameLook(l, s) && l.color === s.color);
   document.querySelectorAll('[data-saved]').forEach((b) => b.setAttribute('aria-checked', String(Number(b.dataset.saved) === savedAt)));
   document.querySelectorAll('[data-preset]').forEach((b) => b.setAttribute('aria-checked', String(savedAt < 0 && sameLook(EdgeShadow.PRESETS[b.dataset.preset], s))));
+  // Nothing to save when the look is already there, or when My shadows is full.
   const known = savedAt >= 0 || (s.color === '#000000' && Object.values(EdgeShadow.PRESETS).some((p) => sameLook(p, s)));
-  $('saveLook').disabled = known;
-  $('saveLook').title = known ? t('You already have this look.') : t('Save this look to My shadows');
+  const full = shadow.saved.length >= MAX_SAVED;
+  $('lookNew').disabled = known || full;
+  $('saveHint').hidden = !known && !full;
+  $('saveHint').textContent = full ? t('My shadows is full: remove one to save another.') : t('You already have this look.');
+  if (known || full) toggleSaveForm(false);
   check($('shadowType'), (b) => b.dataset.type === s.type);
   $('light').querySelectorAll('button').forEach((b) => {
     const x = Number(b.dataset.x), y = Number(b.dataset.y);
@@ -434,10 +467,10 @@ function shownItem() {
 
 function showStageNav() {
   const list = items.filter((i) => i.url), item = shownItem(), at = list.indexOf(item);
-  $('stageNav').hidden = list.length < 2;
+  $('stageBox').classList.toggle('multi', list.length > 1);
   if (!item) return;
-  $('stageName').textContent = $('stageNav').title = item.file.name || t('Pasted picture');
   $('stageCount').textContent = `${at + 1} / ${list.length}`;
+  $('stageCount').title = item.file.name || t('Pasted picture');
   $('stagePrev').disabled = at <= 0;
   $('stageNext').disabled = at >= list.length - 1;
 }

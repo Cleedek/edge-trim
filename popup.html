@@ -110,14 +110,12 @@
       </div>
       <div id="shadowPanel" class="setting shadow-panel" hidden>
         <!-- The first picture, large, on a background that's only for looking: the file stays transparent. -->
-        <div class="stage">
+        <div id="stageBox" class="stage">
           <canvas id="stage" role="img" aria-label="Preview with shadow"></canvas>
-          <!-- With two pictures or more: which one is shown, and arrows to the others. -->
-          <div id="stageNav" class="stage-nav" hidden>
-            <button id="stagePrev" title="Previous picture" aria-label="Previous picture"></button>
-            <span id="stageName"></span><span id="stageCount"></span>
-            <button id="stageNext" title="Next picture" aria-label="Next picture"></button>
-          </div>
+          <!-- With two pictures or more: arrows at the sides, and which one this is in the corner. -->
+          <button id="stagePrev" class="stage-arrow" title="Previous picture" aria-label="Previous picture"></button>
+          <button id="stageNext" class="stage-arrow" title="Next picture" aria-label="Next picture"></button>
+          <span id="stageCount" class="stage-count"></span>
           <div id="previewBg" class="stage-bg" role="radiogroup" aria-label="Preview background">
             <button data-bg="white" data-name="White" role="radio"></button>
             <button data-bg="grey" data-name="Grey" role="radio"></button>
@@ -132,12 +130,10 @@
           <button class="preset" data-preset="above" role="radio"><canvas width="128" height="110"></canvas><span>Above</span></button>
           <button class="preset" data-preset="side" role="radio"><canvas width="128" height="110"></canvas><span>Side</span></button>
         </div>
-        <!-- Looks saved from the settings below, drawn like the ones above. -->
-        <div class="mine">
+        <!-- Looks saved from the settings below (Save to My shadows), drawn like the ones above. -->
+        <div id="mineBox" class="mine" hidden>
           <span id="mineLabel" class="mine-label">My shadows</span>
-          <div id="mine" class="presets" role="group" aria-labelledby="mineLabel">
-            <button id="saveLook" class="preset save-look"><span class="plus" aria-hidden="true"></span><span>Save</span></button>
-          </div>
+          <div id="mine" class="presets" role="group" aria-labelledby="mineLabel"></div>
           <template id="mineTpl"><div class="mine-item"><button class="preset" role="radio"><canvas width="128" height="110"></canvas><span></span></button><button class="remove"></button></div></template>
         </div>
         <details class="adjust">
@@ -190,6 +186,16 @@
             <div class="slider">
               <label for="distance" id="distanceLabel" class="setting-label">Distance</label><output id="distanceOut" for="distance"></output>
               <input id="distance" type="range" min="0" max="100">
+            </div>
+            <!-- Same as saving a preset in Subtitle Overlay: a name, then Save. -->
+            <div class="look-save">
+              <div id="saveForm" class="save-form" hidden>
+                <input id="lookName" type="text" maxlength="30" placeholder="Shadow name" aria-label="Shadow name">
+                <button id="lookSave" class="primary">Save</button>
+                <button id="lookCancel" class="ghost">Cancel</button>
+              </div>
+              <button id="lookNew" class="primary wide">Save to My shadows</button>
+              <p id="saveHint" class="hint" hidden></p>
             </div>
           </div>
         </details>

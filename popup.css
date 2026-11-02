@@ -221,29 +221,36 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 /* ---------- shadow, added after trimming ---------- */
 
 .shadow-panel { gap: 12px; }
-/* The first picture, large. It stays in view while the settings under it are scrolled;
+/* The picture, large. It stays in view while the settings under it are scrolled;
    the ring in the page colour hides what scrolls past it. */
 .stage {
-  position: sticky; top: 8px; z-index: 2; height: 190px; padding: 14px; border: 1px solid var(--line); border-radius: 12px;
+  position: sticky; top: 8px; z-index: 2; height: 214px; padding: 14px 14px 40px; border: 1px solid var(--line); border-radius: 12px;
   outline: 8px solid var(--bg);
   background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 12px 12px;
 }
 .stage canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
-/* The preview background: small, on the preview itself, since it never reaches the file. */
-.stage-bg, .stage-nav {
-  position: absolute; bottom: 8px; display: flex; align-items: center; border-radius: 999px;
-  background: color-mix(in oklch, var(--panel) 88%, transparent); border: 1px solid var(--line); box-shadow: 0 1px 3px var(--shadow);
+/* The controls on the preview sit in a strip under the picture or beside it, so they never cover its shadow.
+   The background dots are small since the background never reaches the file. */
+.stage-bg, .stage-count, .stage-arrow {
+  border-radius: 999px; background: color-mix(in oklch, var(--panel) 88%, transparent);
+  border: 1px solid var(--line); box-shadow: 0 1px 3px var(--shadow);
 }
-.stage-bg { right: 8px; gap: 4px; padding: 4px; }
-/* Which picture is shown, with arrows to the others. */
-.stage-nav { left: 8px; max-width: calc(100% - 118px); gap: 4px; padding: 1px; font-size: 11px; color: var(--muted); }
-.stage-nav button { flex: none; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%; background: transparent; display: grid; place-items: center; }
-.stage-nav button:hover { background: var(--panel-hover); }
-.stage-nav button::before { content: ""; width: 10px; height: 6px; background: var(--chevron) center / contain no-repeat; transform: rotate(90deg); }
+.stage-bg { position: absolute; right: 8px; bottom: 8px; display: flex; gap: 4px; padding: 4px; }
+/* Two pictures or more: arrows at the sides, and which one this is ("1 / 2") in the corner. */
+.stage.multi { padding-inline: 44px; }
+.stage-arrow, .stage-count { display: none; }
+.multi .stage-arrow {
+  position: absolute; top: calc(50% - 13px); transform: translateY(-50%);
+  width: 28px; height: 28px; padding: 0; display: grid; place-items: center;
+}
+#stagePrev { left: 8px; }
+#stageNext { right: 8px; }
+.stage-arrow::before { content: ""; width: 10px; height: 6px; background: var(--chevron) center / contain no-repeat; transform: rotate(90deg); }
 #stageNext::before { transform: rotate(-90deg); }
-.stage-nav button:disabled { opacity: .35; background: transparent; }
-#stageName { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); }
-#stageCount { flex: none; font-variant-numeric: tabular-nums; }
+.multi .stage-count {
+  display: block; position: absolute; left: 8px; bottom: 8px; padding: 4px 9px;
+  font-size: 11px; line-height: 16px; color: var(--text); font-variant-numeric: tabular-nums;
+}
 .stage-bg button, .stage-bg button:hover { width: 16px; height: 16px; padding: 0; border-radius: 50%; border: 1px solid var(--line-strong); }
 .stage-bg [data-bg="white"] { background: #fff; }
 .stage-bg [data-bg="grey"] { background: #e9e9ec; }
@@ -271,15 +278,13 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
   position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; padding: 0; border-radius: 50%;
   display: grid; place-items: center; opacity: 0; transition: opacity .15s var(--ease), background-color .15s var(--ease);
 }
-.remove::before, .save-look .plus::before { content: ""; width: 8px; height: 8px; background:
+.remove::before { content: ""; width: 8px; height: 8px; transform: rotate(45deg); background:
   linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat, linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat; }
-.remove::before { transform: rotate(45deg); }
 .mine-item:hover .remove, .remove:focus-visible { opacity: 1; }
-.save-look { justify-content: center; border-style: dashed; }
-.save-look .plus { width: 100%; aspect-ratio: 128 / 110; display: grid; place-items: center; color: var(--muted); }
-.save-look .plus::before { width: 12px; height: 12px; }
-.save-look:hover .plus { color: var(--text); }
-.save-look:disabled { opacity: .45; cursor: default; }
+/* Saving the look, at the end of the settings. */
+.look-save { display: flex; flex-direction: column; gap: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
+.save-form { display: flex; gap: 6px; }
+.save-form input { flex: 1; min-width: 0; }
 
 .adjust summary {
   display: flex; align-items: center; gap: 6px; width: max-content; list-style: none; cursor: pointer;
