@@ -23,6 +23,7 @@ FEATURES
 • Trim several pictures at once and download them all with one click, or open Edge Trim in a tab for bigger batches.
 • Optional: trim pictures as you download them. Turn on "Trim downloaded pictures" and every PNG, WebP, AVIF or GIF you download from a website is replaced by a trimmed copy with the same name, also on sites where you wait for a countdown or fill in a captcha first.
 • Choose how to treat nearly invisible pixels: keep them for an exact edge, trim faint haze left by background removal, or trim soft shadows and glow too.
+• Optional: add a shadow after trimming. Pick a look (Soft, Strong, Floating, Above or Side), then adjust where the light comes from, the colour, intensity, softness and distance while the previews follow. The shadow is drawn from the picture's own outline on your computer: no AI, no upload.
 • The result is always a lossless PNG with the original file name, for example "logo.png" stays "logo.png".
 • Works with PNG, WebP, AVIF and GIF.
 • Interface in English, Czech, Slovak, German, French, Spanish, Vietnamese and Simplified Chinese.
@@ -34,7 +35,7 @@ HOW TO USE
 Or right-click a picture or a download link on any web page and pick an Edge Trim option.
 
 PRIVACY
-Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your three settings (how to treat nearly invisible pixels, whether to trim downloaded pictures, and the interface language), stored in your browser.
+Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your settings (how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance, and the shadow look and preview background you last used), stored in your browser.
 
 PERMISSIONS
 • "Read and change all your data on all websites": when you right-click a picture or a download link and choose an Edge Trim option, the extension loads that one picture from where the page points to it and shows a short note on the page saying what happened. With "Trim downloaded pictures" turned on, it also loads a picture you have just downloaded once more from the same address, and shows the note on the page you downloaded it from. Otherwise it does nothing on a page.
@@ -48,7 +49,7 @@ Questions or bugs: TODO (support email or URL).
 TODO: pick in the dashboard. Closest fit is a photo or image tool category. (The template lists "Photos"; the dashboard's category names may have changed since, so check the list there.)
 
 **Single Purpose**
-Crops transparent images to the edge of their visible content.
+Prepares transparent (cut-out) images: crops them to the edge of their visible content and can then add a shadow under them.
 
 **Primary Language**
 English
@@ -69,6 +70,7 @@ English
 1. The popup with two or three trimmed results, showing "before → after" sizes.
 2. A web page with the right-click menu open on a picture, showing "Trim and copy image".
 3. The "Nearly invisible pixels" setting with a picture that has haze around it, before and after.
+4. The Shadow section: the five looks drawn from a product photo, with that photo standing on its "Soft" shadow.
 
 ## Permissions Justification
 
@@ -77,7 +79,7 @@ English
 | `contextMenus` | permissions | Adds "Trim and copy image" and "Trim and save image" to the right-click menu on pictures, and "Trim and download linked image" on links, the extension's main way to trim a picture from a web page. |
 | `downloads` | permissions | Saves the trimmed picture to the user's Downloads folder when they click Download or "Download all" in the popup, or choose "Trim and save image". Also used when a page blocks copying, so the result is saved instead of lost. With the optional "Trim downloaded pictures" setting turned on (off by default), it notices when a picture download finishes and replaces that file with its trimmed copy under the same name; JPEGs, animated pictures and pictures with nothing to trim are left alone. |
 | `scripting` | permissions | After the user chooses an Edge Trim menu item on a picture, or a picture download finishes while "Trim downloaded pictures" is on, runs a small one-off script in that page to: copy the trimmed picture to the clipboard, load the picture with the page's own access when the server refuses a direct load (pictures behind a login), and show a short on-page note saying what happened. Nothing runs on a page otherwise. |
-| `storage` | permissions | Remembers three settings on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, and the interface language. |
+| `storage` | permissions | Remembers the settings on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, and the shadow look and preview background last used. |
 | `<all_urls>` | host_permissions | Pictures on a page are very often served from a different site than the page itself (image hosts, CDNs). To trim the picture (or download link) the user right-clicked, or a picture they just downloaded with "Trim downloaded pictures" on, the extension must load it again from wherever it is hosted, which can be any site. The picture is processed locally; nothing is sent anywhere else. |
 
 ## Privacy & Data Use
@@ -124,7 +126,7 @@ Pictures you trim, whether dropped, chosen, pasted or right-clicked on a web pag
 
 When you right-click a picture or a download link and choose an Edge Trim option, the extension loads that picture from the website that hosts it, the same way the page itself does. If you turn on "Trim downloaded pictures", the extension also loads each picture you download once more from the same address, to trim it. No other requests are made.
 
-Edge Trim stores three settings in your browser on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, and the interface language. Removing the extension deletes them.
+Edge Trim stores its settings in your browser on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance (dark, light or same as the browser), and the shadow look and preview background you last used. Removing the extension deletes them.
 
 Edge Trim does not use cookies, analytics, advertising or third-party services. The optional "Support the creator" screen contains links to payment services; they are only opened if you click them.
 
@@ -150,7 +152,7 @@ Questions: TODO (email).
 The upload ZIP should contain only what the extension needs. From the project folder:
 
 ```bash
-mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.json background.js popup.html popup.css popup.js lib _locales icons -x "*.DS_Store" "icons/icon.svg" "icons/icon-small.svg"
+mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.json background.js popup.html popup.css popup.js theme.js lib _locales icons -x "*.DS_Store" "icons/icon.svg" "icons/icon-small.svg"
 ```
 
 `icons/support/*.svg` stays in (the support screen uses it). `dist/` is already in `.gitignore`.
@@ -167,6 +169,7 @@ mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.
 - SVG isn't supported; animated GIF/WebP keep only the first frame.
 - JPEG has no transparency, so there's nothing to trim.
 - Colour profiles and metadata are dropped when the PNG is re-encoded.
+- Shadows are drawn from the outline only, so for objects photographed from above at an angle the contact with the ground is approximate.
 - Copy from the right-click menu needs a secure (https) page; elsewhere the picture is saved instead.
 - On pages extensions can't touch (browser settings pages, the Web Store, the PDF viewer), the result note shows on the toolbar icon instead of the page.
 - "Trim downloaded pictures" loads the picture a second time and only replaces the download when that copy has the same size in bytes. Links that work only once, and pictures a page hands over as a blob and discards right away, stay untrimmed (the original is kept). The trimmed copy always goes to the Downloads folder.

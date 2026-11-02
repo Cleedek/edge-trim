@@ -211,19 +211,48 @@ function resetIcon() {
 
 function showToast(text, isError) {
   document.getElementById('edge-trim-toast')?.remove();
+
+  // The note always stands out: the popup's light look on a dark page, the dark look on a light one.
+  // The page's colour is the first solid background under the spot where the note appears
+  // (then the body's, which fills the window on a short page). With none at all, the text
+  // colour tells: light text, dark page. If anything goes wrong, the note stays dark, as before.
+  const darkPage = (() => {
+    try {
+      const ctx = Object.assign(document.createElement('canvas'), { width: 1, height: 1 }).getContext('2d', { willReadFrequently: true });
+      const rgba = (color) => { // any CSS colour (rgb, oklch, lab…) -> [r, g, b, a], 0-255
+        ctx.clearRect(0, 0, 1, 1);
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, 1, 1);
+        return ctx.getImageData(0, 0, 1, 1).data;
+      };
+      const brightness = ([r, g, b]) => r * 0.299 + g * 0.587 + b * 0.114;
+      const under = [...document.elementsFromPoint(innerWidth / 2, innerHeight - 40), document.body, document.documentElement];
+      const solid = under.filter(Boolean).map((el) => rgba(getComputedStyle(el).backgroundColor)).find((c) => c[3] > 128);
+      return solid
+        ? brightness(solid) < 128
+        : brightness(rgba(getComputedStyle(document.body || document.documentElement).color)) >= 128;
+    } catch (e) { return false; }
+  })();
+
   const host = Object.assign(document.createElement('div'), { id: 'edge-trim-toast' });
   const shadow = host.attachShadow({ mode: 'closed' });
   shadow.innerHTML = `<style>
-    div { position: fixed; z-index: 2147483647; left: 50%; bottom: 24px; transform: translate(-50%, 8px); opacity: 0;
+    div { --surface: oklch(0.225 0.010 290); --text: oklch(0.94 0.006 290); --line: oklch(0.36 0.014 290);
+      --ok: oklch(0.86 0.13 150); --bad: oklch(0.72 0.16 22);
+      position: fixed; z-index: 2147483647; left: 50%; bottom: 24px; transform: translate(-50%, 8px); opacity: 0;
       max-width: min(420px, calc(100vw - 32px)); padding: 10px 14px; border-radius: 10px;
-      background: oklch(0.225 0.010 290); color: oklch(0.94 0.006 290); border: 1px solid oklch(0.36 0.014 290);
+      background: var(--surface); color: var(--text); border: 1px solid var(--line);
       font: 500 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; box-shadow: 0 8px 24px oklch(0.1 0.01 290 / .45);
       display: flex; gap: 8px; align-items: center; transition: opacity .2s cubic-bezier(.25,1,.5,1), transform .2s cubic-bezier(.25,1,.5,1); }
+    /* Same colours as the popup's light theme (popup.css). */
+    div.light { --surface: oklch(0.985 0.003 290); --text: oklch(0.22 0.012 290); --line: oklch(0.83 0.012 290);
+      --ok: oklch(0.55 0.15 150); --bad: oklch(0.55 0.19 25); }
     div.on { opacity: 1; transform: translate(-50%, 0); }
-    i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: ${isError ? 'oklch(0.72 0.16 22)' : 'oklch(0.86 0.13 150)'}; }
+    i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: ${isError ? 'var(--bad)' : 'var(--ok)'}; }
     @media (prefers-reduced-motion: reduce) { div { transition: none; } }
   </style><div role="status"><i></i><span></span></div>`;
   const box = shadow.querySelector('div');
+  box.classList.toggle('light', darkPage);
   box.querySelector('span').textContent = text;
   document.documentElement.append(host);
   requestAnimationFrame(() => box.classList.add('on'));

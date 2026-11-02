@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Edge Trim</title>
+  <meta name="color-scheme" content="light dark">
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
@@ -95,6 +97,88 @@
     <ul id="results" class="results"></ul>
   </section>
 
+  <!-- Offered once there's a trimmed picture: a shadow is added after trimming, never instead of it. -->
+  <section id="shadowSection" hidden>
+    <h2>Shadow</h2>
+    <div class="settings">
+      <div class="setting first">
+        <div class="setting-head">
+          <label for="shadowOn" class="setting-label">Add shadow</label>
+          <label class="toggle"><input id="shadowOn" type="checkbox" role="switch"><span></span></label>
+        </div>
+        <p class="hint">Made from each trimmed picture’s own outline, on this computer. Copy and Download then include the shadow.</p>
+      </div>
+      <div id="shadowPanel" class="setting shadow-panel" hidden>
+        <div class="presets" role="radiogroup" aria-label="Shadow style">
+          <button class="preset" data-preset="soft" role="radio"><canvas width="128" height="110"></canvas><span>Soft</span></button>
+          <button class="preset" data-preset="hard" role="radio"><canvas width="128" height="110"></canvas><span>Strong</span></button>
+          <button class="preset" data-preset="floating" role="radio"><canvas width="128" height="110"></canvas><span>Floating</span></button>
+          <button class="preset" data-preset="above" role="radio"><canvas width="128" height="110"></canvas><span>Above</span></button>
+          <button class="preset" data-preset="side" role="radio"><canvas width="128" height="110"></canvas><span>Side</span></button>
+        </div>
+        <details class="adjust">
+          <summary>Adjust</summary>
+          <div class="adjust-body">
+            <div id="shadowType" class="segmented pick" role="radiogroup" aria-label="Shadow type">
+              <button data-type="ground" role="radio">On a surface</button>
+              <button data-type="float" role="radio">Floating</button>
+              <button data-type="drop" role="radio">Classic</button>
+            </div>
+            <div class="shadow-pair">
+              <div>
+                <span class="setting-label">Light from</span>
+                <div id="light" class="light-grid" role="radiogroup" aria-label="Light from">
+                  <button data-x="-1" data-y="-1" role="radio" title="Light from the top left" aria-label="Light from the top left"></button>
+                  <button data-x="0" data-y="-1" role="radio" title="Light from the top" aria-label="Light from the top"></button>
+                  <button data-x="1" data-y="-1" role="radio" title="Light from the top right" aria-label="Light from the top right"></button>
+                  <button data-x="-1" data-y="0" role="radio" title="Light from the left" aria-label="Light from the left"></button>
+                  <button data-x="0" data-y="0" role="radio" title="Light from straight above" aria-label="Light from straight above"></button>
+                  <button data-x="1" data-y="0" role="radio" title="Light from the right" aria-label="Light from the right"></button>
+                  <button data-x="-1" data-y="1" role="radio" title="Light from the bottom left" aria-label="Light from the bottom left"></button>
+                  <button data-x="0" data-y="1" role="radio" title="Light from the bottom" aria-label="Light from the bottom"></button>
+                  <button data-x="1" data-y="1" role="radio" title="Light from the bottom right" aria-label="Light from the bottom right"></button>
+                </div>
+              </div>
+              <div>
+                <span class="setting-label">Shadow colour</span>
+                <div class="colour-row">
+                  <div id="swatches" class="swatches" role="radiogroup" aria-label="Shadow colour">
+                    <button class="swatch" data-color="#000000" role="radio" style="background:#000000" title="Neutral" aria-label="Neutral"></button>
+                    <button class="swatch" data-color="#2b1708" role="radio" style="background:#2b1708" title="Warm" aria-label="Warm"></button>
+                    <button class="swatch" data-color="#0b1733" role="radio" style="background:#0b1733" title="Cool" aria-label="Cool"></button>
+                  </div>
+                  <input id="shadowHex" class="hex" type="text" maxlength="7" spellcheck="false" autocomplete="off" title="Shadow colour (hex code)" aria-label="Shadow colour (hex code)">
+                </div>
+              </div>
+            </div>
+            <p id="lightHint" class="hint"></p>
+            <div class="slider">
+              <label for="intensity" class="setting-label">Intensity</label><output id="intensityOut" for="intensity"></output>
+              <input id="intensity" type="range" min="0" max="100">
+            </div>
+            <div class="slider">
+              <label for="softness" class="setting-label">Softness</label><output id="softnessOut" for="softness"></output>
+              <input id="softness" type="range" min="0" max="100">
+            </div>
+            <div class="slider">
+              <label for="distance" id="distanceLabel" class="setting-label">Distance</label><output id="distanceOut" for="distance"></output>
+              <input id="distance" type="range" min="0" max="100">
+            </div>
+            <div class="preview-bg">
+              <span class="setting-label">Preview background</span>
+              <div id="previewBg" class="segmented pick" role="radiogroup" aria-label="Preview background">
+                <button data-bg="white" role="radio">White</button>
+                <button data-bg="grey" role="radio">Grey</button>
+                <button data-bg="black" role="radio">Black</button>
+                <button data-bg="checker" role="radio">Transparent</button>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section>
     <h2>Trimming</h2>
     <div class="settings">
@@ -125,9 +209,17 @@
   </section>
 
   <footer class="credit">
-    <div class="setting-head ui-lang">
+    <div class="setting-head footer-setting">
       <label for="uiLang" class="setting-label">Interface language</label>
       <select id="uiLang" class="compact"></select>
+    </div>
+    <div class="setting-head footer-setting">
+      <label for="appearance" class="setting-label">Appearance</label>
+      <select id="appearance" class="compact">
+        <option value="light dark">Same as browser</option>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
     </div>
     <button id="supportOpen" class="ghost wide support-open"><svg class="heart" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Support the creator <svg class="chev" width="12" height="12" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <p id="credit"></p>
@@ -136,7 +228,7 @@
 
   <template id="resultTpl">
     <li class="result">
-      <button class="thumb" type="button" aria-expanded="false" disabled><img alt=""></button>
+      <button class="thumb" type="button" aria-expanded="false" disabled><img alt=""><canvas hidden></canvas></button>
       <div class="result-info">
         <span class="result-name"></span>
         <span class="result-size"></span>
@@ -151,6 +243,7 @@
   <script src="lib/i18n.js"></script>
   <script src="lib/locales.js"></script>
   <script src="lib/trim.js"></script>
+  <script src="lib/shadow.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
