@@ -1,8 +1,26 @@
 # Chrome Web Store Listing: Edge Trim
 
-> Last Updated: 2026-11-02
+> Last Updated: 2026-11-04
 
-Everything the Chrome Developer Dashboard asks for, ready to copy. Items marked **TODO** still need you.
+Everything the Chrome Developer Dashboard asks for, ready to copy. The English texts below go straight into the form; the steps in Czech are for you.
+
+## Postup (co musíš udělat ty)
+
+Všechny soubory k nahrání jsou v `dist/chrome-web-store` (balíček, `1-globalni-en`, `2-cestina-cs`); složku znovu poskládá příkaz v sekci Packaging.
+
+1. **Vývojářský účet:** stejný jako pro Subtitle Overlay (https://chrome.google.com/webstore/devconsole). Kontaktní e-mail je nastavený u účtu (Subtitle Overlay ho ukazuje). Klikni na **Add new item**.
+2. **Zásady ochrany soukromí:** jsou online na https://cleedek.com/edge-trim/privacy (stránka `src/pages/edge-trim/privacy.astro` v repu cleedek-portfolio, stejně jako u Subtitle Overlay). Odkaz vlož do Privacy policy URL.
+3. **Balíček:** nahraj `dist/chrome-web-store/edge-trim.zip`.
+4. **Store listing:** vyplň texty níže (název a krátký popis si obchod vezme z balíčku, vyplňuješ hlavně Description a Category).
+5. **Obrázky:** ze složky `1-globalni-en` nahraj `screenshot-1.png` až `screenshot-5.png` v tomto pořadí do Screenshots, `small-promo-tile-440x280.png` do Small promo tile a `marquee-promo-tile-1400x560.png` do Marquee promo tile. Dlaždice jsou podle Googlu společné pro všechny jazyky.
+6. **Promo video (nepovinné):** nahraj `video-pro-youtube-en.mp4` na YouTube (stačí neveřejné) a odkaz vlož do pole pro video.
+7. **Česká verze:** v Store listing nahoře v rozbalovacím seznamu jazyka vyber **Czech (čeština)**, vlož český popis ze sekce Česká verze obchodu, nahraj snímky ze `2-cestina-cs` a odkaz na české video (podrobně v té sekci).
+8. **Ikona v obchodě:** do pole Store icon nahraj `store-icon-128.png`.
+9. **Privacy:** vyplň podle sekcí Permissions Justification a Privacy & Data Use. U dat zaškrtni jen Website content.
+10. **Distribution:** Visibility = Public, Regions = All regions, zdarma.
+11. Klikni na **Submit for review**. Kvůli přístupu na všechny weby (`<all_urls>`) počítej s delší kontrolou.
+
+Obrázky pro obchod se dělají ze šablon ve `store/src` (skutečný popup a fotka talíře z tvého dema). Znovu je uložíš příkazem `node store/render.mjs` (anglicky) nebo `node store/render.mjs cs` (česky). Video vyrobí `store/video/render-all.sh` (anglicky, asi 2 minuty) nebo `store/video/render-all.sh cs` (česky).
 
 ## Store Listing
 
@@ -12,41 +30,79 @@ Edge Trim
 **Short Description** (119 of 132 characters, same as `_locales/en/messages.json`)
 Crop transparent pictures right to their edge: drop, paste or right-click a picture. Everything stays on your computer.
 
-**Detailed Description** (plain text, the store strips formatting)
+**Detailed Description** (plain text: the store strips bold and links, so the ★ lines and CAPITAL headings do the highlighting, as in Subtitle Overlay's listing. Copy the whole block.)
 
 ```
-Edge Trim crops transparent pictures right to the edge of what's in them, so cut-out photos and logos stop carrying empty space around them.
+Crop transparent pictures right to the edge of what's in them.
 
-FEATURES
-• Trim in the toolbar popup: drop pictures, choose files, or paste a copied picture.
-• Trim straight from a web page: right-click any picture and choose "Trim and copy image" or "Trim and save image", or right-click a download link and choose "Trim and download linked image" to get the full picture behind a preview.
-• Trim several pictures at once and download them all with one click, or open Edge Trim in a tab for bigger batches.
-• Optional: trim pictures as you download them. Turn on "Trim downloaded pictures" and every PNG, WebP, AVIF or GIF you download from a website is replaced by a trimmed copy with the same name, also on sites where you wait for a countdown or fill in a captcha first.
-• Choose how to treat nearly invisible pixels: keep them for an exact edge, trim faint haze left by background removal, or trim soft shadows and glow too.
-• Optional: add a shadow after trimming. Pick a look (Soft, Strong, Floating, Above or Side), then adjust where the light comes from, the colour, intensity, softness and distance while the previews follow, and save your favourite looks for next time. The shadow is drawn from the picture's own outline on your computer: no AI, no upload.
-• The result is always a lossless PNG with the original file name, for example "logo.png" stays "logo.png".
-• Works with PNG, WebP, AVIF and GIF.
-• Interface in English, Czech, Slovak, German, French, Spanish, Vietnamese and Simplified Chinese.
+Edge Trim removes the empty space around cut-out photos, product shots and logos, so they line up in your layouts without fiddling with crops. Drop, paste or right-click a picture and get back a lossless PNG with the same name. Then add a drop shadow if you like. Everything happens on your computer.
 
-HOW TO USE
-1. Click the Edge Trim icon in the toolbar.
-2. Drop a picture into the box, click to choose one, or paste a copied picture.
-3. Click Copy or Download next to the trimmed result.
-Or right-click a picture or a download link on any web page and pick an Edge Trim option.
+★ THE HIGHLIGHTS
+★ One drop: the empty space around a transparent picture is gone, the file name stays
+★ Right-click any picture on a web page: trimmed and copied, or saved
+★ Downloads arrive trimmed: turn it on once and every PNG, WebP, AVIF or GIF you download is trimmed
+★ Pixels you can't see don't count: nearly invisible leftovers from background removal no longer make the crop too big
+★ Add a drop shadow: five looks drawn from the picture's own outline, then fine-tune the light, colour and softness
+★ Free and open source: no ads, no account, nothing uploaded
+
+━━━━━━━━━━━━━━━━━━━━
+
+TRIM IN THE POPUP
+• Drop pictures into the popup, click to choose files, or paste a copied picture (⌘V / Ctrl+V)
+• Each result shows its size before and after, for example 2000 × 2000 → 750 × 667 px, with Copy and Download next to it
+• Several pictures at once? "Download all" saves them in one click, and "Open in a tab" gives you more room for big batches
+• Click a trimmed picture to see it at full width
+• The result is always a lossless PNG with the original name: "logo.png" stays "logo.png", "photo.webp" becomes "photo.png"
+
+RIGHT FROM THE PAGE
+• Right-click any picture and choose "Trim and copy image" or "Trim and save image"
+• Right-click a download link and choose "Trim and download linked image" to get the full-size picture behind a small or watermarked preview
+• A short note at the bottom of the page says what happened
+
+DOWNLOADS ARRIVE TRIMMED
+• Turn on "Trim downloaded pictures" (off by default) and every PNG, WebP, AVIF or GIF you download from a website is replaced by a trimmed copy with the same name
+• It reacts to the finished download, so it also works after a countdown or a captcha (which you still get through yourself)
+• JPEGs, animated pictures and pictures with nothing to trim stay as they are, and so does a download the site won't hand over a second time
+
+CLEAN EDGES
+• Keep: cuts right after the last pixel that isn't fully transparent, for an exact edge
+• Trim haze: pixels under 2% opacity don't count, so nearly invisible leftovers from background removal don't stretch the crop. You can't see them, so nothing you can see is cut
+• Trim more: also cuts soft shadows and glow (under 10% opacity); check the result, since the object's own soft edge can go too
+• Fake transparency: when a stock or AI picture has the grey-and-white checkerboard painted in, rows and columns with nothing but the pattern are cut away too
+
+ADD A DROP SHADOW (OPTIONAL)
+• Turn on "Add shadow" under the trimmed pictures and see your picture large, with its shadow
+• Five looks to start from: Soft, Strong, Floating, Above and Side
+• Advanced settings: the type (on a surface, floating or classic), where the light comes from, the colour (six to pick from, or any hex code), intensity, softness and distance; the previews follow every slider
+• Check it on a white, grey, black or transparent background (only for looking: the file stays transparent)
+• Save your favourite looks to "My shadows"
+• "Download with shadow" gives you the picture with its shadow on a transparent background, cropped to where the shadow ends
+• No AI: the shadow is drawn from the picture's own outline, on your computer
+
+WORKS WITH
+PNG, WebP, AVIF and GIF (the first frame). SVG isn't supported, and JPEG has no transparency to trim.
+
+INTERFACE IN 8 LANGUAGES
+English, Czech, Slovak, German, French, Spanish, Vietnamese and Chinese (Simplified). It follows your browser, or pick one at the bottom of the popup. A dark or light look, or the same as your browser.
 
 PRIVACY
-Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your settings (how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance, the shadow look and preview background you last used, and the shadow looks you saved), stored in your browser.
+Every picture is trimmed on your computer. Nothing is uploaded, there are no analytics and no accounts. Edge Trim only remembers your settings, in your browser. Details in the privacy policy.
 
 PERMISSIONS
-• "Read and change all your data on all websites": when you right-click a picture or a download link and choose an Edge Trim option, the extension loads that one picture from where the page points to it and shows a short note on the page saying what happened. With "Trim downloaded pictures" turned on, it also loads a picture you have just downloaded once more from the same address, and shows the note on the page you downloaded it from. Otherwise it does nothing on a page.
-• "Manage your downloads": to save the trimmed picture to your Downloads folder, and with "Trim downloaded pictures" turned on, to replace a picture you downloaded with its trimmed copy.
+• "Read and change all your data on all websites": when you right-click a picture or a download link and choose an Edge Trim option, the extension loads that one picture from where the page points to it, and shows a short note on the page. With "Trim downloaded pictures" on, it loads a picture you have just downloaded once more from the same address. Otherwise it does nothing on a page.
+• "Manage your downloads": to save the trimmed picture to your Downloads folder and, with "Trim downloaded pictures" on, to replace a download with its trimmed copy.
 
-SUPPORT
-Questions or bugs: TODO (support email or URL).
+OPEN SOURCE
+The whole extension is open source (GPL-3.0), so anyone can check exactly what it does: github.com/Cleedek/edge-trim. Plain JavaScript, with no build step and no dependencies.
+
+SUPPORT THE CREATOR
+Edge Trim is free and has no ads. If it saves you some fiddling with crops, the popup has a "Support the creator" page with Revolut, PayPal, Solana and Sui. Completely optional, and thank you!
+
+Created with 💜 by Cleedek in Vietnam.
 ```
 
 **Category**
-TODO: pick in the dashboard. Closest fit is a photo or image tool category. (The template lists "Photos"; the dashboard's category names may have changed since, so check the list there.)
+Art & Design (in the store's Lifestyle group, chromewebstore.google.com/category/extensions/lifestyle/art; checked 2026-11-04). Alternative: Tools.
 
 **Single Purpose**
 Prepares transparent (cut-out) images: crops them to the edge of their visible content and can then add a shadow under them.
@@ -54,23 +110,98 @@ Prepares transparent (cut-out) images: crops them to the edge of their visible c
 **Primary Language**
 English
 
+## Česká verze obchodu (lokalizace)
+
+**Postup:** v Developer Dashboard otevři **Store listing**, nahoře v rozbalovacím seznamu jazyka vyber **Czech (čeština)** a vlož popis z bloku níže. Název a krátké shrnutí si obchod vezme z balíčku (`_locales/cs`), ty se tu nevyplňují.
+
+**Obrázky:** ze složky `dist/chrome-web-store/2-cestina-cs` nahraj `screenshot-1.png` až `screenshot-5.png` v tomto pořadí. České video (`video-pro-youtube-cs.mp4`) nahraj na YouTube zvlášť a jeho odkaz vlož do pole pro video v české verzi: podle Googlu jde lokalizovat popis, snímky a video. Propagační dlaždice lokalizovat nejdou, takže česká `promo-tile.png` a `promo-marquee.png` ve `store/images/cs` obchod nepoužije a všude se ukážou anglické. Texty na obrázcích i ve videu používají stejné názvy tlačítek jako český popup a stejné položky menu jako český Chrome.
+
+**Popis (Description):**
+
+```
+Ořízne průhledné obrázky přesně na hranu toho, co v nich je.
+
+Edge Trim odstraní prázdné místo kolem vyříznutých fotek, produktových snímků a log, takže ti v návrzích sednou bez piplání s ořezem. Přetáhni, vlož nebo klikni pravým na obrázek a dostaneš zpátky bezeztrátové PNG se stejným názvem. Pak můžeš přidat stín. Všechno se děje v tvém počítači.
+
+★ TO HLAVNÍ
+★ Jedno přetažení: prázdné místo kolem průhledného obrázku zmizí, název souboru zůstane
+★ Pravým tlačítkem na jakýkoli obrázek na webu: oříznutý a zkopírovaný, nebo uložený
+★ Stažené obrázky rovnou oříznuté: zapneš to jednou a každé PNG, WebP, AVIF nebo GIF, které stáhneš, se ořízne
+★ Pixely, které nejsou vidět, se nepočítají: téměř neviditelné zbytky po odstranění pozadí už ořez nezvětší
+★ Přidej stín: pět vzhledů z obrysu samotného obrázku, pak dolaď světlo, barvu a měkkost
+★ Zdarma a open source: bez reklam, bez účtu, nic se nenahrává
+
+━━━━━━━━━━━━━━━━━━━━
+
+OŘEZ V POPUPU
+• Přetáhni obrázky do popupu, klikni a vyber soubory, nebo vlož zkopírovaný obrázek (⌘V / Ctrl+V)
+• U každého výsledku vidíš velikost před a po, třeba 2000 × 2000 → 750 × 667 px, a vedle tlačítka Kopírovat a Stáhnout
+• Víc obrázků naráz? "Stáhnout vše" je uloží jedním klikem a "Otevřít na kartě" ti dá víc místa na velké dávky
+• Klikni na oříznutý obrázek a uvidíš ho na celou šířku
+• Výsledek je vždy bezeztrátové PNG s původním názvem: "logo.png" zůstane "logo.png", z "foto.webp" bude "foto.png"
+
+PŘÍMO ZE STRÁNKY
+• Klikni pravým na jakýkoli obrázek a zvol "Oříznout a zkopírovat obrázek" nebo "Oříznout a uložit obrázek"
+• Klikni pravým na odkaz ke stažení a zvol "Oříznout a stáhnout obrázek z odkazu": dostaneš obrázek v plné velikosti, ne jen malý náhled nebo náhled s vodoznakem
+• Krátká poznámka dole na stránce řekne, co se stalo
+
+STAŽENÉ OBRÁZKY ROVNOU OŘÍZNUTÉ
+• Zapni "Ořezávat stažené obrázky" (ve výchozím stavu je vypnuté) a každé PNG, WebP, AVIF nebo GIF, které z webu stáhneš, se nahradí oříznutou kopií se stejným názvem
+• Reaguje až na dokončené stažení, takže funguje i po odpočtu nebo captche (tu ale vyplníš sám)
+• JPEGy, animované obrázky a obrázky, na kterých není co ořezat, zůstanou, jak jsou. Stejně tak stažený soubor, který web podruhé nevydá
+
+ČISTÉ OKRAJE
+• Nechat: řízne hned za posledním pixelem, který není úplně průhledný, pro přesnou hranu
+• Oříznout opar: pixely pod 2 % krytí se nepočítají, takže téměř neviditelné zbytky po odstranění pozadí ořez nenatáhnou. Nejsou vidět, takže se neusekne nic, co je vidět
+• Oříznout víc: odřízne i jemné stíny a záři (pod 10 % krytí). Zkontroluj výsledek, může zmizet i měkký okraj samotného objektu
+• Falešná průhlednost: když má obrázek z fotobanky nebo z AI šedobílou šachovnici namalovanou přímo v sobě, odříznou se i řádky a sloupce, ve kterých není nic než ten vzor
+
+PŘIDEJ STÍN (VOLITELNĚ)
+• Pod oříznutými obrázky zapni "Přidat stín" a uvidíš obrázek ve velkém, i se stínem
+• Pět vzhledů na začátek: Měkký, Výrazný, Plovoucí, Shora a Ze strany
+• Pokročilé nastavení: typ (na podložce, plovoucí nebo klasický), odkud svítí světlo, barva (šest na výběr nebo jakýkoli hex kód), intenzita, měkkost a vzdálenost. Náhledy se mění s každým posuvníkem
+• Vyzkoušej ho na bílém, šedém, černém nebo průhledném pozadí (jen na pohled, soubor zůstává průhledný)
+• Oblíbené vzhledy si ulož do "Moje stíny"
+• "Stáhnout se stínem" ti dá obrázek se stínem na průhledném pozadí, oříznutý tam, kde stín končí
+• Žádná AI: stín vzniká z obrysu samotného obrázku, v tvém počítači
+
+PODPOROVANÉ FORMÁTY
+PNG, WebP, AVIF a GIF (první snímek). SVG podporované není a JPEG nemá průhlednost, kterou by šlo ořezat.
+
+ROZHRANÍ V 8 JAZYCÍCH
+Čeština, slovenština, angličtina, němčina, francouzština, španělština, vietnamština a čínština (zjednodušená). Řídí se prohlížečem, nebo si jazyk vybereš dole v popupu. Tmavý nebo světlý vzhled, případně podle prohlížeče.
+
+SOUKROMÍ
+Každý obrázek se ořezává v tvém počítači. Nic se nenahrává, žádná analytika, žádné účty. Edge Trim si pamatuje jen tvoje nastavení, v tvém prohlížeči. Podrobnosti v zásadách ochrany soukromí.
+
+OPRÁVNĚNÍ
+• "Číst a měnit veškerá vaše data na všech webech": když klikneš pravým na obrázek nebo odkaz ke stažení a zvolíš možnost Edge Trim, rozšíření načte ten jeden obrázek z adresy, na kterou stránka odkazuje, a ukáže na stránce krátkou poznámku. Se zapnutým "Ořezávat stažené obrázky" načte obrázek, který jsi právě stáhl, ještě jednou ze stejné adresy. Jinak na stránce nedělá nic.
+• "Správa stahování": aby mohl uložit oříznutý obrázek do složky Stažené soubory a se zapnutým "Ořezávat stažené obrázky" nahradit stažený soubor jeho oříznutou kopií.
+
+OPEN SOURCE
+Celé rozšíření je open source (GPL-3.0), takže si kdokoli může ověřit, co přesně dělá: github.com/Cleedek/edge-trim. Čistý JavaScript, bez sestavování a bez závislostí.
+
+PODPOŘ AUTORA
+Edge Trim je zdarma a bez reklam. Pokud ti ušetří piplání s ořezy, v popupu najdeš stránku "Podpořit autora" s QR platbou, Revolutem, PayPalem, Solanou a Sui. Úplně dobrovolně, a děkuju!
+
+S 💜 ve Vietnamu vytváří Cleedek.
+```
+
 ## Graphics & Assets
 
 | Asset | Dimensions | Status | Filename |
 |-------|-----------|--------|----------|
 | Store Icon | 128×128 PNG | ✅ Ready | `icons/icon128.png` |
-| Screenshot 1 (required) | 1280×800 or 640×400 | ⬜ Not created | |
-| Screenshot 2 | 1280×800 or 640×400 | ⬜ Not created | |
-| Screenshot 3 | 1280×800 or 640×400 | ⬜ Not created | |
-| Small Promo Tile | 440×280 | ⬜ Not created | |
-| Marquee Promo Tile | 1400×560 | ⬜ Not created | |
+| Screenshot 1: popup, before and after | 1280×800 | 🟡 Draft, for review | `store/images/en/screenshot-1.png` |
+| Screenshot 2: right-click menu on a shop's picture | 1280×800 | 🟡 Draft, for review | `store/images/en/screenshot-2.png` |
+| Screenshot 3: the drop shadow | 1280×800 | 🟡 Draft, for review | `store/images/en/screenshot-3.png` |
+| Screenshot 4: trimming downloads | 1280×800 | 🟡 Draft, for review | `store/images/en/screenshot-4.png` |
+| Screenshot 5: invisible leftovers, and the promises | 1280×800 | 🟡 Draft, for review | `store/images/en/screenshot-5.png` |
+| Small Promo Tile | 440×280 | ✅ Chosen (concept 2, "Snaps to the edge.") | `store/images/en/promo-tile.png` |
+| Marquee Promo Tile | 1400×560 | ✅ Chosen (concept 2, "Snaps to the edge.") | `store/images/en/promo-marquee.png` |
+| Promo video (YouTube link) | 1920×1080, 33.5 s | 🟡 Draft, for review | `store/video/out/edge-trim-promo-en-1080p.mp4` |
 
-### Screenshot Notes
-
-1. The popup with two or three trimmed results, showing "before → after" sizes.
-2. A web page with the right-click menu open on a picture, showing "Trim and copy image".
-3. The "Nearly invisible pixels" setting with a picture that has haze around it, before and after.
-4. The Shadow section: the five looks drawn from a product photo, with that photo standing on its "Soft" shadow.
+All of them are drawn from `store/src` (`shots.html`, `promo.html`) with `node store/render.mjs [lang]`. The sushi platter is the cut-out photo from Filip's demo (`store/src/photos/sushi-platter.webp`); only the made-up logo is drawn in code, and the nearly invisible leftovers in screenshot 5 are added to the photo there (`store/src/samples.js`). The Czech versions have the same file names in `store/images/cs`, and the Czech video is `store/video/out/edge-trim-promo-cs-1080p.mp4`.
 
 ## Permissions Justification
 
@@ -86,9 +217,9 @@ English
 
 ### Data Collection
 
-**Does the extension collect user data?** No
+**Does the extension collect user data?** Nothing leaves the device, but Google counts data handled only on the device too ("Extensions are required to disclose how they handle user data, even when data is processed or stored locally", User Data FAQ, developer.chrome.com/docs/webstore/program-policies/user-data-faq). So tick **Website content** and nothing else.
 
-| Data Type | Collected? | Transmitted Off-Device? | Purpose | Shared with Third Parties? |
+| Data Type | Tick it? | Transmitted Off-Device? | Purpose | Shared with Third Parties? |
 |-----------|-----------|------------------------|---------|---------------------------|
 | Personally identifiable info | No | No | | No |
 | Health info | No | No | | No |
@@ -96,14 +227,17 @@ English
 | Authentication info | No | No | | No |
 | Personal communications | No | No | | No |
 | Location | No | No | | No |
-| Web history | No | No | | No |
-| User activity | No | No | | No |
-| Website content | No | No | The right-clicked picture, or a picture the user just downloaded, is loaded and trimmed in the browser only; it is never sent to the developer or anyone else. | No |
+| Web history | No | No | Not kept: with "Trim downloaded pictures" on, the address of the tab a download came from is read once to show the note there. A judgment call; tick it if a reviewer asks. | No |
+| User activity | No | No | No clicks, keystrokes or browsing are recorded; it only reacts to a finished download while that setting is on. | No |
+| Website content | **Yes** | No | The right-clicked picture, or a picture the user just downloaded, is loaded and trimmed in the browser only; it is never sent to the developer or anyone else. | No |
 
 Notes for the disclosure form:
 - Settings use local browser storage only (not synced), so nothing goes to Google's servers.
 - The only network requests load the picture the user right-clicked, or (with "Trim downloaded pictures" on) the picture they just downloaded, from the site that already hosts it.
 - The "Support the creator" screen only shows payment links and QR codes. Opening one is the user's choice and goes to that payment service; the extension sends nothing.
+
+### Remote Code
+**Are you using remote code?** No, I am not using remote code. Every script is in the package; the links in the popup (GitHub, the payment pages, cleedek.com) only open a web page.
 
 ### Data Use Certification
 - [x] Data is NOT sold to third parties
@@ -113,26 +247,35 @@ Notes for the disclosure form:
 ## Privacy Policy
 
 **Privacy Policy URL**
-TODO: publish the text below at a public address (for example cleedek.com/edge-trim/privacy) and paste the link here. A `<all_urls>` permission makes the policy required, and a dead link is an automatic rejection.
+https://cleedek.com/edge-trim/privacy
+
+Live since 2026-11-04. The page is `src/pages/edge-trim/privacy.astro` in the cleedek-portfolio repo; the text below is the same, so change both together. A `<all_urls>` permission makes the policy required, and a dead link is an automatic rejection.
 
 ```
-Privacy Policy for Edge Trim
+Privacy Policy (Edge Trim, browser extension)
 
-Last updated: 2026-11-02
+Last updated: November 4, 2026
 
-Edge Trim does not collect, store or transmit any personal data or browsing information.
+SUMMARY
+Edge Trim does not collect, store on any server, sell or share any personal data. Every picture is trimmed, and every shadow drawn, inside your browser on your computer. Nothing is uploaded to the developer or to any other service.
 
-Pictures you trim, whether dropped, chosen, pasted or right-clicked on a web page, are processed entirely in your browser on your computer. They are never uploaded to the developer or any other service.
+WHAT STAYS IN YOUR BROWSER
+- Your settings, saved in the browser on this device and not synced: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance (dark, light or the same as the browser), the shadow look and preview background you used last, and the shadow looks you saved under "My shadows". Removing the extension deletes them.
+- The pictures you drop, choose or paste into the popup, and their trimmed copies, only while the popup (or its tab) is open. They are gone when you close it.
 
-When you right-click a picture or a download link and choose an Edge Trim option, the extension loads that picture from the website that hosts it, the same way the page itself does. If you turn on "Trim downloaded pictures", the extension also loads each picture you download once more from the same address, to trim it. No other requests are made.
+NETWORK REQUESTS THE EXTENSION MAKES
+- When you right-click a picture or a download link and choose an Edge Trim option, the extension loads that one picture from the address the page points to, the same way the page itself does, including your sign-in on that site, so pictures behind a login work too. If the site refuses, the page you are on loads it instead.
+- Only if you turn on "Trim downloaded pictures" (off by default): when a PNG, WebP, AVIF or GIF download finishes, the extension loads that picture once more from the same address, to trim it. To show its note on the right page, it looks up which open tab the download came from; that address is used only for this and is not kept.
+No other requests are made. There are no analytics, no ads, no accounts and no tracking.
 
-Edge Trim stores its settings in your browser on this device: how to treat nearly invisible pixels, whether to trim downloaded pictures, the interface language, the appearance (dark, light or same as the browser), the shadow look and preview background you last used, and the shadow looks you saved. Removing the extension deletes them.
+LINKS IN THE POPUP
+The optional "Support the creator" screen shows payment links and QR codes, and the popup links to the source code on GitHub and to cleedek.com. They only open if you click them, and then that site's own privacy policy applies. The extension sends nothing to them.
 
-Edge Trim does not use cookies, analytics, advertising or third-party services. The optional "Support the creator" screen contains links to payment services; they are only opened if you click them.
-
+CHANGES
 If this policy changes, the new version will be posted at this address with a new date.
 
-Questions: TODO (email).
+CONTACT
+Questions: cleedek@gmail.com
 ```
 
 ## Distribution
@@ -143,9 +286,24 @@ Questions: TODO (email).
 ## Developer Info
 
 **Publisher Name**: Cleedek
-**Contact Email**: TODO (shown publicly on the listing, must be monitored)
-**Support URL / Email**: TODO
-**Homepage URL**: https://cleedek.com
+**Contact Email**: cleedek@gmail.com (shown publicly on the listing, must be monitored; the same address is on the privacy policy)
+**Support URL**: https://github.com/Cleedek/edge-trim/issues
+**Homepage URL**: https://github.com/Cleedek/edge-trim (it describes the extension; cleedek.com doesn't yet)
+**Official URL**: leave empty (needs the site verified in Google Search Console)
+**Mature content**: off
+
+## Test Instructions (optional tab)
+
+No account or sign-in is needed, so the tab can stay empty. If you want to help the reviewer, paste:
+
+```
+No account or sign-in is needed.
+1. Click the toolbar icon and drop a transparent PNG (or paste one with Cmd/Ctrl+V): the empty space around it is cut away. Copy and Download sit next to each result.
+2. On any web page, right-click a transparent picture and choose Edge Trim > "Trim and copy image" or "Trim and save image". A short note at the bottom of the page says what happened.
+3. Optional: turn on "Trim downloaded pictures" in the popup, then download a transparent PNG from any site; it is replaced by its trimmed copy with the same name.
+4. Optional: under the trimmed pictures, turn on "Add shadow" and pick a look.
+Everything is processed locally; nothing is sent anywhere.
+```
 
 ## Packaging
 
@@ -156,6 +314,12 @@ mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.
 ```
 
 `icons/support/*.svg` stays in (the support screen uses it). `dist/` is already in `.gitignore`.
+
+Then everything to upload, in one folder sorted by language (`dist/chrome-web-store`):
+
+```bash
+O=dist/chrome-web-store && rm -rf "$O" && mkdir -p "$O/1-globalni-en" "$O/2-cestina-cs" && cp dist/edge-trim.zip "$O/" && cp icons/icon128.png "$O/1-globalni-en/store-icon-128.png" && for n in 1 2 3 4 5; do cp store/images/en/screenshot-$n.png "$O/1-globalni-en/"; cp store/images/cs/screenshot-$n.png "$O/2-cestina-cs/"; done && cp store/images/en/promo-tile.png "$O/1-globalni-en/small-promo-tile-440x280.png" && cp store/images/en/promo-marquee.png "$O/1-globalni-en/marquee-promo-tile-1400x560.png" && cp store/video/out/edge-trim-promo-en-1080p.mp4 "$O/1-globalni-en/video-pro-youtube-en.mp4" && cp store/video/out/edge-trim-promo-cs-1080p.mp4 "$O/2-cestina-cs/video-pro-youtube-cs.mp4"
+```
 
 ## Version History
 

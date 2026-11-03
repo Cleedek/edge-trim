@@ -49,6 +49,8 @@ Everything is trimmed on this computer. Nothing is uploaded, no analytics, no ac
 
 Icons: `icons/icon.svg` (128/48/32) and `icons/icon-small.svg` (16), rendered to PNG with headless Chrome.
 
+Store images: templates in `store/src` (the real popup, with the cut-out photo from `store/src/photos`), saved as PNG to `store/images/<lang>` with `node store/render.mjs [lang]` (needs Google Chrome and puppeteer-core). The promo video: `store/video/render-all.sh` (needs ffmpeg too), from the scene in `store/src/video.html` and its timeline in `store/video/timeline.js`. What goes into the store form is in [CHROMEWEBSTORE.md](CHROMEWEBSTORE.md).
+
 ## Licence
 
 [GPL-3.0](LICENSE). Made by [Cleedek](https://cleedek.com).
