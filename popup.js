@@ -168,8 +168,8 @@ function revoke(item) {
 }
 
 // Chrome resolves with the download's id only once the download has started, so the ✓ is real.
-async function download(item) {
-  const btn = item.el.querySelector('.save-img');
+// btn: the button that shows it, the row's own unless the large preview's was clicked.
+async function download(item, btn = item.el.querySelector('.save-img')) {
   try {
     const url = shadow.on ? (await shadowFile(item)).url : item.url;
     const id = await chrome.downloads.download({ url, filename: EdgeTrim.outputName(item.file.name || 'image'), conflictAction: 'uniquify' });
@@ -194,15 +194,16 @@ async function copy(item, btn) {
   }
 }
 
-// Swaps an icon button for ✓ or ! for a moment, then puts its icon back.
+// Swaps an icon button for ✓ or ! for a moment, then puts its icon back. A button with words keeps them.
 function flash(btn, mark, title, failTitle) {
+  const icon = btn.querySelector('.btn-icon') || btn;
   clearTimeout(btn.flashTimer);
-  if (!btn.icon) btn.icon = btn.innerHTML;
-  btn.textContent = mark;
+  if (!btn.icon) btn.icon = icon.innerHTML;
+  icon.textContent = mark;
   btn.title = failTitle || title;
   btn.classList.toggle('ok', !failTitle);
   btn.classList.toggle('fail', !!failTitle);
-  btn.flashTimer = setTimeout(() => { btn.innerHTML = btn.icon; btn.title = title; btn.classList.remove('ok', 'fail'); }, 1500);
+  btn.flashTimer = setTimeout(() => { icon.innerHTML = btn.icon; btn.title = title; btn.classList.remove('ok', 'fail'); }, 1500);
 }
 
 // ---------- shadow, added after trimming (lib/shadow.js) ----------
@@ -263,6 +264,9 @@ function setupShadow(stored) {
     if (shadow.shown?.preview) drawStage(shadow.shown);
     else $('stage').width = 0; // drawn by showItem once it's ready
   });
+  // The picture in the large preview, so it's plain where the result with its shadow comes from.
+  $('stageSave').addEventListener('click', (e) => download(shownItem(), e.currentTarget));
+  $('stageCopy').addEventListener('click', (e) => copy(shownItem(), e.currentTarget));
   $('lookNew').addEventListener('click', () => toggleSaveForm(true));
   $('lookCancel').addEventListener('click', () => toggleSaveForm(false));
   $('lookSave').addEventListener('click', saveLook);
@@ -457,6 +461,7 @@ function drawShadow(item) {
   canvas.height = r.canvas.height;
   canvas.getContext('2d').drawImage(r.canvas, 0, 0);
   canvas.style.setProperty('--ratio', r.canvas.width / r.canvas.height);
+  item.at = { x: r.x, y: r.y }; // where the picture sits in it, for the large preview
 }
 
 // The picture in the large preview: the one picked with the arrows while it's still there, else the first.
@@ -476,11 +481,17 @@ function showStageNav() {
 }
 
 // The large preview: the same drawing as the picture's row, which drawShadow has just made.
+// It keeps the picture still while the look changes: the same room for the shadow on every side (enough for each
+// of the five looks), so the picture keeps its size and stays in the middle. A longer shadow widens the room
+// evenly, so the picture stays in the middle and no shadow is cut off.
+const STAGE_ROOM = 0.3;
 function drawStage(item) {
   const from = item.el.querySelector('canvas'), canvas = $('stage');
-  canvas.width = from.width;
-  canvas.height = from.height;
-  canvas.getContext('2d').drawImage(from, 0, 0);
+  const { width: w, height: h } = item.preview, { x, y } = item.at || { x: 0, y: 0 }, room = STAGE_ROOM * Math.max(w, h);
+  const rx = Math.max(room, x, from.width - x - w), ry = Math.max(room, y, from.height - y - h);
+  canvas.width = Math.ceil(w + 2 * rx);
+  canvas.height = Math.ceil(h + 2 * ry);
+  canvas.getContext('2d').drawImage(from, Math.round(rx - x), Math.round(ry - y));
 }
 
 // The looks are drawn small on the only picture or, with several, on a plain grey bottle,

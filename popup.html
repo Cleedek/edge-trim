@@ -109,18 +109,26 @@
         <p class="hint">Made from each trimmed picture’s own outline, on this computer. Copy and Download give the picture with its shadow, on a transparent background.</p>
       </div>
       <div id="shadowPanel" class="setting shadow-panel" hidden>
-        <!-- The first picture, large, on a background that's only for looking: the file stays transparent. -->
-        <div id="stageBox" class="stage">
-          <canvas id="stage" role="img" aria-label="Preview with shadow"></canvas>
-          <!-- With two pictures or more: arrows at the sides, and which one this is in the corner. -->
-          <button id="stagePrev" class="stage-arrow" title="Previous picture" aria-label="Previous picture"></button>
-          <button id="stageNext" class="stage-arrow" title="Next picture" aria-label="Next picture"></button>
-          <span id="stageCount" class="stage-count"></span>
-          <div id="previewBg" class="stage-bg" role="radiogroup" aria-label="Preview background">
-            <button data-bg="white" data-name="White" role="radio"></button>
-            <button data-bg="grey" data-name="Grey" role="radio"></button>
-            <button data-bg="black" data-name="Black" role="radio"></button>
-            <button data-bg="checker" data-name="Transparent" role="radio"></button>
+        <!-- The preview and its buttons stay in view while the settings under them are scrolled. -->
+        <div class="stage-wrap">
+          <!-- The first picture, large, on a background that's only for looking: the file stays transparent. -->
+          <div id="stageBox" class="stage">
+            <canvas id="stage" role="img" aria-label="Preview with shadow"></canvas>
+            <!-- With two pictures or more: arrows at the sides, and which one this is in the corner. -->
+            <button id="stagePrev" class="stage-arrow" title="Previous picture" aria-label="Previous picture"></button>
+            <button id="stageNext" class="stage-arrow" title="Next picture" aria-label="Next picture"></button>
+            <span id="stageCount" class="stage-count"></span>
+            <div id="previewBg" class="stage-bg" role="radiogroup" aria-label="Preview background">
+              <button data-bg="white" data-name="White" role="radio"></button>
+              <button data-bg="grey" data-name="Grey" role="radio"></button>
+              <button data-bg="black" data-name="Black" role="radio"></button>
+              <button data-bg="checker" data-name="Transparent" role="radio"></button>
+            </div>
+          </div>
+          <!-- The picture shown above, with its shadow: the same file as its row's Copy and Download. -->
+          <div class="stage-actions">
+            <button id="stageSave" class="primary"><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Download with shadow</button>
+            <button id="stageCopy"><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Copy</button>
           </div>
         </div>
         <div class="presets" role="radiogroup" aria-label="Shadow style">

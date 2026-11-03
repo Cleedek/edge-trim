@@ -222,13 +222,19 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 /* ---------- shadow, added after trimming ---------- */
 
 .shadow-panel { gap: 12px; }
-/* The picture, large. It stays in view while the settings under it are scrolled;
-   the ring in the page colour hides what scrolls past it. */
+/* The picture, large, with its buttons under it. They stay in view while the settings below are scrolled;
+   the ring in the page colour hides what scrolls past them. */
+.stage-wrap { position: sticky; top: 8px; z-index: 2; display: flex; flex-direction: column; gap: 8px; background: var(--bg); outline: 8px solid var(--bg); }
 .stage {
-  position: sticky; top: 8px; z-index: 2; height: 214px; padding: 14px 14px 40px; border: 1px solid var(--line); border-radius: 12px;
-  outline: 8px solid var(--bg);
+  position: relative; height: 214px; padding: 14px 14px 40px; border: 1px solid var(--line); border-radius: 12px;
   background: repeating-conic-gradient(var(--check-a) 0 25%, var(--check-b) 0 50%) 0 0 / 12px 12px;
 }
+.stage-actions { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+.stage-actions button { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 7px 12px; white-space: nowrap; }
+/* Same brief ✓ / ! as the row's buttons, in place of the icon; the words stay. */
+.btn-icon { display: grid; place-items: center; width: 14px; height: 14px; flex: none; font-weight: 700; }
+.stage-actions .ok:not(.primary) .btn-icon { color: var(--success); }
+.stage-actions .fail:not(.primary) .btn-icon { color: var(--danger); }
 .stage canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
 /* The controls on the preview sit in a strip under the picture or beside it, so they never cover its shadow.
    The background dots are small since the background never reaches the file. */
