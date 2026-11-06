@@ -5,7 +5,7 @@ const t = TrimI18n.t;
 let faint = 'exact';
 // One entry per picture: the original file stays, so a new setting can trim it again.
 const items = [];
-// "Add shadow" lasts while the popup is open, like the pictures; the look itself is remembered.
+// The Add shadow mode lasts while the popup is open, like the pictures, and it always opens on Trim; the look itself is remembered.
 // guess: no look chosen yet, so the first one comes from the first picture. saved: My shadows.
 // shown: the picture in the large preview, picked with its arrows (the first one otherwise).
 const shadow = { on: false, look: null, guess: false, bg: 'white', saved: [], shown: null };
@@ -112,6 +112,7 @@ async function showItem(item) {
   let withShadow = shadow.on && !!item.url;
   if (withShadow) {
     try { await preparePreview(item); } catch (e) { withShadow = false; }
+    if (withShadow && shadow.guess) await guessLook(); // the first picture added in the Add shadow mode
     if (item.result !== result) return; // trimmed again meanwhile; that run shows it
     if (!shadow.on) withShadow = false;
     if (withShadow) {
@@ -152,10 +153,9 @@ function expand(item, on) {
 
 function showBar() {
   $('resultsBar').hidden = !items.length;
-  $('count').textContent = t('{n} trimmed', { n: items.filter((i) => i.result?.blob).length });
+  $('count').textContent = shadow.on ? '' : t('{n} trimmed', { n: items.filter((i) => i.result?.blob).length });
   $('downloadAll').hidden = items.filter(hasOutput).length < 2;
-  // A shadow is offered once there's a picture to put it under.
-  $('shadowSection').hidden = !items.some((i) => i.url);
+  $('shadowSection').hidden = !shadow.on;
   if (shadow.on) {
     showStageNav();
     if (presetSource() !== presetsFrom) drawPresets();
@@ -206,12 +206,13 @@ function flash(btn, mark, title, failTitle) {
   btn.flashTimer = setTimeout(() => { icon.innerHTML = btn.icon; btn.title = title; btn.classList.remove('ok', 'fail'); }, 1500);
 }
 
-// ---------- shadow, added after trimming (lib/shadow.js) ----------
+// ---------- shadow (lib/shadow.js) ----------
 
 const DISTANCE = { ground: 'Shadow length', float: 'Height above ground', drop: 'Distance' };
 const MAX_SAVED = 5; // one row
 let drawQueued = false;
-let presetsFrom = null, neutral = null;
+let presetsFrom; // the picture the looks were last drawn on, null for the sample ball; undefined until they're first drawn
+const balls = new Map();
 
 function setupShadow(stored) {
   shadow.look = stored.shadowLook || { ...structuredClone(EdgeShadow.PRESETS.soft), color: '#000000' };
@@ -219,13 +220,13 @@ function setupShadow(stored) {
   shadow.bg = stored.shadowBg;
   shadow.saved = stored.shadowSaved;
 
-  $('shadowOn').addEventListener('change', async () => {
-    shadow.on = $('shadowOn').checked;
+  $('mode').querySelectorAll('button').forEach((b) => b.addEventListener('click', async () => {
+    shadow.on = b.dataset.mode === 'shadow';
     if (shadow.on && shadow.guess) await guessLook();
-    $('shadowPanel').hidden = !shadow.on;
     showShadow();
+    showBar();
     for (const item of items) showItem(item);
-  });
+  }));
   document.querySelectorAll('[data-preset]').forEach((b) => b.addEventListener('click', () => {
     setLook({ ...structuredClone(EdgeShadow.PRESETS[b.dataset.preset]), color: shadow.look.color });
   }));
@@ -353,6 +354,9 @@ async function guessLook() {
 // The controls follow the look, and the pictures sit on the chosen preview background.
 function showShadow({ typing = false } = {}) {
   const s = shadow.look;
+  check($('mode'), (b) => (b.dataset.mode === 'shadow') === shadow.on);
+  $('dropTitle').textContent = t(shadow.on ? 'Drop pictures for the shadow here or click to choose' : 'Drop pictures here or click to choose');
+  $('dropHint').textContent = t(shadow.on ? 'You can also paste a copied picture. A transparent background works best.' : 'You can also paste a copied picture. PNG, WebP, AVIF or GIF.');
   if (shadow.on) document.body.dataset.shadowBg = shadow.bg;
   else delete document.body.dataset.shadowBg;
   // A saved look is chosen only with its own colour; a built-in one with any colour, unless a saved one is.
@@ -473,7 +477,9 @@ function shownItem() {
 function showStageNav() {
   const list = items.filter((i) => i.url), item = shownItem(), at = list.indexOf(item);
   $('stageBox').classList.toggle('multi', list.length > 1);
-  if (!item) return;
+  $('stageActions').hidden = !item;
+  $('sampleHint').hidden = !!item;
+  if (!item) return drawSample();
   $('stageCount').textContent = `${at + 1} / ${list.length}`;
   $('stageCount').title = item.file.name || t('Pasted picture');
   $('stagePrev').disabled = at <= 0;
@@ -486,45 +492,64 @@ function showStageNav() {
 // evenly, so the picture stays in the middle and no shadow is cut off.
 const STAGE_ROOM = 0.3;
 function drawStage(item) {
-  const from = item.el.querySelector('canvas'), canvas = $('stage');
-  const { width: w, height: h } = item.preview, { x, y } = item.at || { x: 0, y: 0 }, room = STAGE_ROOM * Math.max(w, h);
+  paintStage(item.el.querySelector('canvas'), item.preview, item.at || { x: 0, y: 0 });
+}
+
+// With no picture yet, the large preview shows the current look on the sample ball.
+function drawSample() {
+  const ball = sampleBall(shadow.look.light, 480), r = EdgeShadow.render(ball, shadow.look, { trim: true });
+  paintStage(r.canvas, ball, r);
+}
+
+function paintStage(from, { width: w, height: h }, { x, y }) {
+  const canvas = $('stage'), room = STAGE_ROOM * Math.max(w, h);
   const rx = Math.max(room, x, from.width - x - w), ry = Math.max(room, y, from.height - y - h);
   canvas.width = Math.ceil(w + 2 * rx);
   canvas.height = Math.ceil(h + 2 * ry);
   canvas.getContext('2d').drawImage(from, Math.round(rx - x), Math.round(ry - y));
 }
 
-// The looks are drawn small on the only picture or, with several, on a plain grey bottle,
+// The looks are drawn small on the only picture or, with none or several, on the sample ball (null here),
 // so they show the shadow rather than one of the pictures.
 function presetSource() {
-  if (items.filter((i) => i.url).length > 1) return neutralObject();
+  if (items.filter((i) => i.url).length > 1) return null;
   return items.find((i) => i.small)?.small || null;
 }
 
-function neutralObject() {
-  if (neutral) return neutral;
-  neutral = new OffscreenCanvas(90, 160);
-  const ctx = neutral.getContext('2d');
-  const grey = ctx.createLinearGradient(0, 0, 90, 0);
-  grey.addColorStop(0, '#a9a9b4');
-  grey.addColorStop(0.45, '#dedee5');
-  grey.addColorStop(1, '#8f8f9b');
-  ctx.fillStyle = grey;
-  ctx.beginPath(); ctx.roundRect(8, 54, 74, 106, 16); ctx.fill(); // body
-  ctx.beginPath(); ctx.roundRect(30, 18, 30, 46, 6); ctx.fill(); // neck
-  ctx.fillStyle = '#74747f';
-  ctx.beginPath(); ctx.roundRect(27, 4, 36, 18, 4); ctx.fill(); // cap
-  return neutral;
+// A matt grey ball, lit from where the look's light comes from, so its own shading agrees with its shadow.
+function sampleBall({ x, y }, size) {
+  const key = `${x},${y},${size}`;
+  if (balls.has(key)) return balls.get(key);
+  const canvas = new OffscreenCanvas(size, size), ctx = canvas.getContext('2d');
+  const r = size / 2, len = Math.hypot(x, y);
+  const dx = len ? x / len : 0, dy = len ? y / len : -1; // straight above: the top of the ball is the brightest
+  const lit = ctx.createRadialGradient(r + dx * r * 0.45, r + dy * r * 0.45, 0, r + dx * r * 0.45, r + dy * r * 0.45, r * 1.5);
+  lit.addColorStop(0, '#fafafc');
+  lit.addColorStop(0.3, '#e2e2e8');
+  lit.addColorStop(0.62, '#b4b4bf');
+  lit.addColorStop(0.88, '#7d7d8a');
+  lit.addColorStop(1, '#666672');
+  ctx.fillStyle = lit;
+  ctx.beginPath(); ctx.arc(r, r, r, 0, Math.PI * 2); ctx.fill();
+  // Light bounced back along the edge opposite the light keeps the dark side round rather than flat.
+  const bounce = ctx.createRadialGradient(r - dx * r * 0.95, r - dy * r * 0.95, 0, r - dx * r * 0.95, r - dy * r * 0.95, r * 0.6);
+  bounce.addColorStop(0, 'rgba(255, 255, 255, .28)');
+  bounce.addColorStop(1, 'rgba(255, 255, 255, 0)');
+  ctx.globalCompositeOperation = 'source-atop';
+  ctx.fillStyle = bounce;
+  ctx.fillRect(0, 0, size, size);
+  balls.set(key, canvas);
+  return canvas;
 }
 
 // Every look takes the same room, whatever its shadow adds.
 // The built-in looks in the colour in use, the saved ones in their own.
 function drawPresets() {
-  const pic = presetsFrom = presetSource();
-  if (!pic) return;
+  const source = presetsFrom = presetSource();
   document.querySelectorAll('[data-preset], [data-saved]').forEach((b) => {
     const canvas = b.querySelector('canvas'), ctx = canvas.getContext('2d');
     const look = b.dataset.preset ? { ...EdgeShadow.PRESETS[b.dataset.preset], color: shadow.look.color } : shadow.saved[b.dataset.saved];
+    const pic = source || sampleBall(look.light, 160);
     const r = EdgeShadow.render(pic, look);
     const k = Math.min(canvas.width * 0.5 / pic.width, canvas.height * 0.5 / pic.height);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -543,6 +568,7 @@ function queueDraw() {
     drawPresets();
     const shown = shownItem();
     if (shown?.preview) drawStage(shown);
+    else if (!shown) drawSample();
   });
 }
 

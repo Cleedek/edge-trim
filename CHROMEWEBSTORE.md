@@ -71,7 +71,7 @@ CLEAN EDGES
 • Fake transparency: when a stock or AI picture has the grey-and-white checkerboard painted in, rows and columns with nothing but the pattern are cut away too
 
 ADD A DROP SHADOW (OPTIONAL)
-• Turn on "Add shadow" under the trimmed pictures and see your picture large, with its shadow
+• Switch to "Add shadow" at the top of the popup, add a picture and see it large, with its shadow
 • Five looks to start from: Soft, Strong, Floating, Above and Side
 • Advanced settings: the type (on a surface, floating or classic), where the light comes from, the colour (six to pick from, or any hex code), intensity, softness and distance; the previews follow every slider
 • Check it on a white, grey, black or transparent background (only for looking: the file stays transparent)
@@ -157,7 +157,7 @@ STAŽENÉ OBRÁZKY ROVNOU OŘÍZNUTÉ
 • Falešná průhlednost: když má obrázek z fotobanky nebo z AI šedobílou šachovnici namalovanou přímo v sobě, odříznou se i řádky a sloupce, ve kterých není nic než ten vzor
 
 PŘIDEJ STÍN (VOLITELNĚ)
-• Pod oříznutými obrázky zapni "Přidat stín" a uvidíš obrázek ve velkém, i se stínem
+• Nahoře v popupu přepni na "Přidat stín", přidej obrázek a uvidíš ho ve velkém, i se stínem
 • Pět vzhledů na začátek: Měkký, Výrazný, Plovoucí, Shora a Ze strany
 • Pokročilé nastavení: typ (na podložce, plovoucí nebo klasický), odkud svítí světlo, barva (šest na výběr nebo jakýkoli hex kód), intenzita, měkkost a vzdálenost. Náhledy se mění s každým posuvníkem
 • Vyzkoušej ho na bílém, šedém, černém nebo průhledném pozadí (jen na pohled, soubor zůstává průhledný)
@@ -301,7 +301,7 @@ No account or sign-in is needed.
 1. Click the toolbar icon and drop a transparent PNG (or paste one with Cmd/Ctrl+V): the empty space around it is cut away. Copy and Download sit next to each result.
 2. On any web page, right-click a transparent picture and choose Edge Trim > "Trim and copy image" or "Trim and save image". A short note at the bottom of the page says what happened.
 3. Optional: turn on "Trim downloaded pictures" in the popup, then download a transparent PNG from any site; it is replaced by its trimmed copy with the same name.
-4. Optional: under the trimmed pictures, turn on "Add shadow" and pick a look.
+4. Optional: at the top of the popup, switch to "Add shadow", add a picture and pick a look.
 Everything is processed locally; nothing is sent anywhere.
 ```
 

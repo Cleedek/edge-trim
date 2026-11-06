@@ -176,6 +176,7 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 
 /* Choices (not tabs) get the primary look (white, dark text), like Snap Translate's translator picker. */
 .segmented.faint, .segmented.pick { grid-template-columns: repeat(3, 1fr); margin: 0; }
+.segmented.pick.two { grid-template-columns: 1fr 1fr; margin-bottom: 12px; }
 .segmented.faint button, .segmented.pick button { padding-inline: 4px; white-space: nowrap; }
 .segmented.faint button[aria-checked="true"], .segmented.pick button[aria-checked="true"] { background: var(--thumb); color: oklch(0.2 0.012 290); font-weight: 600; box-shadow: 0 1px 2px var(--shadow); }
 
@@ -219,7 +220,7 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 .result-size.error { color: var(--danger); }
 .nowrap { flex-wrap: nowrap; }
 
-/* ---------- shadow, added after trimming ---------- */
+/* ---------- shadow ---------- */
 
 .shadow-panel { gap: 12px; }
 /* The picture, large, with its buttons under it. They stay in view while the settings below are scrolled;

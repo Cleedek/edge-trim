@@ -80,10 +80,15 @@
   </header>
 
   <section>
+    <!-- Starts on Trim every time the popup opens. -->
+    <div id="mode" class="segmented pick two" role="radiogroup" aria-label="What to do">
+      <button data-mode="trim" role="radio">Trim</button>
+      <button id="modeShadow" data-mode="shadow" role="radio">Add shadow</button>
+    </div>
     <label id="drop" class="drop" for="files">
       <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v14h14" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3 7h14v14" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
-      <span class="drop-title">Drop pictures here or click to choose</span>
-      <span class="small">You can also paste a copied picture. PNG, WebP, AVIF or GIF.</span>
+      <span id="dropTitle" class="drop-title">Drop pictures here or click to choose</span>
+      <span id="dropHint" class="small">You can also paste a copied picture. PNG, WebP, AVIF or GIF.</span>
     </label>
     <input id="files" type="file" accept="image/*" multiple hidden>
 
@@ -97,18 +102,14 @@
     <ul id="results" class="results"></ul>
   </section>
 
-  <!-- Offered once there's a trimmed picture: a shadow is added after trimming, never instead of it. -->
+  <!-- Shown in the Add shadow mode, with or without a picture: until there is one, the looks are drawn on a sample ball. -->
   <section id="shadowSection" hidden>
     <h2>Shadow</h2>
     <div class="settings">
       <div class="setting first">
-        <div class="setting-head">
-          <label for="shadowOn" class="setting-label">Add shadow</label>
-          <label class="toggle"><input id="shadowOn" type="checkbox" role="switch"><span></span></label>
-        </div>
-        <p class="hint">Made from each trimmed picture’s own outline, on this computer. Copy and Download give the picture with its shadow, on a transparent background.</p>
+        <p class="hint">Made from each picture’s own outline, on this computer. Copy and Download give the picture with its shadow, on a transparent background.</p>
       </div>
-      <div id="shadowPanel" class="setting shadow-panel" hidden>
+      <div id="shadowPanel" class="setting shadow-panel">
         <!-- The preview and its buttons stay in view while the settings under them are scrolled. -->
         <div class="stage-wrap">
           <!-- The first picture, large, on a background that's only for looking: the file stays transparent. -->
@@ -126,7 +127,8 @@
             </div>
           </div>
           <!-- The picture shown above, with its shadow: the same file as its row's Copy and Download. -->
-          <div class="stage-actions">
+          <p id="sampleHint" class="hint">This is a sample. Add a picture to put the shadow under it.</p>
+          <div id="stageActions" class="stage-actions">
             <button id="stageSave" class="primary"><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8m-3.5-3.5L8 10l3.5-3.5M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Download with shadow</button>
             <button id="stageCopy"><span class="btn-icon"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="5" y="5" width="9" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 3.5V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>Copy</button>
           </div>
