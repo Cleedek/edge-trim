@@ -52,6 +52,8 @@ async function init() {
 
   setupShadow(stored);
   setupSupport();
+  setupFeedback({ ext: 'edge-trim', name: 'Edge Trim', i18n: TrimI18n });
+  setupWhatsNew({ slug: 'edge-trim', i18n: TrimI18n });
   setupUiLang();
   setupAppearance();
 }

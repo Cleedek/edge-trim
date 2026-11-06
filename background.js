@@ -1,7 +1,7 @@
 // Edge Trim: the background worker. Right-click a picture on a page -> trim it, then copy or save it.
 // With "Trim downloaded pictures" on, pictures downloaded from any page are trimmed too.
 
-importScripts('lib/i18n.js', 'lib/locales.js', 'lib/trim.js');
+importScripts('lib/i18n.js', 'lib/locales.js', 'lib/trim.js', 'lib/whats-new.js');
 const t = TrimI18n.t;
 
 // The menu is rebuilt in the new language when it changes in the popup.
@@ -14,6 +14,7 @@ async function createMenus() {
   chrome.contextMenus.create({ id: 'link', title: t('Trim and download linked image'), contexts: ['link'] });
 }
 chrome.runtime.onInstalled.addListener(createMenus);
+chrome.runtime.onInstalled.addListener(rememberUpdate);
 chrome.storage.onChanged.addListener((changes, area) => { if (area === 'local' && changes.uiLang) createMenus(); });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
