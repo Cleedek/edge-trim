@@ -1,7 +1,10 @@
 // Edge Trim: the background worker. Right-click a picture on a page -> trim it, then copy or save it.
 // With "Trim downloaded pictures" on, pictures downloaded from any page are trimmed too.
 
-importScripts('lib/i18n.js', 'lib/locales.js', 'lib/trim.js', 'lib/whats-new.js');
+importScripts('lib/i18n.js', 'lib/locales.js', 'lib/trim.js', 'lib/whats-new.js', 'lib/goodbye.js');
+
+// The "why did you leave?" page Chrome opens after the extension is removed (lib/goodbye.js).
+setupGoodbye({ ext: 'edge-trim', i18n: TrimI18n });
 const t = TrimI18n.t;
 
 // The menu is rebuilt in the new language when it changes in the popup.
