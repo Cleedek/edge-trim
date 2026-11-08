@@ -9,7 +9,7 @@ Everything the Chrome Developer Dashboard asks for, ready to copy. The English t
 V obchodě je verze 1.0.0 (zveřejněná 2026-11-05, ověřeno na veřejné stránce obchodu 2026-11-08). Položka už existuje, takže nic nezakládáš znovu: nahraješ nový balíček a změníš jen to, co je níže. Všechno k nahrání je v `dist/chrome-web-store`.
 
 1. **Nejdřív zásady ochrany soukromí na webu.** Nová verze stránky https://cleedek.com/edge-trim/privacy (EN + CS) musí být živá dřív, než odešleš ke kontrole: rozšíření teď umí poslat zprávu (formulář a stránka po odebrání), a kdyby zásady pořád tvrdily "nic se nesbírá", nesedělo by to s odpověďmi v Privacy practices. Stačí říct Claudovi "pushni privacy", do minuty je to živé.
-2. **Balíček:** https://chrome.google.com/webstore/devconsole → Edge Trim → **Package** → **Upload new package** → `dist/chrome-web-store/edge-trim.zip` (verze 1.0.1). Oprávnění se nemění, takže se tě obchod nebude ptát na nová zdůvodnění.
+2. **Balíček:** https://chrome.google.com/webstore/devconsole → Edge Trim → **Package** → **Upload new package** → `dist/chrome-web-store/edge-trim-1.0.1.zip`. Oprávnění se nemění, takže se tě obchod nebude ptát na nová zdůvodnění.
 3. **Store listing, angličtina:** v poli **Description** smaž starý text a vlož celý nový blok ze sekce Store Listing. **Screenshots:** smaž všech 5 starých a nahraj `screenshot-1.png` až `screenshot-5.png` z `1-globalni-en` v tomto pořadí (změnily se jen 1 a 3, ale takhle nemusíš hlídat pořadí). Ikona, dlaždice, video, kategorie a název zůstávají.
 4. **Store listing, čeština:** nahoře v rozbalovacím seznamu jazyka vyber **Czech (čeština)**, vlož nový český popis ze sekce Česká verze obchodu a stejně vyměň snímky za ty z `2-cestina-cs`.
 5. **Privacy practices:** v Data usage nech zaškrtnuté **Website content** a nově zaškrtni **Personally identifiable information** (nepovinný e-mail ve formuláři) a **Personal communications** (text zprávy). Tři prohlášení dole zůstávají zaškrtnutá. Single purpose, zdůvodnění oprávnění, Remote code (No) a odkaz na zásady se nemění. Podrobně v sekci Privacy & Data Use.
@@ -336,15 +336,15 @@ Pictures are processed locally and never sent anywhere. The only data that leave
 The upload ZIP should contain only what the extension needs. From the project folder:
 
 ```bash
-mkdir -p dist && rm -f dist/edge-trim.zip && zip -r dist/edge-trim.zip manifest.json background.js popup.html popup.css popup.js theme.js lib _locales icons LICENSE -x "*.DS_Store" "icons/icon.svg" "icons/icon-small.svg"
+V=$(node -p "require('./manifest.json').version") && mkdir -p dist && rm -f "dist/edge-trim-$V.zip" && zip -r "dist/edge-trim-$V.zip" manifest.json background.js popup.html popup.css popup.js theme.js lib _locales icons LICENSE -x "*.DS_Store" "icons/icon.svg" "icons/icon-small.svg"
 ```
 
-`icons/support/*.svg` stays in (the support screen uses it). `LICENSE` is in since 1.0.1: GPL-3.0 asks for a copy of the licence with every copy of the program, and Subtitle Overlay's package has it too. `dist/` is already in `.gitignore`. Before zipping, check `git status`: everything in these files should be committed (or meant for this release), so no unfinished work from elsewhere slips into the package.
+`icons/support/*.svg` stays in (the support screen uses it). `LICENSE` is in since 1.0.1: GPL-3.0 asks for a copy of the licence with every copy of the program, and Subtitle Overlay's package has it too. The file name carries the version from `manifest.json` (`edge-trim-1.0.1.zip`), so an old and a new package can't be mixed up. `dist/` is already in `.gitignore`. Before zipping, check `git status`: everything in these files should be committed (or meant for this release), so no unfinished work from elsewhere slips into the package.
 
 Then everything to upload, in one folder sorted by language (`dist/chrome-web-store`):
 
 ```bash
-O=dist/chrome-web-store && rm -rf "$O" && mkdir -p "$O/1-globalni-en" "$O/2-cestina-cs" && cp dist/edge-trim.zip "$O/" && cp icons/icon128.png "$O/1-globalni-en/store-icon-128.png" && for n in 1 2 3 4 5; do cp store/images/en/screenshot-$n.png "$O/1-globalni-en/"; cp store/images/cs/screenshot-$n.png "$O/2-cestina-cs/"; done && cp store/images/en/promo-tile.png "$O/1-globalni-en/small-promo-tile-440x280.png" && cp store/images/en/promo-marquee.png "$O/1-globalni-en/marquee-promo-tile-1400x560.png" && cp store/video/out/edge-trim-promo-en-1080p.mp4 "$O/1-globalni-en/video-pro-youtube-en.mp4" && cp store/video/out/edge-trim-promo-cs-1080p.mp4 "$O/2-cestina-cs/video-pro-youtube-cs.mp4"
+V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && rm -rf "$O" && mkdir -p "$O/1-globalni-en" "$O/2-cestina-cs" && cp "dist/edge-trim-$V.zip" "$O/" && cp icons/icon128.png "$O/1-globalni-en/store-icon-128.png" && for n in 1 2 3 4 5; do cp store/images/en/screenshot-$n.png "$O/1-globalni-en/"; cp store/images/cs/screenshot-$n.png "$O/2-cestina-cs/"; done && cp store/images/en/promo-tile.png "$O/1-globalni-en/small-promo-tile-440x280.png" && cp store/images/en/promo-marquee.png "$O/1-globalni-en/marquee-promo-tile-1400x560.png" && cp store/video/out/edge-trim-promo-en-1080p.mp4 "$O/1-globalni-en/video-pro-youtube-en.mp4" && cp store/video/out/edge-trim-promo-cs-1080p.mp4 "$O/2-cestina-cs/video-pro-youtube-cs.mp4"
 ```
 
 ## Version History
