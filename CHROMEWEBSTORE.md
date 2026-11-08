@@ -6,15 +6,18 @@ Everything the Chrome Developer Dashboard asks for, ready to copy. The English t
 
 ## Postup pro aktualizaci 1.0.1 (co musíš udělat ty)
 
+**Stav 2026-11-09:** koncept v Dashboardu je kompletní a ověřený po přenačtení stránky: balíček 1.0.1 (Draft Version 1.0.1), popisy ve všech 8 jazycích (přesná shoda se zdroji), nové snímky EN (globální) a CS, Privacy practices. Popisy, snímky a uložení udělal Claude přes Arc. Zbývá jen krok 7: **Submit for review**.
+
 V obchodě je verze 1.0.0 (zveřejněná 2026-11-05, ověřeno na veřejné stránce obchodu 2026-11-08). Položka už existuje, takže nic nezakládáš znovu: nahraješ nový balíček a změníš jen to, co je níže. Všechno k nahrání je v `dist/chrome-web-store`.
 
-1. **Nejdřív zásady ochrany soukromí na webu.** Nová verze stránky https://cleedek.com/edge-trim/privacy (EN + CS) musí být živá dřív, než odešleš ke kontrole: rozšíření teď umí poslat zprávu (formulář a stránka po odebrání), a kdyby zásady pořád tvrdily "nic se nesbírá", nesedělo by to s odpověďmi v Privacy practices. Stačí říct Claudovi "pushni privacy", do minuty je to živé.
+1. **Nejdřív zásady ochrany soukromí na webu.** Nová verze stránky https://cleedek.com/edge-trim/privacy (EN + CS) musí být živá dřív, než odešleš ke kontrole: rozšíření teď umí poslat zprávu (formulář a stránka po odebrání), a kdyby zásady pořád tvrdily "nic se nesbírá", nesedělo by to s odpověďmi v Privacy practices. Hotovo 9. 11. 2026 (commit e1ebfd1 v cleedek-portfolio, živé EN i CS).
 2. **Balíček:** https://chrome.google.com/webstore/devconsole → Edge Trim → **Package** → **Upload new package** → `dist/chrome-web-store/edge-trim-1.0.1.zip`. Oprávnění se nemění, takže se tě obchod nebude ptát na nová zdůvodnění.
 3. **Store listing, angličtina:** v poli **Description** smaž starý text a vlož celý nový blok ze sekce Store Listing. **Screenshots:** smaž všech 5 starých a nahraj `screenshot-1.png` až `screenshot-5.png` z `1-globalni-en` v tomto pořadí (změnily se jen 1 a 3, ale takhle nemusíš hlídat pořadí). Ikona, dlaždice, video, kategorie a název zůstávají.
 4. **Store listing, čeština:** nahoře v rozbalovacím seznamu jazyka vyber **Czech (čeština)**, vlož nový český popis ze sekce Česká verze obchodu a stejně vyměň snímky za ty z `2-cestina-cs`.
-5. **Privacy practices:** v Data usage nech zaškrtnuté **Website content** a nově zaškrtni **Personally identifiable information** (nepovinný e-mail ve formuláři) a **Personal communications** (text zprávy). Tři prohlášení dole zůstávají zaškrtnutá. Single purpose, zdůvodnění oprávnění, Remote code (No) a odkaz na zásady se nemění. Podrobně v sekci Privacy & Data Use.
-6. Klikni na **Save draft** a pak **Submit for review**. Balíček, texty, obrázky i Privacy practices jdou ke kontrole společně. Obchod nemá pole "co je nového", takže novinky lidi uvidí v popisu a v changelogu na cleedek.com.
-7. **Až to projde:** řekni Claudovi, ať zapíše 1.0.1 do changelogu na cleedek.com (návrh je připravený, ale nepushnutý) a opraví tabulku Version History níže.
+5. **Store listing, dalších 6 jazyků (nové v 1.0.1):** v rozbalovacím seznamu jazyka postupně vyber **Slovak**, **German**, **French**, **Spanish**, **Vietnamese** a **Chinese (China)** a do Description vlož celý obsah `store/descriptions/<jazyk>.txt` (sk, de, fr, es, vi, zh_CN). Snímky tam nenahrávej (u Subtitle Overlay mají další jazyky taky jen popis). Ulož všech 8 jazyků v jednom konceptu: u Subtitle Overlay 1.0.17 obchod hlásil "Mismatching metadata", když se popisy v jazycích rozcházely. Popisky v uvozovkách sedí přesně na texty rozšíření v daném jazyce, oprávnění jsou v Chromově znění. Překlady psal Claude, rodilý mluvčí je nekontroloval. Dashboard umí vyplnit i Claude přes Arc (nástroje v `~/subtitle-overlay/store/dashboard/`).
+6. **Privacy practices:** v Data usage nech zaškrtnuté **Website content** a nově zaškrtni **Personally identifiable information** (nepovinný e-mail ve formuláři) a **Personal communications** (text zprávy). Tři prohlášení dole zůstávají zaškrtnutá. Single purpose, zdůvodnění oprávnění, Remote code (No) a odkaz na zásady se nemění. Podrobně v sekci Privacy & Data Use.
+7. Klikni na **Save draft** a pak **Submit for review**. Balíček, texty, obrázky i Privacy practices jdou ke kontrole společně. Obchod nemá pole "co je nového", takže novinky lidi uvidí v popisu a v changelogu na cleedek.com.
+8. **Až to projde:** řekni Claudovi, ať zapíše 1.0.1 do changelogu na cleedek.com (návrh je připravený, ale nepushnutý) a opraví tabulku Version History níže.
 
 Video se měnit nemusí: ukazuje starší přepínač "Add shadow" pod obrázky (záběry 8 a 9), ale všechny funkce v něm platí. Pokud ho Filip bude chtít aktualizovat, nestačí ho jen přegenerovat: ty dva záběry by se musely předělat na nový přepínač nahoře v popupu, pak render (asi 2 minuty na jazyk) a nové nahrání na YouTube.
 
@@ -351,7 +354,7 @@ V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && 
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 1.0.1 | 2026-11-08 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. | Ready to upload |
+| 1.0.1 | 2026-11-08 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. | Draft complete 2026-11-09, waiting for Submit for review |
 | 1.0.0 | 2026-11-02 | First version. The store build of 2026-11-04 also had the shadow, "My shadows", trimming downloads and the right-click option for download links. | Published 2026-11-05 |
 
 ## Review Notes
