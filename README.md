@@ -2,6 +2,8 @@
 
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-7c3aed)](LICENSE)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K1I42ACK0E)
+
 A Chrome extension (also Edge, Brave, Arc) that crops transparent pictures right to the edge of what's in them. Made for cut-out photos and logos exported with too much empty space around them, which makes consistent positioning painful.
 
 The code is public so anyone can check what the extension does. It is plain JavaScript with no build step and no dependencies: what you read here is exactly what runs in your browser. Same family as [Subtitle Overlay](https://github.com/Cleedek/subtitle-overlay).
