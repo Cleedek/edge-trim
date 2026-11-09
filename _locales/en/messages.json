@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim: Auto Crop Transparent PNG & Add Shadow"
   },
   "extDescription": {
-    "message": "Crop transparent pictures right to their edge: drop, paste or right-click a picture. Everything stays on your computer."
+    "message": "Crop transparent PNG pictures right to their edge and add a drop shadow. Drop, paste or right-click. All on your computer."
   }
 }

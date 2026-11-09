@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim: Tự động cắt ảnh PNG trong suốt & thêm bóng đổ"
   },
   "extDescription": {
-    "message": "Cắt ảnh trong suốt sát đến mép: thả, dán hoặc nhấp chuột phải vào ảnh. Mọi thứ đều ở lại trên máy tính của bạn."
+    "message": "Cắt ảnh PNG trong suốt sát đến mép và thêm bóng đổ. Thả, dán hoặc nhấp chuột phải. Mọi thứ diễn ra ngay trên máy tính của bạn."
   }
 }

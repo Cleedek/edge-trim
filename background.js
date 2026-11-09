@@ -1,7 +1,7 @@
 // Edge Trim: the background worker. Right-click a picture on a page -> trim it, then copy or save it.
 // With "Trim downloaded pictures" on, pictures downloaded from any page are trimmed too.
 
-importScripts('lib/i18n.js', 'lib/locales.js', 'lib/trim.js', 'lib/whats-new.js', 'lib/goodbye.js');
+importScripts('lib/i18n.js', 'lib/trim.js', 'lib/whats-new.js', 'lib/goodbye.js');
 
 // The "why did you leave?" page Chrome opens after the extension is removed (lib/goodbye.js).
 setupGoodbye({ ext: 'edge-trim', i18n: TrimI18n });
@@ -254,7 +254,7 @@ function showToast(text, isError) {
     div.on { opacity: 1; transform: translate(-50%, 0); }
     i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: ${isError ? 'var(--bad)' : 'var(--ok)'}; }
     @media (prefers-reduced-motion: reduce) { div { transition: none; } }
-  </style><div role="status"><i></i><span></span></div>`;
+  </style><div role="status" dir="auto"><i></i><span></span></div>`;
   const box = shadow.querySelector('div');
   box.classList.toggle('light', darkPage);
   box.querySelector('span').textContent = text;

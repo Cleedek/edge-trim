@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim：透明 PNG 自动裁剪＆添加阴影"
   },
   "extDescription": {
-    "message": "把透明图片精确裁剪到边缘：拖入、粘贴或右键点击图片。所有处理都在你的电脑上完成。"
+    "message": "把透明 PNG 图片精确裁剪到边缘，并添加阴影。拖入、粘贴或右键点击即可。全部在你的电脑上完成。"
   }
 }

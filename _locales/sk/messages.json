@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim: Orez priehľadných PNG a pridanie tieňa"
   },
   "extDescription": {
-    "message": "Oreže priehľadné obrázky presne na ich hranu: pretiahni, vlož alebo klikni pravým na obrázok. Všetko zostáva v tvojom počítači."
+    "message": "Oreže priehľadné PNG obrázky presne na hranu a pridá k nim tieň. Pretiahni, vlož alebo klikni pravým. Všetko v tvojom počítači."
   }
 }

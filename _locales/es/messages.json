@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim: Recorta PNG transparentes y añade sombra"
   },
   "extDescription": {
-    "message": "Recorta imágenes transparentes justo a su borde: suelta, pega o haz clic derecho en una imagen. Todo se queda en tu ordenador."
+    "message": "Recorta imágenes PNG transparentes justo a su borde y añade una sombra. Suelta, pega o haz clic derecho. Todo en tu ordenador."
   }
 }

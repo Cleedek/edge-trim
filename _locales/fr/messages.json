@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim: Recadrer les PNG transparents + ombre portée"
   },
   "extDescription": {
-    "message": "Recadre les images transparentes au ras de leur contenu : déposez, collez ou faites un clic droit. Tout reste sur votre ordinateur."
+    "message": "Recadre tes PNG transparents au ras du contenu et ajoute une ombre portée. Dépose, colle ou clic droit. Tout reste en local."
   }
 }

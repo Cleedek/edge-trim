@@ -1,8 +1,8 @@
 {
   "extName": {
-    "message": "Edge Trim"
+    "message": "Edge Trim: Transparente PNG zuschneiden + Schatten"
   },
   "extDescription": {
-    "message": "Schneidet transparente Bilder genau an ihrer Kante zu: ablegen, einfügen oder per Rechtsklick. Alles bleibt auf deinem Computer."
+    "message": "Transparente PNG-Bilder exakt bis zur Kante zuschneiden und Schatten hinzufügen. Ablegen, einfügen oder Rechtsklick. Alles lokal."
   }
 }
