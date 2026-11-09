@@ -135,11 +135,12 @@
   <!-- The one-time support card (lib/support-ask.js): at most 3 times, any click ends it for good. -->
   <div id="askCard" class="ask-card" role="region" aria-label="Support the creator" hidden>
     <button id="askClose" class="news-close" title="Close (it won’t come back)" aria-label="Close (it won’t come back)"><svg width="10" height="10" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    <div class="ask-hello"><strong id="askTitle"></strong><span id="askText"></span></div>
+    <div class="ask-hello"><strong id="askTitle"></strong><span id="askLines"></span></div>
+    <p id="askIntro" class="ask-intro"></p>
     <div class="ask-tile">
       <div class="ask-who">
         <img src="icons/support/filip.jpg" width="38" height="38" alt="">
-        <div><strong>Send Filip a tip</strong><span><span>You choose the amount</span> · <span>No account needed</span></span></div>
+        <div><strong>Send me any tip you like</strong><span>No account needed</span></div>
       </div>
       <div id="askLogos"></div>
       <button id="askDonate" class="primary ask-donate"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5Z" fill="currentColor"/></svg>Support the creator</button>

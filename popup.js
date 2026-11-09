@@ -662,8 +662,8 @@ async function setupAsk(newsShown) {
   if (!SupportAsk.due(trimStats, supportAsk)) return;
   const card = $('askCard');
   $('askTitle').textContent = t('{n} pictures trimmed', { n: trimStats.pictures });
-  $('askText').textContent = t('That’s {count} empty pixels gone. Nice!', { n: trimStats.pixels, count: trimStats.pixels.toLocaleString(TrimI18n.lang) })
-    + ' ' + t('I make Edge Trim on my own, for free. To keep it growing, any of these helps:');
+  $('askLines').textContent = t('That’s {count} empty pixels gone. Nice!', { n: trimStats.pixels, count: trimStats.pixels.toLocaleString(TrimI18n.lang) });
+  $('askIntro').textContent = t('I make Edge Trim on my own, for free. Any support helps me keep giving it the care it deserves.');
   $('askLogos').replaceWith($('payKofi').querySelector('.pay-logos').cloneNode(true));
   $('askReview').href = SupportAsk.STORE + '/reviews';
   $('askGithub').href = SupportAsk.GITHUB;

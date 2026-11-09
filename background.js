@@ -123,9 +123,9 @@ async function trimmed(target, res, text) {
     note: text,
     title: t('{n} pictures trimmed', { n }),
     lines: t('That’s {count} empty pixels gone. Nice!', { n: trimStats.pixels, count: trimStats.pixels.toLocaleString(TrimI18n.lang) }),
-    intro: t('I make Edge Trim on my own, for free. To keep it growing, any of these helps:'),
-    tip: t('Send Filip a tip'),
-    tipSub: t('You choose the amount') + ' · ' + t('No account needed'),
+    intro: t('I make Edge Trim on my own, for free. Any support helps me keep giving it the care it deserves.'),
+    tip: t('Send me any tip you like'),
+    tipSub: t('No account needed'),
     donate: t('Support the creator'),
     more: t('More ways to pay in the extension popup'),
     share: t('Share with a friend'), shareSub: t('Copies the link'),
@@ -361,6 +361,7 @@ function showSupportCard(c) {
     .hello { display: flex; flex-direction: column; gap: 3px; }
     .hello strong { font-size: 14.5px; font-weight: 700; }
     .hello span { font-size: 12px; color: rgba(255,255,255,.72); line-height: 1.45; }
+    .intro { margin: 0; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.12); font-size: 12px; color: rgba(255,255,255,.72); line-height: 1.45; }
     .tile { display: flex; flex-direction: column; gap: 10px; padding: 11px; border-radius: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); }
     .who { display: flex; align-items: center; gap: 10px; }
     .who img { flex: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px rgba(255,255,255,.14); }
@@ -409,7 +410,7 @@ function showSupportCard(c) {
   const note = el('div', 'note');
   note.append(el('i'), el('span', '', c.note));
   const hello = el('div', 'hello');
-  hello.append(el('strong', '', c.title), el('span', '', c.lines + ' ' + c.intro));
+  hello.append(el('strong', '', c.title), el('span', '', c.lines));
   const tile = el('div', 'tile');
   const who = el('div', 'who');
   const photo = Object.assign(el('img'), { src: c.photo, width: 38, height: 38, alt: '' });
@@ -442,7 +443,7 @@ function showSupportCard(c) {
   const gh = link('gh', c.github);
   gh.innerHTML = ICON.github;
   gh.append(c.gh);
-  card.append(close, note, hello, tile, minor, gh, el('p', 'once', c.once));
+  card.append(close, note, hello, el('p', 'intro', c.intro), tile, minor, gh, el('p', 'once', c.once));
   card.addEventListener('mouseleave', later);
   shadow.append(card);
   document.documentElement.append(host);
