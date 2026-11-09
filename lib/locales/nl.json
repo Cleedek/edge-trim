@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Snijdt direct na de laatste pixel die niet volledig transparant is.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Haalt ook bijna onzichtbaar waas weg (onder 2% dekking), dat vaak achterblijft na het verwijderen van de achtergrond.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Haalt ook zachte schaduwen en gloed onder 10% dekking weg. Controleer het resultaat: ook de rand van het object zelf kan wegvallen.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Klik op een webpagina met de rechtermuisknop op een afbeelding en kies \"Afbeelding bijsnijden en kopiëren\" of \"Afbeelding bijsnijden en opslaan\", of klik met de rechtermuisknop op een downloadlink en kies \"Gelinkte afbeelding bijsnijden en downloaden\". Alles wordt op deze computer bijgesneden, er wordt niets geüpload.",
   "Open in a tab": "Openen in een tabblad",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim is gratis en zonder advertenties. Bespaart het je wat gepriegel met bijsnijden, dan houdt een kleine fooi het draaiende. Bedankt!",
   "Pasted picture": "Geplakte afbeelding",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Bijgesneden afbeelding opgeslagen ({w} × {h} px).",
   "Couldn’t load this picture.": "Deze afbeelding kon niet worden geladen.",
   "Trim downloaded pictures": "Gedownloade afbeeldingen bijsnijden",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Als je een PNG, WebP, AVIF of GIF van een website downloadt (ook na een aftelling of een captcha), wordt die onder dezelfde naam vervangen door een versie die met de instelling hierboven is bijgesneden. Afbeeldingen waar niets bij te snijden valt, blijven zoals ze zijn.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Gedownloade afbeelding bijgesneden ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Deze download kon niet worden bijgesneden en blijft ongewijzigd.",
   "Animated picture, so it stays as it was.": "Geanimeerde afbeelding, die blijft ongewijzigd.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Of geef het een ster op GitHub",
   "You’ll only see this once.": "Dit zie je maar één keer.",
   "Close (it won’t come back)": "Sluiten (komt niet terug)",
-  "The link is copied. Send it to someone who’d like it.": "De link is gekopieerd. Stuur hem naar iemand die hem leuk zou vinden."
+  "The link is copied. Send it to someone who’d like it.": "De link is gekopieerd. Stuur hem naar iemand die hem leuk zou vinden.",
+  "Dragging files from a folder?": "Bestanden uit een map slepen?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Afbeeldingen die je van een site downloadt, worden vervangen door een bijgesneden kopie met dezelfde naam.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Klik op een pagina met rechts op een afbeelding, of een link ernaar, om die bij te snijden. Alles blijft op deze computer.",
+  "Language & appearance": "Taal en weergave"
 }

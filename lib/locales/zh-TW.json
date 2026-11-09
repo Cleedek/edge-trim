@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "在最後一個不完全透明的像素之後裁切。",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "同時裁掉幾乎看不見的薄霧（不透明度低於 2%），這通常是去背後留下的殘影。",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "同時裁掉不透明度低於 10% 的柔和陰影和光暈。請檢查結果：物體本身的邊緣也可能被裁掉。",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "在網頁上的任何圖片按右鍵，選擇\"裁切並複製圖片\"或\"裁切並儲存圖片\"；也可以在下載連結上按右鍵，選擇\"裁切並下載連結的圖片\"。所有裁切都在這台電腦上完成，不會上傳任何內容。",
   "Open in a tab": "在分頁中開啟",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim 免費且沒有廣告。如果它幫你省下反覆調整裁切的麻煩，一點小額贊助就能讓它持續下去。謝謝！",
   "Pasted picture": "貼上的圖片",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "已儲存裁切後的圖片（{w} × {h} px）。",
   "Couldn’t load this picture.": "無法載入這張圖片。",
   "Trim downloaded pictures": "裁切下載的圖片",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "從任何網站下載 PNG、WebP、AVIF 或 GIF 時（包括倒數計時或驗證碼之後），檔案會替換成依上方設定裁切後的版本，檔名不變。沒有可裁切內容的圖片會維持原樣。",
   "Trimmed the downloaded picture ({w} × {h} px).": "已裁切下載的圖片（{w} × {h} px）。",
   "Couldn’t trim this download, so it stays as it was.": "無法裁切這個下載的檔案，因此維持原樣。",
   "Animated picture, so it stays as it was.": "這是動態圖片，因此維持原樣。",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "或在 GitHub 上給顆星",
   "You’ll only see this once.": "這個提示只會出現一次。",
   "Close (it won’t come back)": "關閉（不會再出現）",
-  "The link is copied. Send it to someone who’d like it.": "連結已複製。傳給可能會喜歡的人吧。"
+  "The link is copied. Send it to someone who’d like it.": "連結已複製。傳給可能會喜歡的人吧。",
+  "Dragging files from a folder?": "要從資料夾拖入檔案？",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "從任何網站下載的圖片都會換成同名的裁切副本。",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "在任何頁面上對圖片或圖片連結按右鍵即可裁切。一切都在這台電腦上完成。",
+  "Language & appearance": "語言與外觀"
 }

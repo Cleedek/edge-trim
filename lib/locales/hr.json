@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Reže odmah iza zadnjeg piksela koji nije potpuno proziran.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Uklanja i gotovo nevidljiv veo (ispod 2 % neprozirnosti) koji često ostane nakon uklanjanja pozadine.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Uklanja i meke sjene i sjaj ispod 10 % neprozirnosti. Provjeri rezultat: može se odrezati i rub samog objekta.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Na web-stranici desnom tipkom klikni bilo koju sliku i odaberi \"Obreži i kopiraj sliku\" ili \"Obreži i spremi sliku\", ili desnom tipkom klikni poveznicu za preuzimanje i odaberi \"Obreži i preuzmi sliku s poveznice\". Sve se obrezuje na ovom računalu, ništa se ne prenosi.",
   "Open in a tab": "Otvori u kartici",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim je besplatan i bez oglasa. Ako ti uštedi petljanje s obrezivanjem, mala napojnica pomaže da ide dalje. Hvala ti!",
   "Pasted picture": "Zalijepljena slika",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Obrezana slika je spremljena ({w} × {h} px).",
   "Couldn’t load this picture.": "Ovu sliku nije moguće učitati.",
   "Trim downloaded pictures": "Obrezuj preuzete slike",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Kad s bilo koje web-stranice preuzmeš PNG, WebP, AVIF ili GIF (i nakon odbrojavanja ili captche), zamijeni se verzijom obrezanom prema postavci iznad, pod istim imenom. Slike na kojima se nema što obrezati ostaju kakve jesu.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Preuzeta slika je obrezana ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Preuzetu datoteku nije moguće obrezati pa ostaje kakva je bila.",
   "Animated picture, so it stays as it was.": "Animirana slika, pa ostaje kakva je bila.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Ili mu daj zvjezdicu na GitHubu",
   "You’ll only see this once.": "Ovo ćeš vidjeti samo jednom.",
   "Close (it won’t come back)": "Zatvori (više se neće vratiti)",
-  "The link is copied. Send it to someone who’d like it.": "Poveznica je kopirana. Pošalji je nekome kome bi se mogla svidjeti."
+  "The link is copied. Send it to someone who’d like it.": "Poveznica je kopirana. Pošalji je nekome kome bi se mogla svidjeti.",
+  "Dragging files from a folder?": "Povlačiš datoteke iz mape?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Slike preuzete s bilo koje stranice zamjenjuju se obrezanom kopijom istog naziva.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Desnom tipkom klikni sliku ili poveznicu na nju na bilo kojoj stranici da je obrežeš. Sve ostaje na ovom računalu.",
+  "Language & appearance": "Jezik i izgled"
 }

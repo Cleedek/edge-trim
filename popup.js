@@ -53,6 +53,7 @@ async function init() {
   setupShadow(stored);
   setupSupport();
   setupFeedback({ ext: 'edge-trim', name: 'Edge Trim', i18n: TrimI18n });
+  setupPrefsView(['uiLang', 'appearance']);
   setupWhatsNew({ slug: 'edge-trim', i18n: TrimI18n }).then((news) => setupAsk(news)).catch(() => {});
   setupUiLang();
   setupAppearance();
@@ -362,6 +363,7 @@ async function guessLook() {
 function showShadow({ typing = false } = {}) {
   const s = shadow.look;
   check($('mode'), (b) => (b.dataset.mode === 'shadow') === shadow.on);
+  $('drop').classList.toggle('shadow-on', shadow.on);
   $('dropTitle').textContent = t(shadow.on ? 'Drop pictures for the shadow here or click to choose' : 'Drop pictures here or click to choose');
   $('dropHint').textContent = t(shadow.on ? 'You can also paste a copied picture. A transparent background works best.' : 'You can also paste a copied picture. PNG, WebP, AVIF or GIF.');
   if (shadow.on) document.body.dataset.shadowBg = shadow.bg;
@@ -523,28 +525,61 @@ function presetSource() {
   return items.find((i) => i.small)?.small || null;
 }
 
-// A matt grey ball, lit from where the look's light comes from, so its own shading agrees with its shadow.
+// A concrete ball: matt, warm grey, fine grain, soft patches and small pores. Lit from where the
+// look's light comes from, so its own shading agrees with its shadow. The texture is seeded, so the
+// ball looks the same every time.
 function sampleBall({ x, y }, size) {
   const key = `${x},${y},${size}`;
   if (balls.has(key)) return balls.get(key);
-  const canvas = new OffscreenCanvas(size, size), ctx = canvas.getContext('2d');
+  const canvas = new OffscreenCanvas(size, size), ctx = canvas.getContext('2d', { willReadFrequently: true });
   const r = size / 2, len = Math.hypot(x, y);
   const dx = len ? x / len : 0, dy = len ? y / len : -1; // straight above: the top of the ball is the brightest
-  const lit = ctx.createRadialGradient(r + dx * r * 0.45, r + dy * r * 0.45, 0, r + dx * r * 0.45, r + dy * r * 0.45, r * 1.5);
-  lit.addColorStop(0, '#fafafc');
-  lit.addColorStop(0.3, '#e2e2e8');
-  lit.addColorStop(0.62, '#b4b4bf');
-  lit.addColorStop(0.88, '#7d7d8a');
-  lit.addColorStop(1, '#666672');
+  const lit = ctx.createRadialGradient(r + dx * r * 0.5, r + dy * r * 0.5, 0, r + dx * r * 0.5, r + dy * r * 0.5, r * 1.55);
+  lit.addColorStop(0, '#d9d6cf');
+  lit.addColorStop(0.35, '#c4c0b8');
+  lit.addColorStop(0.68, '#9d9890');
+  lit.addColorStop(0.9, '#6f6b65');
+  lit.addColorStop(1, '#5d5a55');
   ctx.fillStyle = lit;
   ctx.beginPath(); ctx.arc(r, r, r, 0, Math.PI * 2); ctx.fill();
-  // Light bounced back along the edge opposite the light keeps the dark side round rather than flat.
   const bounce = ctx.createRadialGradient(r - dx * r * 0.95, r - dy * r * 0.95, 0, r - dx * r * 0.95, r - dy * r * 0.95, r * 0.6);
-  bounce.addColorStop(0, 'rgba(255, 255, 255, .28)');
-  bounce.addColorStop(1, 'rgba(255, 255, 255, 0)');
+  bounce.addColorStop(0, 'rgba(255, 250, 240, .18)');
+  bounce.addColorStop(1, 'rgba(255, 250, 240, 0)');
   ctx.globalCompositeOperation = 'source-atop';
   ctx.fillStyle = bounce;
   ctx.fillRect(0, 0, size, size);
+
+  // Grain and patches: each pixel a little lighter or darker. Patches come from a coarse random
+  // grid, smoothed between its points.
+  let seed = 7;
+  const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const cells = 9, grid = Array.from({ length: (cells + 1) ** 2 }, rand);
+  const at = (gx, gy) => grid[gy * (cells + 1) + gx];
+  const smooth = (t) => t * t * (3 - 2 * t);
+  const img = ctx.getImageData(0, 0, size, size), d = img.data;
+  for (let py = 0; py < size; py++) {
+    const fy = (py / size) * cells, gy = Math.floor(fy), ty = smooth(fy - gy);
+    for (let px = 0; px < size; px++) {
+      const i = (py * size + px) * 4;
+      if (!d[i + 3]) continue;
+      const fx = (px / size) * cells, gx = Math.floor(fx), tx = smooth(fx - gx);
+      const top = at(gx, gy) + (at(gx + 1, gy) - at(gx, gy)) * tx;
+      const bottom = at(gx, gy + 1) + (at(gx + 1, gy + 1) - at(gx, gy + 1)) * tx;
+      const k = 1 + (top + (bottom - top) * ty - 0.5) * 0.12 + (rand() - 0.5) * 0.11;
+      d[i] *= k; d[i + 1] *= k; d[i + 2] *= k;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+
+  // Small pores, a bit darker inside, more of them on a bigger ball.
+  for (let n = Math.round(size * 0.22); n--;) {
+    const a = rand() * Math.PI * 2, dist = Math.sqrt(rand()) * r * 0.94;
+    const px = r + Math.cos(a) * dist, py = r + Math.sin(a) * dist;
+    const pr = size * (0.002 + rand() * 0.006);
+    ctx.fillStyle = `rgba(40, 36, 32, ${0.14 + rand() * 0.22})`;
+    ctx.beginPath(); ctx.ellipse(px, py, pr, pr * (0.6 + rand() * 0.4), a, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.globalCompositeOperation = 'source-over';
   balls.set(key, canvas);
   return canvas;
 }

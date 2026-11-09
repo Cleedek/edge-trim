@@ -13,7 +13,7 @@
   --line-strong: light-dark(oklch(0.83 0.012 290), oklch(0.36 0.014 290));
   --text: light-dark(oklch(0.22 0.012 290), oklch(0.94 0.006 290));
   --muted: light-dark(oklch(0.46 0.016 290), oklch(0.70 0.014 290));
-  --faint: light-dark(oklch(0.53 0.014 290), oklch(0.56 0.014 290));
+  --faint: light-dark(oklch(0.53 0.014 290), oklch(0.64 0.014 290));
   --accent: oklch(0.54 0.23 293);
   --accent-hover: light-dark(oklch(0.49 0.23 293), oklch(0.60 0.21 293));
   --accent-soft: light-dark(oklch(0.54 0.23 293 / .12), oklch(0.54 0.23 293 / .22));
@@ -125,17 +125,20 @@ select.compact { width: auto; min-width: 128px; max-width: 200px; }
 .toggle { position: relative; display: inline-flex; flex: none; cursor: pointer; }
 .toggle input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
 .toggle span {
-  width: 30px; height: 18px; border-radius: 999px; background: var(--line-strong); position: relative;
+  width: 36px; height: 22px; border-radius: 999px; background: var(--line-strong); position: relative;
   transition: background-color .2s var(--ease);
 }
 .toggle span::after {
-  content: ""; position: absolute; top: 2px; inset-inline-start: 2px; width: 14px; height: 14px; border-radius: 50%;
+  content: ""; position: absolute; top: 2px; inset-inline-start: 2px; width: 18px; height: 18px; border-radius: 50%;
   background: var(--thumb); box-shadow: 0 1px 2px var(--shadow);
   transition: transform .2s var(--ease);
 }
 .toggle input:checked + span { background: var(--accent); }
-.toggle input:checked + span::after { transform: translateX(12px); }
-[dir=rtl] .toggle input:checked + span::after { transform: translateX(-12px); }
+.toggle input:checked + span::after { transform: translateX(14px); }
+/* The whole row is the switch: the hidden input stretches over the row it sits in. */
+.setting-head:has(> .toggle), .site-row:has(> .toggle) { position: relative; }
+.setting-head > .toggle, .site-row > .toggle { position: static; }
+[dir=rtl] .toggle input:checked + span::after { transform: translateX(-14px); }
 .toggle:hover span { filter: brightness(1.12); }
 .toggle input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
 label.setting-label { cursor: pointer; }
@@ -208,6 +211,12 @@ a.btn.primary:hover { background: var(--accent-hover); border-color: var(--accen
 .drop svg { color: var(--link); margin-bottom: 2px; }
 .drop-title { color: var(--text); font-weight: 600; }
 .drop .small { margin: 0; }
+.drop-icon-shadow, .shadow-on .drop-icon-trim { display: none; }
+.shadow-on .drop-icon-shadow { display: block; }
+.tab-tip { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.tab-tip .small { margin: 0; color: var(--muted); }
+.tab-tip button { display: inline-flex; align-items: center; gap: 6px; flex: none; }
+html.page .tab-tip { display: none; }
 .drop:has(+ input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---------- results ---------- */
@@ -444,3 +453,40 @@ body.feedback #feedbackView { display: block !important; }
 .ask-once { margin: -2px 0 0; text-align: center; font-size: 10.5px; color: var(--muted); }
 .ask-card.thanked > :not(.ask-thanks) { display: none; }
 .ask-thanks { margin: 0; font-size: 12.5px; }
+
+/* ---------- footer list + "Language & appearance" screen (lib/prefs-view.js) ---------- */
+
+body.prefs > :not(#prefsView, script, style) { display: none !important; }
+body.prefs #prefsView { display: block !important; }
+.prefs-view .prefs { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.foot-list { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.foot-row {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 9px 12px;
+  border: 0; border-radius: 0; background: transparent; text-align: start; font-weight: 500;
+}
+.foot-row + .foot-row { border-top: 1px solid var(--line); }
+.foot-row:hover { background: var(--panel); border-color: var(--line); }
+.foot-row > svg:first-child { flex: none; color: var(--muted); }
+.foot-row.support-open > svg:first-child { color: oklch(0.66 0.21 18); }
+.foot-text { flex: 1; min-width: 0; }
+.foot-now { color: var(--faint); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.foot-row .chev { flex: none; color: var(--faint); }
+[dir=rtl] .foot-row .chev { transform: scaleX(-1); }
+.foot-links { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 18px; row-gap: 4px; margin-top: 10px; }
+.foot-links .star-link { margin-top: 0; padding-top: 0; border-top: 0; }
+.foot-list + p { margin-top: 14px; }
+
+/* ---------- opened in a tab: two columns, pictures left, settings right ---------- */
+
+@media (min-width: 900px) {
+  html.page body {
+    width: 860px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    column-gap: 32px; align-items: start;
+  }
+  html.page body > * { grid-column: 1 / -1; }
+  html.page #workSection { grid-column: 1; grid-row: span 3; }
+  html.page #shadowSection, html.page #trimSection, html.page #noteSection { grid-column: 2; }
+  html.page .drop { padding-block: 40px; }
+  /* The second-level screens stay one column. */
+  html.page body:is(.support, .feedback, .prefs) { display: block; width: 420px; }
+}

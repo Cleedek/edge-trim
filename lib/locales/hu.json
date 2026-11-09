@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Közvetlenül az utolsó, nem teljesen átlátszó pixel után vág.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "A szinte láthatatlan fátylat is levágja (2% alatti átlátszatlanság), amely gyakran a háttér eltávolítása után marad.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "A 10% alatti átlátszatlanságú lágy árnyékokat és ragyogást is levágja. Ellenőrizd az eredményt: maga a tárgy széle is levágódhat.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Egy weboldalon kattints jobb gombbal bármelyik képre, és válaszd a \"Kép körülvágása és másolása\" vagy a \"Kép körülvágása és mentése\" lehetőséget, vagy kattints jobb gombbal egy letöltési linkre, és válaszd a \"Linkelt kép körülvágása és letöltése\" lehetőséget. A körülvágás ezen a számítógépen történik, semmi sem töltődik fel.",
   "Open in a tab": "Megnyitás külön lapon",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Az Edge Trim ingyenes és reklámmentes. Ha megspórol neked némi bíbelődést a körülvágással, egy kis borravaló segít, hogy fennmaradjon. Köszönöm!",
   "Pasted picture": "Beillesztett kép",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "A körülvágott kép mentve ({w} × {h} px).",
   "Couldn’t load this picture.": "Nem sikerült betölteni ezt a képet.",
   "Trim downloaded pictures": "Letöltött képek körülvágása",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Ha bármelyik webhelyről PNG, WebP, AVIF vagy GIF képet töltesz le (visszaszámlálás vagy captcha után is), a fenti beállítással körülvágott változat lép a helyére, ugyanazzal a névvel. Azok a képek, amelyeken nincs mit levágni, változatlanok maradnak.",
   "Trimmed the downloaded picture ({w} × {h} px).": "A letöltött kép körülvágva ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Ezt a letöltést nem sikerült körülvágni, ezért változatlan marad.",
   "Animated picture, so it stays as it was.": "Animált kép, ezért változatlan marad.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Vagy adj neki csillagot a GitHubon",
   "You’ll only see this once.": "Ezt csak egyszer látod.",
   "Close (it won’t come back)": "Bezárás (nem jön vissza)",
-  "The link is copied. Send it to someone who’d like it.": "A link másolva. Küldd el valakinek, akinek tetszene."
+  "The link is copied. Send it to someone who’d like it.": "A link másolva. Küldd el valakinek, akinek tetszene.",
+  "Dragging files from a folder?": "Mappából húzol fájlokat?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "A bármely oldalról letöltött képeket egy azonos nevű, levágott másolat váltja fel.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Kattints jobb gombbal egy képre vagy a rá mutató linkre bármely oldalon a levágáshoz. Minden ezen a gépen marad.",
+  "Language & appearance": "Nyelv és megjelenés"
 }

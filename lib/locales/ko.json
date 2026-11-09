@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "완전히 투명하지 않은 마지막 픽셀 바로 바깥에서 잘라요.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "배경을 지운 뒤 자주 남는, 거의 보이지 않는 잔여물(불투명도 2% 미만)도 잘라 내요.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "불투명도 10% 미만의 부드러운 그림자와 빛 번짐도 잘라 내요. 결과를 확인하세요. 물체 자체의 가장자리까지 잘릴 수 있어요.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "웹페이지에서 이미지를 마우스 오른쪽 버튼으로 클릭하고 \"잘라서 이미지 복사\" 또는 \"잘라서 이미지 저장\"을 선택하거나, 다운로드 링크를 마우스 오른쪽 버튼으로 클릭하고 \"링크된 이미지 잘라서 다운로드\"를 선택하세요. 자르기는 모두 이 컴퓨터에서 이루어지며 아무것도 업로드되지 않아요.",
   "Open in a tab": "탭에서 열기",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim은 무료이고 광고도 없어요. 이미지 자르는 수고를 조금이라도 덜어 드렸다면, 작은 팁이 계속 이어 가는 데 큰 힘이 돼요. 고맙습니다!",
   "Pasted picture": "붙여 넣은 이미지",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "자른 이미지를 저장했어요({w} × {h} px).",
   "Couldn’t load this picture.": "이 이미지를 불러오지 못했어요.",
   "Trim downloaded pictures": "다운로드한 이미지 자르기",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "어떤 웹사이트에서든 PNG, WebP, AVIF, GIF를 다운로드하면(카운트다운이나 캡차를 거친 뒤에도) 위 설정으로 자른 버전으로 같은 이름 그대로 바뀌어요. 자를 부분이 없는 이미지는 그대로 남아요.",
   "Trimmed the downloaded picture ({w} × {h} px).": "다운로드한 이미지를 잘랐어요({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "이 다운로드는 자르지 못해서 원래대로 두었어요.",
   "Animated picture, so it stays as it was.": "움직이는 이미지라서 원래대로 두었어요.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "또는 GitHub에서 별 주기",
   "You’ll only see this once.": "이 안내는 한 번만 보여요.",
   "Close (it won’t come back)": "닫기 (다시 표시되지 않아요)",
-  "The link is copied. Send it to someone who’d like it.": "링크가 복사됐어요. 좋아할 만한 사람에게 보내 보세요."
+  "The link is copied. Send it to someone who’d like it.": "링크가 복사됐어요. 좋아할 만한 사람에게 보내 보세요.",
+  "Dragging files from a folder?": "폴더에서 파일을 끌어오나요?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "어느 사이트에서든 다운로드한 이미지는 같은 이름의 잘라낸 사본으로 바뀝니다.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "어떤 페이지에서든 이미지나 이미지 링크를 마우스 오른쪽 버튼으로 클릭해 잘라내세요. 모든 작업은 이 컴퓨터에서 이루어집니다.",
+  "Language & appearance": "언어 및 모양"
 }

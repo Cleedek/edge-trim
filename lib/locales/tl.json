@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Pinuputol mismo pagkatapos ng huling pixel na hindi ganap na transparent.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Tinatanggal din ang halos hindi nakikitang haze (wala pang 2% ang opacity), na madalas maiwan pagkatapos mag-remove ng background.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Tinatanggal din ang malalambot na anino at glow na wala pang 10% ang opacity. Suriin ang resulta: puwedeng maputol din ang gilid ng mismong bagay.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Sa isang web page, i-right-click ang anumang larawan at piliin ang \"I-trim at kopyahin ang imahe\" o \"I-trim at i-save ang imahe\", o i-right-click ang isang download link at piliin ang \"I-trim at i-download ang naka-link na imahe\". Sa computer na ito tini-trim ang lahat, walang ina-upload.",
   "Open in a tab": "Buksan sa isang tab",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Libre at walang ads ang Edge Trim. Kung nakakatipid ka nito sa pagkalikot ng crop, nakakatulong ang maliit na tip para magpatuloy ito. Salamat!",
   "Pasted picture": "Na-paste na larawan",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Na-save ang na-trim na imahe ({w} × {h} px).",
   "Couldn’t load this picture.": "Hindi ma-load ang larawang ito.",
   "Trim downloaded pictures": "I-trim ang mga na-download na larawan",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Kapag nag-download ka ng PNG, WebP, AVIF o GIF mula sa anumang website (pati pagkatapos ng countdown o captcha), papalitan ito ng bersyong na-trim ayon sa setting sa itaas, sa parehong pangalan. Hindi ginagalaw ang mga larawang walang ita-trim.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Na-trim ang na-download na larawan ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Hindi ma-trim ang download na ito, kaya hindi ito binago.",
   "Animated picture, so it stays as it was.": "Animated na larawan, kaya hindi ito binago.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "O bigyan ito ng star sa GitHub",
   "You’ll only see this once.": "Isang beses mo lang ito makikita.",
   "Close (it won’t come back)": "Isara (hindi na babalik)",
-  "The link is copied. Send it to someone who’d like it.": "Nakopya ang link. Ipadala ito sa taong magugustuhan ito."
+  "The link is copied. Send it to someone who’d like it.": "Nakopya ang link. Ipadala ito sa taong magugustuhan ito.",
+  "Dragging files from a folder?": "Nagda-drag ka ba ng mga file mula sa folder?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Ang mga larawang dina-download mo mula sa kahit anong site ay papalitan ng na-trim na kopya na may parehong pangalan.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "I-right-click ang larawan, o link papunta rito, sa kahit anong page para i-trim ito. Nananatili ang lahat sa computer na ito.",
+  "Language & appearance": "Wika at hitsura"
 }

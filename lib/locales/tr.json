@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Tamamen şeffaf olmayan son pikselin hemen ardından keser.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Arka plan kaldırmanın sıklıkla geride bıraktığı, neredeyse görünmez sisi de (opaklık %2’nin altında) keser.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Opaklığı %10’un altındaki yumuşak gölgeleri ve ışımayı da keser. Sonucu kontrol et: nesnenin kendi kenarı da kesilebilir.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Bir web sayfasında herhangi bir görsele sağ tıklayıp \"Resmi kırp ve kopyala\" ya da \"Resmi kırp ve kaydet\" seçeneğini seç veya bir indirme bağlantısına sağ tıklayıp \"Bağlantılı resmi kırp ve indir\" seçeneğini seç. Her şey bu bilgisayarda kırpılır, hiçbir şey yüklenmez.",
   "Open in a tab": "Sekmede aç",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim ücretsiz ve reklamsız. Seni kırpmayla uğraşmaktan biraz kurtarıyorsa, küçük bir bahşiş onun yaşamasını sağlar. Teşekkürler!",
   "Pasted picture": "Yapıştırılan görsel",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Kırpılan görsel kaydedildi ({w} × {h} px).",
   "Couldn’t load this picture.": "Bu görsel yüklenemedi.",
   "Trim downloaded pictures": "İndirilen görselleri kırp",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Herhangi bir siteden PNG, WebP, AVIF veya GIF indirdiğinde (geri sayım ya da captcha sonrasında da), dosya yukarıdaki ayarla kırpılmış bir sürümüyle aynı adla değiştirilir. Kırpılacak bir şeyi olmayan görseller olduğu gibi kalır.",
   "Trimmed the downloaded picture ({w} × {h} px).": "İndirilen görsel kırpıldı ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Bu indirme kırpılamadı, olduğu gibi kalıyor.",
   "Animated picture, so it stays as it was.": "Hareketli görsel, olduğu gibi kalıyor.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Ya da GitHub’da bir yıldız ver",
   "You’ll only see this once.": "Bunu yalnızca bir kez göreceksin.",
   "Close (it won’t come back)": "Kapat (bir daha gelmez)",
-  "The link is copied. Send it to someone who’d like it.": "Bağlantı kopyalandı. Beğeneceğini düşündüğün birine gönder."
+  "The link is copied. Send it to someone who’d like it.": "Bağlantı kopyalandı. Beğeneceğini düşündüğün birine gönder.",
+  "Dragging files from a folder?": "Bir klasörden dosya mı sürüklüyorsun?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Herhangi bir siteden indirdiğin resimler aynı adla kırpılmış bir kopyayla değiştirilir.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Kırpmak için herhangi bir sayfada bir resme ya da ona giden bağlantıya sağ tıkla. Her şey bu bilgisayarda kalır.",
+  "Language & appearance": "Dil ve görünüm"
 }

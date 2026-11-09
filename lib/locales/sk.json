@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Reže hneď za posledným pixelom, ktorý nie je úplne priehľadný.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Odreže aj takmer neviditeľný opar (pod 2 % krytia), ktorý často zostane po odstránení pozadia.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Odreže aj jemné tiene a žiaru pod 10 % krytia. Skontroluj výsledok: môže sa orezať aj okraj samotného objektu.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Na webe klikni pravým tlačidlom na obrázok a zvoľ \"Orezať a skopírovať obrázok\" alebo \"Orezať a uložiť obrázok\", prípadne na odkaz na stiahnutie a zvoľ \"Orezať a stiahnuť obrázok z odkazu\". Všetko sa orezáva v tomto počítači, nič sa nenahráva.",
   "Open in a tab": "Otvoriť na karte",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim je zadarmo a bez reklám. Ak ti ušetrí piplanie s orezmi, malé prepitné ho udrží v chode. Ďakujem!",
   "Pasted picture": "Vložený obrázok",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Orezaný obrázok uložený ({w} × {h} px).",
   "Couldn’t load this picture.": "Tento obrázok sa nepodarilo načítať.",
   "Trim downloaded pictures": "Orezávať stiahnuté obrázky",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Keď z webu stiahneš PNG, WebP, AVIF alebo GIF (aj po odpočte alebo captche), nahradí sa verziou orezanou podľa nastavenia vyššie, s rovnakým názvom. Obrázky, na ktorých nie je čo orezať, zostanú, ako sú.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Stiahnutý obrázok je orezaný ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Stiahnutý súbor sa nepodarilo orezať, zostáva, ako bol.",
   "Animated picture, so it stays as it was.": "Animovaný obrázok, zostáva, ako bol.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Alebo daj hviezdičku na GitHube",
   "You’ll only see this once.": "Toto uvidíš len raz.",
   "Close (it won’t come back)": "Zavrieť (už sa nevráti)",
-  "The link is copied. Send it to someone who’d like it.": "Odkaz je skopírovaný. Pošli ho niekomu, komu sa zíde."
+  "The link is copied. Send it to someone who’d like it.": "Odkaz je skopírovaný. Pošli ho niekomu, komu sa zíde.",
+  "Dragging files from a folder?": "Preťahuješ súbory z priečinka?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Obrázky stiahnuté z akéhokoľvek webu sa nahradia orezanou kópiou s rovnakým názvom.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Klikni pravým na obrázok alebo odkaz naň na ktorejkoľvek stránke a orež ho. Všetko zostáva v tomto počítači.",
+  "Language & appearance": "Jazyk a vzhľad"
 }

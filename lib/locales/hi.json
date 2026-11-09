@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "उस आखिरी पिक्सेल के ठीक बाद काटता है जो पूरी तरह ट्रांसपेरेंट नहीं है।",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "लगभग अदृश्य धुंध (2% से कम ओपेसिटी) भी हटाता है, जो अक्सर बैकग्राउंड हटाने के बाद रह जाती है।",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "10% से कम ओपेसिटी वाले हल्के शैडो और ग्लो भी हटाता है। नतीजा जांच लें: ऑब्जेक्ट का अपना किनारा भी कट सकता है।",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "किसी वेब पेज पर किसी भी इमेज पर राइट-क्लिक करें और \"इमेज को क्रॉप करके कॉपी करें\" या \"इमेज को क्रॉप करके सेव करें\" चुनें, या किसी डाउनलोड लिंक पर राइट-क्लिक करें और \"लिंक की गई इमेज को क्रॉप करके डाउनलोड करें\" चुनें। सब कुछ इसी कंप्यूटर पर क्रॉप होता है, कुछ भी अपलोड नहीं होता।",
   "Open in a tab": "टैब में खोलें",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim मुफ़्त है और इसमें कोई विज्ञापन नहीं है। अगर इससे क्रॉपिंग की झंझट कम होती है, तो एक छोटी-सी टिप इसे चलाए रखने में मदद करती है। धन्यवाद!",
   "Pasted picture": "पेस्ट की गई इमेज",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "क्रॉप की गई इमेज सेव हो गई ({w} × {h} px)।",
   "Couldn’t load this picture.": "यह इमेज लोड नहीं हो सकी।",
   "Trim downloaded pictures": "डाउनलोड की गई इमेज क्रॉप करें",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "जब आप किसी भी वेबसाइट से PNG, WebP, AVIF या GIF डाउनलोड करते हैं (काउंटडाउन या कैप्चा के बाद भी), तो उसकी जगह ऊपर की सेटिंग से क्रॉप किया गया वर्शन उसी नाम से आ जाता है। जिन इमेज में क्रॉप करने को कुछ नहीं होता, वे जैसी हैं वैसी ही रहती हैं।",
   "Trimmed the downloaded picture ({w} × {h} px).": "डाउनलोड की गई इमेज क्रॉप हो गई ({w} × {h} px)।",
   "Couldn’t trim this download, so it stays as it was.": "यह डाउनलोड क्रॉप नहीं हो सका, इसलिए यह जैसा था वैसा ही है।",
   "Animated picture, so it stays as it was.": "एनिमेटेड इमेज है, इसलिए यह जैसी थी वैसी ही है।",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "या GitHub पर स्टार दें",
   "You’ll only see this once.": "यह आपको सिर्फ़ एक बार दिखेगा।",
   "Close (it won’t come back)": "बंद करें (दोबारा नहीं दिखेगा)",
-  "The link is copied. Send it to someone who’d like it.": "लिंक कॉपी हो गया। इसे किसी ऐसे व्यक्ति को भेजें जिसे यह पसंद आए।"
+  "The link is copied. Send it to someone who’d like it.": "लिंक कॉपी हो गया। इसे किसी ऐसे व्यक्ति को भेजें जिसे यह पसंद आए।",
+  "Dragging files from a folder?": "किसी फ़ोल्डर से फ़ाइलें खींच रहे हैं?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "किसी भी साइट से डाउनलोड की गई तस्वीरें उसी नाम की ट्रिम की हुई कॉपी से बदल दी जाती हैं।",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "किसी भी पेज पर तस्वीर, या उसके लिंक, पर राइट-क्लिक करके उसे ट्रिम करें। सब कुछ इसी कंप्यूटर पर रहता है।",
+  "Language & appearance": "भाषा और रूप"
 }

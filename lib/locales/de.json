@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Schneidet direkt nach dem letzten Pixel, der nicht völlig transparent ist.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Entfernt auch fast unsichtbaren Schleier (unter 2 % Deckkraft), wie er oft nach dem Freistellen zurückbleibt.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Entfernt auch weiche Schatten und Schein unter 10 % Deckkraft. Ergebnis prüfen: Auch der Rand des Objekts kann wegfallen.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Auf einer Webseite ein Bild mit der rechten Maustaste anklicken und \"Zuschneiden und Bild kopieren\" oder \"Zuschneiden und Bild speichern\" wählen, oder einen Download-Link anklicken und \"Verlinktes Bild zuschneiden und herunterladen\" wählen. Alles wird auf diesem Computer zugeschnitten, nichts wird hochgeladen.",
   "Open in a tab": "In einem Tab öffnen",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim ist kostenlos und werbefrei. Wenn es dir Gefummel mit Zuschnitten erspart, hält ein kleines Trinkgeld es am Laufen. Danke!",
   "Pasted picture": "Eingefügtes Bild",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Zugeschnittenes Bild gespeichert ({w} × {h} px).",
   "Couldn’t load this picture.": "Dieses Bild konnte nicht geladen werden.",
   "Trim downloaded pictures": "Heruntergeladene Bilder zuschneiden",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Ein PNG, WebP, AVIF oder GIF, das von einer Website heruntergeladen wird (auch nach einem Countdown oder Captcha), wird durch eine mit der Einstellung oben zugeschnittene Version unter demselben Namen ersetzt. Bilder ohne etwas zum Zuschneiden bleiben, wie sie sind.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Heruntergeladenes Bild zugeschnitten ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Dieser Download ließ sich nicht zuschneiden und bleibt, wie er war.",
   "Animated picture, so it stays as it was.": "Animiertes Bild, es bleibt, wie es war.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Oder gib ihm einen Stern auf GitHub",
   "You’ll only see this once.": "Das siehst du nur einmal.",
   "Close (it won’t come back)": "Schließen (kommt nicht wieder)",
-  "The link is copied. Send it to someone who’d like it.": "Der Link ist kopiert. Schick ihn jemandem, dem es gefallen könnte."
+  "The link is copied. Send it to someone who’d like it.": "Der Link ist kopiert. Schick ihn jemandem, dem es gefallen könnte.",
+  "Dragging files from a folder?": "Dateien aus einem Ordner ziehen?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Bilder, die du von einer Website herunterlädst, werden durch eine zugeschnittene Kopie mit gleichem Namen ersetzt.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Klicke auf einer Seite mit rechts auf ein Bild oder einen Link darauf, um es zuzuschneiden. Alles bleibt auf diesem Computer.",
+  "Language & appearance": "Sprache und Aussehen"
 }

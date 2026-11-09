@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Skærer lige efter den sidste pixel, der ikke er helt gennemsigtig.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Skærer også næsten usynlig dis væk (under 2 % opacitet), som ofte bliver tilbage efter fjernelse af baggrunden.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Skærer også bløde skygger og glød under 10 % opacitet væk. Tjek resultatet: kanten af selve objektet kan også blive skåret væk.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Højreklik på et billede på en webside, og vælg \"Beskær og kopiér billede\" eller \"Beskær og gem billede\", eller højreklik på et downloadlink, og vælg \"Beskær og download billede fra link\". Alt beskæres på denne computer, intet uploades.",
   "Open in a tab": "Åbn i en fane",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim er gratis og uden reklamer. Hvis den sparer dig for lidt pilleri med beskæringer, holder et lille bidrag den i gang. Tak!",
   "Pasted picture": "Indsat billede",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Det beskårne billede er gemt ({w} × {h} px).",
   "Couldn’t load this picture.": "Billedet kunne ikke indlæses.",
   "Trim downloaded pictures": "Beskær downloadede billeder",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Når du downloader en PNG, WebP, AVIF eller GIF fra en hjemmeside (også efter en nedtælling eller en captcha), erstattes den af en udgave, der er beskåret med indstillingen ovenfor, under samme navn. Billeder uden noget at beskære forbliver, som de er.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Det downloadede billede er beskåret ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Denne download kunne ikke beskæres, så den er uændret.",
   "Animated picture, so it stays as it was.": "Animeret billede, så det er uændret.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Eller giv den en stjerne på GitHub",
   "You’ll only see this once.": "Det her ser du kun én gang.",
   "Close (it won’t come back)": "Luk (kommer ikke igen)",
-  "The link is copied. Send it to someone who’d like it.": "Linket er kopieret. Send det til en, der vil kunne lide det."
+  "The link is copied. Send it to someone who’d like it.": "Linket er kopieret. Send det til en, der vil kunne lide det.",
+  "Dragging files from a folder?": "Trækker du filer fra en mappe?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Billeder, du henter fra et websted, erstattes af en beskåret kopi med samme navn.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Højreklik på et billede, eller et link til det, på en side for at beskære det. Alt bliver på denne computer.",
+  "Language & appearance": "Sprog og udseende"
 }

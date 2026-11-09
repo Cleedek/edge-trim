@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Taie imediat după ultimul pixel care nu e complet transparent.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Taie și voalul aproape invizibil (sub 2% opacitate), rămas adesea după eliminarea fundalului.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Taie și umbrele difuze și strălucirile sub 10% opacitate. Verifică rezultatul: se poate tăia și marginea obiectului.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Pe o pagină web, dă clic dreapta pe orice imagine și alege \"Decupează și copiază imaginea\" sau \"Decupează și salvează imaginea\", ori dă clic dreapta pe un link de descărcare și alege \"Decupează și descarcă imaginea din link\". Totul se decupează pe acest computer, nu se încarcă nimic.",
   "Open in a tab": "Deschide într-o filă",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim este gratuit și fără reclame. Dacă te scutește de bătăi de cap cu decupajele, un mic bacșiș îl ține în viață. Mulțumesc!",
   "Pasted picture": "Imagine lipită",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Imaginea decupată a fost salvată ({w} × {h} px).",
   "Couldn’t load this picture.": "Imaginea nu s-a putut încărca.",
   "Trim downloaded pictures": "Decupează imaginile descărcate",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Când descarci un PNG, WebP, AVIF sau GIF de pe orice site (inclusiv după o numărătoare inversă sau un captcha), este înlocuit cu o versiune decupată după setarea de mai sus, cu același nume. Imaginile fără nimic de decupat rămân cum sunt.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Imaginea descărcată a fost decupată ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Descărcarea nu s-a putut decupa, așa că rămâne cum era.",
   "Animated picture, so it stays as it was.": "Imagine animată, așa că rămâne cum era.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Sau dă-i o stea pe GitHub",
   "You’ll only see this once.": "Vei vedea asta o singură dată.",
   "Close (it won’t come back)": "Închide (nu mai revine)",
-  "The link is copied. Send it to someone who’d like it.": "Linkul e copiat. Trimite-l cuiva căruia i-ar plăcea."
+  "The link is copied. Send it to someone who’d like it.": "Linkul e copiat. Trimite-l cuiva căruia i-ar plăcea.",
+  "Dragging files from a folder?": "Tragi fișiere dintr-un folder?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Imaginile descărcate de pe orice site sunt înlocuite cu o copie decupată cu același nume.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Dă clic dreapta pe o imagine, sau pe un link către ea, pe orice pagină ca s-o decupezi. Totul rămâne pe acest computer.",
+  "Language & appearance": "Limbă și aspect"
 }

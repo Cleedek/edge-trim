@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "ตัดชิดพิกเซลสุดท้ายที่ไม่ได้โปร่งใสทั้งหมด",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "ตัดฝ้าที่แทบมองไม่เห็น (ความทึบต่ำกว่า 2%) ออกด้วย ซึ่งมักหลงเหลือจากการลบพื้นหลัง",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "ตัดเงาจาง ๆ และแสงเรืองที่ความทึบต่ำกว่า 10% ออกด้วย ควรตรวจดูผลลัพธ์ เพราะขอบของวัตถุเองอาจถูกตัดไปด้วย",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "บนหน้าเว็บ คลิกขวาที่รูปภาพใดก็ได้แล้วเลือก \"ตัดขอบและคัดลอกรูปภาพ\" หรือ \"ตัดขอบและบันทึกรูปภาพ\" หรือคลิกขวาที่ลิงก์ดาวน์โหลดแล้วเลือก \"ตัดขอบและดาวน์โหลดรูปภาพที่ลิงก์ไว้\" ทุกอย่างตัดขอบบนคอมพิวเตอร์เครื่องนี้ ไม่มีการอัปโหลดใด ๆ",
   "Open in a tab": "เปิดในแท็บ",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim ใช้ฟรีและไม่มีโฆษณา ถ้าช่วยให้คุณไม่ต้องเสียเวลาครอปรูปเอง ทิปเล็ก ๆ จะช่วยให้พัฒนาต่อไปได้ ขอบคุณ!",
   "Pasted picture": "รูปภาพที่วาง",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "บันทึกรูปภาพที่ตัดขอบแล้ว ({w} × {h} px)",
   "Couldn’t load this picture.": "โหลดรูปภาพนี้ไม่ได้",
   "Trim downloaded pictures": "ตัดขอบรูปภาพที่ดาวน์โหลด",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "เมื่อคุณดาวน์โหลด PNG, WebP, AVIF หรือ GIF จากเว็บไซต์ใดก็ตาม (รวมถึงหลังการนับถอยหลังหรือ captcha) ไฟล์จะถูกแทนที่ด้วยเวอร์ชันที่ตัดขอบตามการตั้งค่าด้านบนโดยใช้ชื่อเดิม รูปภาพที่ไม่มีอะไรต้องตัดจะคงไว้ตามเดิม",
   "Trimmed the downloaded picture ({w} × {h} px).": "ตัดขอบรูปภาพที่ดาวน์โหลดแล้ว ({w} × {h} px)",
   "Couldn’t trim this download, so it stays as it was.": "ตัดขอบไฟล์ที่ดาวน์โหลดนี้ไม่ได้ จึงคงไว้ตามเดิม",
   "Animated picture, so it stays as it was.": "เป็นรูปภาพเคลื่อนไหว จึงคงไว้ตามเดิม",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "หรือให้ดาวบน GitHub",
   "You’ll only see this once.": "คุณจะเห็นข้อความนี้แค่ครั้งเดียว",
   "Close (it won’t come back)": "ปิด (จะไม่แสดงอีก)",
-  "The link is copied. Send it to someone who’d like it.": "คัดลอกลิงก์แล้ว ส่งให้คนที่น่าจะชอบได้เลย"
+  "The link is copied. Send it to someone who’d like it.": "คัดลอกลิงก์แล้ว ส่งให้คนที่น่าจะชอบได้เลย",
+  "Dragging files from a folder?": "ลากไฟล์จากโฟลเดอร์ใช่ไหม",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "รูปที่ดาวน์โหลดจากเว็บไหนก็ตามจะถูกแทนที่ด้วยสำเนาที่ตัดขอบแล้วในชื่อเดิม",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "คลิกขวาที่รูป หรือที่ลิงก์ของรูป ในหน้าใดก็ได้เพื่อตัดขอบ ทุกอย่างอยู่ในคอมพิวเตอร์เครื่องนี้",
+  "Language & appearance": "ภาษาและรูปลักษณ์"
 }

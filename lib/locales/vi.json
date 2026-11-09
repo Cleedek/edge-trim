@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Cắt ngay sau điểm ảnh cuối cùng không hoàn toàn trong suốt.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Cắt luôn lớp mờ gần như vô hình (độ đục dưới 2%), thường còn sót lại sau khi xóa nền.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Cắt luôn bóng mềm và quầng sáng có độ đục dưới 10%. Hãy kiểm tra kết quả: mép của chính vật thể cũng có thể bị cắt.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Trên trang web, nhấp chuột phải vào ảnh và chọn \"Cắt và sao chép ảnh\" hoặc \"Cắt và lưu ảnh\", hoặc nhấp chuột phải vào liên kết tải xuống và chọn \"Cắt và tải ảnh từ liên kết\". Mọi thứ được cắt ngay trên máy tính này, không có gì được tải lên.",
   "Open in a tab": "Mở trong thẻ",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim miễn phí và không có quảng cáo. Nếu nó giúp bạn đỡ mất công cắt ảnh, một chút tiền tip sẽ giúp nó tiếp tục phát triển. Cảm ơn bạn!",
   "Pasted picture": "Ảnh đã dán",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Đã lưu ảnh đã cắt ({w} × {h} px).",
   "Couldn’t load this picture.": "Không tải được ảnh này.",
   "Trim downloaded pictures": "Cắt ảnh đã tải xuống",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Khi bạn tải PNG, WebP, AVIF hoặc GIF từ bất kỳ trang web nào (kể cả sau khi đếm ngược hoặc nhập captcha), tệp sẽ được thay bằng bản đã cắt theo thiết lập ở trên, giữ nguyên tên. Ảnh không có gì để cắt sẽ giữ nguyên.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Đã cắt ảnh tải xuống ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Không cắt được tệp tải xuống này, tệp được giữ nguyên.",
   "Animated picture, so it stays as it was.": "Ảnh động, được giữ nguyên.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Hoặc tặng một sao trên GitHub",
   "You’ll only see this once.": "Bạn chỉ thấy thông báo này một lần.",
   "Close (it won’t come back)": "Đóng (sẽ không hiện lại)",
-  "The link is copied. Send it to someone who’d like it.": "Đã sao chép liên kết. Hãy gửi cho người bạn nghĩ sẽ thích nó."
+  "The link is copied. Send it to someone who’d like it.": "Đã sao chép liên kết. Hãy gửi cho người bạn nghĩ sẽ thích nó.",
+  "Dragging files from a folder?": "Kéo tệp từ một thư mục?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Ảnh tải về từ bất kỳ trang nào sẽ được thay bằng bản đã cắt, giữ nguyên tên.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Nhấp chuột phải vào ảnh, hoặc liên kết tới ảnh, trên bất kỳ trang nào để cắt. Mọi thứ ở lại trên máy tính này.",
+  "Language & appearance": "Ngôn ngữ và giao diện"
 }

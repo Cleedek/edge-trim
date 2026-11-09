@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Rajaa heti viimeisen pikselin jälkeen, joka ei ole täysin läpinäkyvä.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Poistaa myös lähes näkymättömän udun (peittävyys alle 2 %), jota taustanpoisto usein jättää jälkeensä.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Poistaa myös pehmeät varjot ja hehkun, joiden peittävyys on alle 10 %. Tarkista tulos: myös kohteen oma reuna voi leikkautua pois.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Klikkaa verkkosivulla mitä tahansa kuvaa hiiren oikealla ja valitse \"Rajaa ja kopioi kuva\" tai \"Rajaa ja tallenna kuva\", tai klikkaa latauslinkkiä hiiren oikealla ja valitse \"Rajaa ja lataa linkitetty kuva\". Kaikki rajataan tällä tietokoneella, mitään ei lähetetä minnekään.",
   "Open in a tab": "Avaa välilehdellä",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim on ilmainen eikä siinä ole mainoksia. Jos se säästää sinulta rajausten näpertelyä, pieni tuki pitää sen hengissä. Kiitos!",
   "Pasted picture": "Liitetty kuva",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Rajattu kuva tallennettu ({w} × {h} px).",
   "Couldn’t load this picture.": "Kuvaa ei voitu ladata.",
   "Trim downloaded pictures": "Rajaa ladatut kuvat",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Kun lataat PNG-, WebP-, AVIF- tai GIF-kuvan miltä tahansa sivustolta (myös laskurin tai captchan jälkeen), se korvataan yllä olevalla asetuksella rajatulla versiolla samalla nimellä. Kuvat, joissa ei ole rajattavaa, pysyvät ennallaan.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Ladattu kuva rajattu ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Tätä latausta ei voitu rajata, joten se pysyy ennallaan.",
   "Animated picture, so it stays as it was.": "Animoitu kuva, joten se pysyy ennallaan.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Tai anna sille tähti GitHubissa",
   "You’ll only see this once.": "Näet tämän vain kerran.",
   "Close (it won’t come back)": "Sulje (ei palaa)",
-  "The link is copied. Send it to someone who’d like it.": "Linkki on kopioitu. Lähetä se jollekulle, joka voisi pitää siitä."
+  "The link is copied. Send it to someone who’d like it.": "Linkki on kopioitu. Lähetä se jollekulle, joka voisi pitää siitä.",
+  "Dragging files from a folder?": "Vedätkö tiedostoja kansiosta?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Miltä tahansa sivustolta ladatut kuvat korvataan rajatulla kopiolla samalla nimellä.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Rajaa kuva napsauttamalla sitä, tai linkkiä siihen, hiiren oikealla millä tahansa sivulla. Kaikki pysyy tällä tietokoneella.",
+  "Language & appearance": "Kieli ja ulkoasu"
 }

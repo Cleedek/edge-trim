@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "完全に透明ではない最後のピクセルのすぐ外側で切り取ります。",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "背景除去のあとによく残る、ほとんど見えないもや（不透明度 2% 未満）も削ります。",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "不透明度 10% 未満のやわらかい影や光彩も削ります。結果を確認してください。被写体自体の縁まで削られることがあります。",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "ウェブページで画像を右クリックして\"トリミングして画像をコピー\"または\"トリミングして画像を保存\"を選ぶか、ダウンロードリンクを右クリックして\"リンク先の画像をトリミングしてダウンロード\"を選んでください。トリミングはすべてこのパソコン上で行われ、何もアップロードされません。",
   "Open in a tab": "タブで開く",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim は無料で、広告もありません。トリミングの手間が少しでも減ったなら、ちょっとしたチップが開発の支えになります。ありがとうございます！",
   "Pasted picture": "貼り付けた画像",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "トリミングした画像を保存しました（{w} × {h} px）。",
   "Couldn’t load this picture.": "この画像を読み込めませんでした。",
   "Trim downloaded pictures": "ダウンロードした画像をトリミング",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "どのウェブサイトから PNG、WebP、AVIF、GIF をダウンロードしても（カウントダウンや CAPTCHA のあとでも）、上の設定でトリミングした画像に同じ名前のまま置き換えます。トリミングするものがない画像はそのままです。",
   "Trimmed the downloaded picture ({w} × {h} px).": "ダウンロードした画像をトリミングしました（{w} × {h} px）。",
   "Couldn’t trim this download, so it stays as it was.": "このダウンロードはトリミングできなかったため、元のままです。",
   "Animated picture, so it stays as it was.": "アニメーション画像のため、元のままです。",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "または GitHub でスターを付ける",
   "You’ll only see this once.": "この表示は一度だけです。",
   "Close (it won’t come back)": "閉じる（再表示されません）",
-  "The link is copied. Send it to someone who’d like it.": "リンクをコピーしました。気に入りそうな人に送ってください。"
+  "The link is copied. Send it to someone who’d like it.": "リンクをコピーしました。気に入りそうな人に送ってください。",
+  "Dragging files from a folder?": "フォルダからファイルをドラッグしますか？",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "どのサイトからダウンロードした画像も、同じ名前のトリミング済みコピーに置き換わります。",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "ページ上の画像、または画像へのリンクを右クリックしてトリミングできます。処理はすべてこのパソコン内で行われます。",
+  "Language & appearance": "言語と外観"
 }

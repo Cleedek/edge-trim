@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Corta justo después del último píxel que no es totalmente transparente.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "También quita el velo casi invisible (menos del 2 % de opacidad) que suele quedar al quitar el fondo.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "También quita sombras suaves y brillos por debajo del 10 % de opacidad. Revisa el resultado: también puede cortarse el borde del propio objeto.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "En una página web, haz clic derecho en una imagen y elige \"Recortar y copiar imagen\" o \"Recortar y guardar imagen\", o en un enlace de descarga y elige \"Recortar y descargar la imagen del enlace\". Todo se recorta en este ordenador, no se sube nada.",
   "Open in a tab": "Abrir en una pestaña",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim es gratis y sin anuncios. Si te ahorra pelearte con los recortes, una pequeña propina lo mantiene en marcha. ¡Gracias!",
   "Pasted picture": "Imagen pegada",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Imagen recortada guardada ({w} × {h} px).",
   "Couldn’t load this picture.": "No se pudo cargar esta imagen.",
   "Trim downloaded pictures": "Recortar imágenes descargadas",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Cuando descargas un PNG, WebP, AVIF o GIF de cualquier web (también tras una cuenta atrás o un captcha), se sustituye por una versión recortada con el ajuste de arriba, con el mismo nombre. Las imágenes sin nada que recortar se quedan como están.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Imagen descargada recortada ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "No se pudo recortar esta descarga, se queda como estaba.",
   "Animated picture, so it stays as it was.": "Imagen animada, se queda como estaba.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "O dale una estrella en GitHub",
   "You’ll only see this once.": "Esto solo lo verás una vez.",
   "Close (it won’t come back)": "Cerrar (no volverá)",
-  "The link is copied. Send it to someone who’d like it.": "El enlace está copiado. Envíalo a alguien a quien le pueda gustar."
+  "The link is copied. Send it to someone who’d like it.": "El enlace está copiado. Envíalo a alguien a quien le pueda gustar.",
+  "Dragging files from a folder?": "¿Arrastras archivos desde una carpeta?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Las imágenes que descargues de cualquier web se cambian por una copia recortada con el mismo nombre.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Haz clic derecho en una imagen, o en un enlace a ella, en cualquier página para recortarla. Todo se queda en este ordenador.",
+  "Language & appearance": "Idioma y apariencia"
 }

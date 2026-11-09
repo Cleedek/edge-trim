@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Beskär direkt efter den sista pixeln som inte är helt transparent.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Tar även bort nästan osynligt dis (under 2 % opacitet), som ofta blir kvar efter bakgrundsborttagning.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Tar även bort mjuka skuggor och sken under 10 % opacitet. Kontrollera resultatet: även kanten på själva objektet kan skäras bort.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Högerklicka på en bild på en webbsida och välj \"Beskär och kopiera bild\" eller \"Beskär och spara bild\", eller högerklicka på en nedladdningslänk och välj \"Beskär och ladda ner bild från länk\". Allt beskärs på den här datorn, inget laddas upp.",
   "Open in a tab": "Öppna i en flik",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim är gratis och reklamfritt. Om det sparar dig lite pill med beskärningar hjälper ett litet bidrag till att hålla det igång. Tack!",
   "Pasted picture": "Inklistrad bild",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Den beskurna bilden har sparats ({w} × {h} px).",
   "Couldn’t load this picture.": "Det gick inte att läsa in bilden.",
   "Trim downloaded pictures": "Beskär nedladdade bilder",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "När du laddar ner en PNG, WebP, AVIF eller GIF från en webbplats (även efter en nedräkning eller en captcha) ersätts den av en version som beskurits med inställningen ovan, med samma namn. Bilder utan något att beskära förblir som de är.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Den nedladdade bilden har beskurits ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Det gick inte att beskära nedladdningen, så den är oförändrad.",
   "Animated picture, so it stays as it was.": "Animerad bild, så den är oförändrad.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Eller ge den en stjärna på GitHub",
   "You’ll only see this once.": "Det här ser du bara en gång.",
   "Close (it won’t come back)": "Stäng (kommer inte tillbaka)",
-  "The link is copied. Send it to someone who’d like it.": "Länken är kopierad. Skicka den till någon som skulle gilla den."
+  "The link is copied. Send it to someone who’d like it.": "Länken är kopierad. Skicka den till någon som skulle gilla den.",
+  "Dragging files from a folder?": "Drar du filer från en mapp?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Bilder du laddar ner från en webbplats byts ut mot en beskuren kopia med samma namn.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Högerklicka på en bild, eller en länk till den, på en sida för att beskära den. Allt stannar på den här datorn.",
+  "Language & appearance": "Språk och utseende"
 }

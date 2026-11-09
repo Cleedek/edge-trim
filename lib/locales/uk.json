@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Обрізає одразу за останнім не повністю прозорим пікселем.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Також обрізає майже невидимий серпанок (непрозорість менше 2%), який часто лишається після видалення фону.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Також обрізає м’які тіні й сяйво з непрозорістю менше 10%. Перевір результат: край самого об’єкта теж може обрізатися.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "На вебсторінці клацни правою кнопкою будь-яке зображення й вибери \"Обрізати й копіювати зображення\" або \"Обрізати й зберегти зображення\" чи клацни правою кнопкою посилання для завантаження й вибери \"Обрізати й завантажити зображення за посиланням\". Усе обрізається на цьому комп’ютері, нічого нікуди не надсилається.",
   "Open in a tab": "Відкрити у вкладці",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim безкоштовний і без реклами. Якщо він заощаджує тобі трохи мороки з обрізанням, невеликий внесок допоможе йому жити далі. Дякую!",
   "Pasted picture": "Вставлене зображення",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Обрізане зображення збережено ({w} × {h} px).",
   "Couldn’t load this picture.": "Не вдалося завантажити це зображення.",
   "Trim downloaded pictures": "Обрізати завантажені зображення",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Коли ти завантажуєш PNG, WebP, AVIF чи GIF з будь-якого сайту (зокрема після відліку чи капчі), файл замінюється версією, обрізаною за налаштуванням вище, з тією самою назвою. Зображення, які нема чого обрізати, залишаються як є.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Завантажене зображення обрізано ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Не вдалося обрізати цей файл, тож він залишається як був.",
   "Animated picture, so it stays as it was.": "Анімоване зображення, тож воно залишається як було.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Або постав зірочку на GitHub",
   "You’ll only see this once.": "Це вікно ти побачиш лише раз.",
   "Close (it won’t come back)": "Закрити (більше не з’явиться)",
-  "The link is copied. Send it to someone who’d like it.": "Посилання скопійовано. Надішли його тому, кому воно сподобається."
+  "The link is copied. Send it to someone who’d like it.": "Посилання скопійовано. Надішли його тому, кому воно сподобається.",
+  "Dragging files from a folder?": "Перетягуєш файли з папки?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Зображення, завантажені з будь-якого сайту, замінюються обрізаною копією з тією самою назвою.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Клацни правою кнопкою на зображенні або посиланні на нього на будь-якій сторінці, щоб обрізати. Усе лишається на цьому комп’ютері.",
+  "Language & appearance": "Мова й вигляд"
 }

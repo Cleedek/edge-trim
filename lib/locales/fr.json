@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Coupe juste après le dernier pixel qui n’est pas entièrement transparent.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Retire aussi le voile presque invisible (moins de 2 % d’opacité), souvent laissé par la suppression d’arrière-plan.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Retire aussi les ombres douces et les halos sous 10 % d’opacité. Vérifie le résultat : le bord de l’objet peut aussi être coupé.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Sur une page web, fais un clic droit sur une image et choisis \"Recadrer et copier l’image\" ou \"Recadrer et enregistrer l’image\", ou sur un lien de téléchargement et choisis \"Recadrer et télécharger l’image du lien\". Tout est recadré sur cet ordinateur, rien n’est envoyé.",
   "Open in a tab": "Ouvrir dans un onglet",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim est gratuit et sans publicité. S’il t’évite de bricoler tes recadrages, un petit pourboire le fait vivre. Merci !",
   "Pasted picture": "Image collée",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Image recadrée enregistrée ({w} × {h} px).",
   "Couldn’t load this picture.": "Impossible de charger cette image.",
   "Trim downloaded pictures": "Recadrer les images téléchargées",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Quand tu télécharges un PNG, WebP, AVIF ou GIF depuis un site (même après un compte à rebours ou un captcha), il est remplacé par une version recadrée selon le réglage ci-dessus, sous le même nom. Les images sans rien à recadrer restent telles quelles.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Image téléchargée recadrée ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Impossible de recadrer ce téléchargement, il reste tel quel.",
   "Animated picture, so it stays as it was.": "Image animée, elle reste telle quelle.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Ou mets-lui une étoile sur GitHub",
   "You’ll only see this once.": "Tu ne verras ceci qu’une fois.",
   "Close (it won’t come back)": "Fermer (ne reviendra pas)",
-  "The link is copied. Send it to someone who’d like it.": "Le lien est copié. Envoie-le à quelqu’un que ça intéressera."
+  "The link is copied. Send it to someone who’d like it.": "Le lien est copié. Envoie-le à quelqu’un que ça intéressera.",
+  "Dragging files from a folder?": "Vous glissez des fichiers depuis un dossier ?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Les images téléchargées depuis n’importe quel site sont remplacées par une copie rognée du même nom.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Faites un clic droit sur une image, ou sur un lien vers elle, sur n’importe quelle page pour la rogner. Tout reste sur cet ordinateur.",
+  "Language & appearance": "Langue et apparence"
 }

@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "يقتصّ مباشرة بعد آخر بكسل غير شفاف تمامًا.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "يزيل أيضًا الغشاوة التي تكاد لا تُرى (عتامة أقل من 2%)، والتي غالبًا ما تخلّفها إزالة الخلفية.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "يزيل أيضًا الظلال الناعمة والتوهّج بعتامة أقل من 10%. تحقّق من النتيجة: فقد تُقتصّ حافة العنصر نفسه أيضًا.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "في أي صفحة ويب، انقر بزر الماوس الأيمن على أي صورة واختر \"اقتصاص الصورة ونسخها\" أو \"اقتصاص الصورة وحفظها\"، أو انقر بزر الماوس الأيمن على رابط تنزيل واختر \"اقتصاص الصورة المرتبطة وتنزيلها\". يجري كل الاقتصاص على هذا الكمبيوتر، ولا يُرفع أي شيء.",
   "Open in a tab": "فتح في علامة تبويب",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim مجاني وبلا إعلانات. إذا كان يوفّر عليك عناء الاقتصاص يدويًا، فإن إكرامية صغيرة تساعد على استمراره. شكرًا لك!",
   "Pasted picture": "صورة ملصوقة",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "تم حفظ الصورة المقتصّة (‎{w} × {h} px).",
   "Couldn’t load this picture.": "تعذّر تحميل هذه الصورة.",
   "Trim downloaded pictures": "اقتصاص الصور المنزّلة",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "عند تنزيل صورة PNG أو WebP أو AVIF أو GIF من أي موقع (حتى بعد عدّ تنازلي أو اختبار captcha)، تُستبدل بنسخة مقتصّة وفق الإعداد أعلاه وبالاسم نفسه. وتبقى الصور التي لا تحتاج إلى اقتصاص كما هي.",
   "Trimmed the downloaded picture ({w} × {h} px).": "تم اقتصاص الصورة المنزّلة (‎{w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "تعذّر اقتصاص هذا الملف المنزّل، لذا بقي كما هو.",
   "Animated picture, so it stays as it was.": "صورة متحركة، لذا بقيت كما هي.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "أو امنحه نجمة على GitHub",
   "You’ll only see this once.": "لن ترى هذا إلا مرة واحدة.",
   "Close (it won’t come back)": "إغلاق (لن يظهر مجددًا)",
-  "The link is copied. Send it to someone who’d like it.": "تم نسخ الرابط. أرسله إلى من قد يعجبه."
+  "The link is copied. Send it to someone who’d like it.": "تم نسخ الرابط. أرسله إلى من قد يعجبه.",
+  "Dragging files from a folder?": "هل تسحب ملفات من مجلد؟",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "تُستبدل الصور التي تنزّلها من أي موقع بنسخة مقصوصة بالاسم نفسه.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "انقر بزر الفأرة الأيمن على صورة، أو على رابط إليها، في أي صفحة لقصّها. يبقى كل شيء على هذا الكمبيوتر.",
+  "Language & appearance": "اللغة والمظهر"
 }

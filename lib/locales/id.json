@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Memotong tepat setelah piksel terakhir yang tidak sepenuhnya transparan.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Juga membuang kabut yang nyaris tak terlihat (opasitas di bawah 2%), yang sering tersisa setelah latar belakang dihapus.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Juga membuang bayangan lembut dan pendaran dengan opasitas di bawah 10%. Periksa hasilnya: tepi objeknya sendiri bisa ikut terpotong.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Di halaman web, klik kanan gambar apa pun lalu pilih \"Pangkas dan salin gambar\" atau \"Pangkas dan simpan gambar\", atau klik kanan tautan unduhan lalu pilih \"Pangkas dan unduh gambar tertaut\". Semuanya dipangkas di komputer ini, tidak ada yang diunggah.",
   "Open in a tab": "Buka di tab",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Edge Trim gratis dan tanpa iklan. Kalau ekstensi ini menghemat waktumu dari repot memangkas gambar, tip kecil membantunya terus berjalan. Terima kasih!",
   "Pasted picture": "Gambar yang ditempel",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Gambar yang dipangkas sudah disimpan ({w} × {h} px).",
   "Couldn’t load this picture.": "Gambar ini tidak bisa dimuat.",
   "Trim downloaded pictures": "Pangkas gambar yang diunduh",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Saat kamu mengunduh PNG, WebP, AVIF, atau GIF dari situs mana pun (juga setelah hitung mundur atau captcha), file itu diganti dengan versi yang dipangkas sesuai pengaturan di atas, dengan nama yang sama. Gambar yang tidak perlu dipangkas tetap seperti semula.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Gambar yang diunduh sudah dipangkas ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Unduhan ini tidak bisa dipangkas, jadi dibiarkan seperti semula.",
   "Animated picture, so it stays as it was.": "Gambar animasi, jadi dibiarkan seperti semula.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Atau beri bintang di GitHub",
   "You’ll only see this once.": "Kamu hanya akan melihat ini sekali.",
   "Close (it won’t come back)": "Tutup (tidak akan muncul lagi)",
-  "The link is copied. Send it to someone who’d like it.": "Tautan disalin. Kirim ke orang yang mungkin menyukainya."
+  "The link is copied. Send it to someone who’d like it.": "Tautan disalin. Kirim ke orang yang mungkin menyukainya.",
+  "Dragging files from a folder?": "Menyeret file dari folder?",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Gambar yang kamu unduh dari situs mana pun diganti dengan salinan yang sudah dipangkas dengan nama yang sama.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Klik kanan gambar, atau tautan ke gambar itu, di halaman mana pun untuk memangkasnya. Semuanya tetap di komputer ini.",
+  "Language & appearance": "Bahasa dan tampilan"
 }

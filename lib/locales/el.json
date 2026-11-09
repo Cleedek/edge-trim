@@ -40,7 +40,6 @@
   "Cuts right after the last pixel that isn’t fully transparent.": "Κόβει αμέσως μετά το τελευταίο pixel που δεν είναι εντελώς διάφανο.",
   "Also cuts away haze that’s almost invisible (under 2% opacity), often left behind by background removal.": "Κόβει και τη σχεδόν αόρατη θολούρα (κάτω από 2% αδιαφάνεια) που συχνά αφήνει πίσω της η αφαίρεση φόντου.",
   "Also cuts away soft shadows and glow under 10% opacity. Check the result: the edge of the object itself can get cut too.": "Κόβει και απαλές σκιές και λάμψη κάτω από 10% αδιαφάνεια. Έλεγξε το αποτέλεσμα: μπορεί να κοπεί και η άκρη του ίδιου του αντικειμένου.",
-  "On a web page, right-click any picture and choose \"Trim and copy image\" or \"Trim and save image\", or right-click a download link and choose \"Trim and download linked image\". Everything is trimmed on this computer, nothing is uploaded.": "Σε μια ιστοσελίδα, κάνε δεξί κλικ σε οποιαδήποτε εικόνα και διάλεξε \"Περικοπή και αντιγραφή εικόνας\" ή \"Περικοπή και αποθήκευση εικόνας\", ή κάνε δεξί κλικ σε έναν σύνδεσμο λήψης και διάλεξε \"Περικοπή και λήψη εικόνας από σύνδεσμο\". Όλα περικόπτονται σε αυτόν τον υπολογιστή, τίποτα δεν ανεβαίνει.",
   "Open in a tab": "Άνοιγμα σε καρτέλα",
   "Edge Trim is free and has no ads. If it saves you some fiddling with crops, a small tip keeps it going. Thank you!": "Το Edge Trim είναι δωρεάν και χωρίς διαφημίσεις. Αν σου γλιτώνει λίγη ταλαιπωρία με τις περικοπές, ένα μικρό φιλοδώρημα το κρατά ζωντανό. Ευχαριστώ!",
   "Pasted picture": "Επικολλημένη εικόνα",
@@ -62,7 +61,6 @@
   "Saved the trimmed image ({w} × {h} px).": "Η περικομμένη εικόνα αποθηκεύτηκε ({w} × {h} px).",
   "Couldn’t load this picture.": "Δεν ήταν δυνατή η φόρτωση αυτής της εικόνας.",
   "Trim downloaded pictures": "Περικοπή εικόνων που κατεβάζεις",
-  "When you download a PNG, WebP, AVIF or GIF from any website (also after a countdown or a captcha), it’s replaced by a version trimmed with the setting above, under the same name. Pictures with nothing to trim stay as they are.": "Όταν κατεβάζεις ένα PNG, WebP, AVIF ή GIF από οποιονδήποτε ιστότοπο (και μετά από αντίστροφη μέτρηση ή captcha), αντικαθίσταται από μια εκδοχή περικομμένη με την παραπάνω ρύθμιση, με το ίδιο όνομα. Οι εικόνες που δεν έχουν τίποτα για περικοπή μένουν ως έχουν.",
   "Trimmed the downloaded picture ({w} × {h} px).": "Η εικόνα που κατέβασες περικόπηκε ({w} × {h} px).",
   "Couldn’t trim this download, so it stays as it was.": "Δεν ήταν δυνατή η περικοπή αυτής της λήψης, οπότε μένει ως είχε.",
   "Animated picture, so it stays as it was.": "Κινούμενη εικόνα, οπότε μένει ως είχε.",
@@ -176,5 +174,9 @@
   "Or give it a star on GitHub": "Ή δώσε του ένα αστέρι στο GitHub",
   "You’ll only see this once.": "Θα το δεις μόνο μία φορά.",
   "Close (it won’t come back)": "Κλείσιμο (δεν θα ξαναεμφανιστεί)",
-  "The link is copied. Send it to someone who’d like it.": "Ο σύνδεσμος αντιγράφηκε. Στείλ’ τον σε κάποιον που θα του άρεσε."
+  "The link is copied. Send it to someone who’d like it.": "Ο σύνδεσμος αντιγράφηκε. Στείλ’ τον σε κάποιον που θα του άρεσε.",
+  "Dragging files from a folder?": "Σέρνεις αρχεία από φάκελο;",
+  "Pictures you download from any site are swapped for a trimmed copy with the same name.": "Οι εικόνες που κατεβάζεις από οποιονδήποτε ιστότοπο αντικαθίστανται από περικομμένο αντίγραφο με το ίδιο όνομα.",
+  "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "Κάνε δεξί κλικ σε μια εικόνα, ή σε σύνδεσμο προς αυτήν, σε οποιαδήποτε σελίδα για να την περικόψεις. Όλα μένουν σε αυτόν τον υπολογιστή.",
+  "Language & appearance": "Γλώσσα και εμφάνιση"
 }
