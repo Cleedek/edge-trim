@@ -1,12 +1,32 @@
 # Chrome Web Store Listing: Edge Trim
 
-> Last Updated: 2026-11-08
+> Last Updated: 2026-11-09
 
 Everything the Chrome Developer Dashboard asks for, ready to copy. The English texts below go straight into the form; the steps in Czech are for you.
 
-## Postup pro aktualizaci 1.0.1 (co musíš udělat ty)
+## Překlady do 32 jazyků (2026-11-09, součást verze 1.0.1)
 
-**Stav 2026-11-09:** koncept v Dashboardu je kompletní a ověřený po přenačtení stránky: balíček 1.0.1 (Draft Version 1.0.1), popisy ve všech 8 jazycích (přesná shoda se zdroji), nové snímky EN (globální) a CS, Privacy practices. Popisy, snímky a uložení udělal Claude přes Arc. Zbývá jen krok 7: **Submit for review**.
+**Co je nové:** rozhraní rozšíření ve stejných 31 jazycích jako Subtitle Overlay (arabština zprava doleva), nový název "Edge Trim: Auto Crop Transparent PNG & Add Shadow" přeložený do všech 32 jazyků obchodu (obchod ho bere z balíčku, `_locales/<kód>/messages.json`), popisy ve 32 jazycích a pět snímků pro každý jazyk (`store/images/<kód>/screenshot-1.png` až `-5.png`). Francouzština tyká (tu) v rozšíření, v popisu i na snímcích; jen citace oprávnění zůstávají v Chromově znění (vous). Překlady psal Claude, rodilí mluvčí je nekontrolovali.
+
+**Verze:** překlady jdou do 1.0.1. Filip první odeslání 1.0.1 ke kontrole 2026-11-09 zrušil, takže koncept dostal nový `edge-trim-1.0.1.zip` (zabalený až s překlady). Postup pro 1.0.1 pod touhle sekcí tím nahrazuješ.
+
+**Stav 2026-11-09:** koncept 1.0.1 v Dashboardu je kompletní a ověřený po přenačtení stránky: balíček 1.0.1 se 32 jazyky (Package → Draft), popisy ve všech 32 jazycích (přesná shoda se zdroji), 5 snímků v každém jazyce (angličtina globální, ostatní vlastní), videa (globální anglické uAGTqHALjk4, české GHCUgSnQijY), Privacy practices z prvního konceptu. Tlačítko Submit for review je aktivní. Všechno nahrál Claude přes Arc. Zbývá jen **Submit for review** (tvoje kliknutí).
+
+1. **Balíček a upload složka:** oba příkazy ze sekce Packaging (zip, pak složka `dist/chrome-web-store`). Nahraj zip přes **Package** → **Upload new package**. Oprávnění se nemění.
+2. **Angličtina:** Description = celý blok ze sekce Store Listing (změnil se první řádek a seznam jazyků rozhraní). Screenshots = smaž pět starých a nahraj `screenshot-1.png` až `screenshot-5.png` z `1-globalni-en` v tomto pořadí.
+3. **Čeština:** popis ze sekce Česká verze obchodu, snímky z `2-cestina-cs`.
+4. **Dalších 30 jazyků:** pro každý vyber jazyk v rozbalovacím seznamu nahoře ve Store listing, do Description vlož celý `store/descriptions/<kód>.txt` a do snímků toho jazyka nahraj pět obrázků z `3-dalsi-jazyky/<kód>` v pořadí 1 až 5. Kódy: `ar` arabština, `da` dánština, `de` němčina, `el` řečtina, `es` španělština, `fi` finština, `fil` filipínština, `fr` francouzština, `hi` hindština, `hr` chorvatština, `hu` maďarština, `id` indonéština, `it` italština, `ja` japonština, `ko` korejština, `ms` malajština, `nl` nizozemština, `no` norština, `pl` polština, `pt_BR` portugalština (Brazílie), `pt_PT` portugalština (Portugalsko), `ro` rumunština, `sk` slovenština, `sv` švédština, `th` thajština, `tr` turečtina, `uk` ukrajinština, `vi` vietnamština, `zh_CN` čínština (Čína), `zh_TW` čínština (Tchaj-wan). V Dashboardu jsou jazyky pojmenované anglicky.
+5. **Všech 32 jazyků v jednom konceptu:** u Subtitle Overlay 1.0.17 obchod hlásil "Mismatching metadata", když se popisy v jazycích rozcházely.
+6. **Beze změny:** ikona, dlaždice (ty jsou společné pro všechny jazyky), kategorie, Privacy practices. **Video:** Global promo video je anglické (platí pro všechny jazyky bez vlastního), čeština má v Localized promo video české. Odkazy jsou v odstavci o videu níže.
+7. **Save draft** a **Submit for review** (to je tvoje kliknutí).
+
+Dashboard umí vyplnit i Claude přes Arc. Nástroje upravené pro Edge Trim jsou v `store/dashboard/` (jen v počítači, jako celé `store/`): `fill.py <kód> <soubor>` dá popis do zvoleného jazyka, `screens.py <kód…>` vymění snímky jazyka za ty ze `store/images/<kód>` (`en` = globální snímky, ostatní kódy = snímky daného jazyka; jeden jazyk trvá asi minutu), `setvideo.py <kód> <localized|global> <odkaz>` vyplní video, `savewait.py` klikne na Save draft a počká na potvrzení. Pracují jen v kartě Dashboardu (proměnná `ARC_TAB`), aktivní kartu v Arcu nechávají být. Snímky se v Dashboardu ukládají hned při nahrání a odebrání (ověřeno přenačtením stránky), popisy a videa až přes Save draft.
+
+**Kontrola překladů:** `python3 store/check-l10n.py` projde všech 32 jazyků (stejné klíče jako angličtina, popisky v uvozovkách přesně podle popupu, oprávnění v Chromově znění, délka názvu do 75 a shrnutí do 132 znaků, žádné kudrnaté uvozovky ani dlouhé pomlčky). Snímky jednoho jazyka znovu: `node store/render.mjs <kód> shots`.
+
+## Postup pro aktualizaci 1.0.1 (původní, před překlady do 32 jazyků)
+
+Tohle byl postup pro první koncept 1.0.1 s 8 jazyky. Platí z něj dál body 1 (zásady na webu), 6 (Privacy practices) a 8 (po schválení); balíček, popisy a snímky nahrazuje sekce Překlady do 32 jazyků výše.
 
 V obchodě je verze 1.0.0 (zveřejněná 2026-11-05, ověřeno na veřejné stránce obchodu 2026-11-08). Položka už existuje, takže nic nezakládáš znovu: nahraješ nový balíček a změníš jen to, co je níže. Všechno k nahrání je v `dist/chrome-web-store`.
 
@@ -19,7 +39,7 @@ V obchodě je verze 1.0.0 (zveřejněná 2026-11-05, ověřeno na veřejné str�
 7. Klikni na **Save draft** a pak **Submit for review**. Balíček, texty, obrázky i Privacy practices jdou ke kontrole společně. Obchod nemá pole "co je nového", takže novinky lidi uvidí v popisu a v changelogu na cleedek.com.
 8. **Až to projde:** řekni Claudovi, ať zapíše 1.0.1 do changelogu na cleedek.com (návrh je připravený, ale nepushnutý) a opraví tabulku Version History níže.
 
-Video se měnit nemusí: ukazuje starší přepínač "Add shadow" pod obrázky (záběry 8 a 9), ale všechny funkce v něm platí. Pokud ho Filip bude chtít aktualizovat, nestačí ho jen přegenerovat: ty dva záběry by se musely předělat na nový přepínač nahoře v popupu, pak render (asi 2 minuty na jazyk) a nové nahrání na YouTube.
+**Video, přegenerované 2026-11-09:** záběr 8 teď ukazuje přepínač Trim / Add shadow nahoře v popupu (kurzor klikne na Add shadow a popup sjede dolů na sekci stínu). Video je delší, 40 s místo 33,5 s: záběry s textem ke čtení (1, 4, 5, 7, 12 a 13) mají víc času, děj ostatních záběrů je stejný. Nová videa jsou v upload složce: `1-globalni-en/video-pro-youtube-en.mp4` a `2-cestina-cs/video-pro-youtube-cs.mp4`. Do obchodu se dostanou jen přes YouTube. Filip je nahrál 2026-11-09: anglické https://www.youtube.com/watch?v=uAGTqHALjk4 (Global promo video, platí pro všechny jazyky bez vlastního videa; dřív tam bylo DIe870U3OOY), české https://www.youtube.com/watch?v=GHCUgSnQijY (Localized promo video v češtině).
 
 ## Postup pro první vydání (2026-11-04, už hotové, jen pro informaci)
 
@@ -39,16 +59,16 @@ Obrázky pro obchod se dělají ze šablon ve `store/src` (skutečný popup a fo
 
 ## Store Listing
 
-**Extension Name**
-Edge Trim
+**Extension Name** (49 of 75 characters, from `_locales/en/messages.json`; every language has its own translation after the colon, as in Subtitle Overlay)
+Edge Trim: Auto Crop Transparent PNG & Add Shadow
 
-**Short Description** (119 of 132 characters, same as `_locales/en/messages.json`)
-Crop transparent pictures right to their edge: drop, paste or right-click a picture. Everything stays on your computer.
+**Short Description** (122 of 132 characters, same as `_locales/en/messages.json`)
+Crop transparent PNG pictures right to their edge and add a drop shadow. Drop, paste or right-click. All on your computer.
 
 **Detailed Description** (plain text: the store strips bold and links, so the ★ lines and CAPITAL headings do the highlighting, as in Subtitle Overlay's listing. Copy the whole block.)
 
 ```
-Crop transparent pictures right to the edge of what's in them.
+Crop transparent PNG pictures right to the edge of what's in them, and add a drop shadow.
 
 Edge Trim removes the empty space around cut-out photos, product shots and logos, so they line up in your layouts without fiddling with crops. Drop, paste or right-click a picture and get back a lossless PNG with the same name. Then add a drop shadow if you like. Everything happens on your computer.
 
@@ -97,8 +117,8 @@ ADD A DROP SHADOW (OPTIONAL)
 WORKS WITH
 PNG, WebP, AVIF and GIF (the first frame). SVG isn't supported, and JPEG has no transparency to trim.
 
-INTERFACE IN 8 LANGUAGES
-English, Czech, Slovak, German, French, Spanish, Vietnamese and Chinese (Simplified). It follows your browser, or pick one at the bottom of the popup. A dark or light look, or the same as your browser.
+INTERFACE IN 31 LANGUAGES
+English, Czech, Slovak, German, French, Spanish, Vietnamese, Simplified Chinese, Traditional Chinese, Italian, Portuguese, Polish, Ukrainian, Hungarian, Dutch, Swedish, Danish, Norwegian, Finnish, Greek, Turkish, Romanian, Croatian, Japanese, Korean, Thai, Indonesian, Malay, Filipino, Hindi and Arabic (right to left). It follows your browser, or pick one at the bottom of the popup. A dark or light look, or the same as your browser.
 
 PRIVACY
 Every picture is trimmed on your computer and is never uploaded. There are no analytics, no ads and no accounts, and Edge Trim only remembers your settings, in your browser. The only thing that ever leaves it is a message you choose to send: through "Problem or idea?" in the popup, or on the short page that opens if you remove the extension. Details in the privacy policy.
@@ -137,7 +157,7 @@ English
 **Popis (Description):**
 
 ```
-Ořízne průhledné obrázky přesně na hranu toho, co v nich je.
+Ořízne průhledné PNG obrázky přesně na hranu toho, co v nich je, a přidá k nim stín.
 
 Edge Trim odstraní prázdné místo kolem vyříznutých fotek, produktových snímků a log, takže ti v návrzích sednou bez piplání s ořezem. Přetáhni, vlož nebo klikni pravým na obrázek a dostaneš zpátky bezeztrátové PNG se stejným názvem. Pak můžeš přidat stín. Všechno se děje v tvém počítači.
 
@@ -186,8 +206,8 @@ PŘIDEJ STÍN (VOLITELNĚ)
 PODPOROVANÉ FORMÁTY
 PNG, WebP, AVIF a GIF (první snímek). SVG podporované není a JPEG nemá průhlednost, kterou by šlo ořezat.
 
-ROZHRANÍ V 8 JAZYCÍCH
-Čeština, slovenština, angličtina, němčina, francouzština, španělština, vietnamština a čínština (zjednodušená). Řídí se prohlížečem, nebo si jazyk vybereš dole v popupu. Tmavý nebo světlý vzhled, případně podle prohlížeče.
+ROZHRANÍ V 31 JAZYCÍCH
+Čeština, slovenština, angličtina, němčina, francouzština, španělština, vietnamština, zjednodušená a tradiční čínština, italština, portugalština, polština, ukrajinština, maďarština, nizozemština, švédština, dánština, norština, finština, řečtina, turečtina, rumunština, chorvatština, japonština, korejština, thajština, indonéština, malajština, filipínština, hindština a arabština (zprava doleva). Řídí se prohlížečem, nebo si jazyk vybereš dole v popupu. Tmavý nebo světlý vzhled, případně podle prohlížeče.
 
 SOUKROMÍ
 Každý obrázek se ořezává v tvém počítači a nikam se nenahrává. Žádná analytika, žádné reklamy, žádné účty a Edge Trim si pamatuje jen tvoje nastavení, v tvém prohlížeči. Ven odejde jen zpráva, kterou se rozhodneš poslat: přes "Problém nebo nápad?" v popupu, nebo na krátké stránce, která se otevře, když rozšíření odebereš. Podrobnosti v zásadách ochrany soukromí.
@@ -220,9 +240,9 @@ S 💜 ve Vietnamu vytváří Cleedek.
 | Screenshot 5: invisible leftovers, and the promises | 1280×800 | ✅ In the store since 1.0.0 | `store/images/en/screenshot-5.png` |
 | Small Promo Tile | 440×280 | ✅ Chosen (concept 2, "Snaps to the edge.") | `store/images/en/promo-tile.png` |
 | Marquee Promo Tile | 1400×560 | ✅ Chosen (concept 2, "Snaps to the edge.") | `store/images/en/promo-marquee.png` |
-| Promo video (YouTube link) | 1920×1080, 33.5 s | ✅ In the store since 1.0.0; shots 8 and 9 still show the old "Add shadow" toggle | `store/video/out/edge-trim-promo-en-1080p.mp4` |
+| Promo video (YouTube link) | 1920×1080, 40 s | Re-rendered 2026-11-09: shot 8 shows the Trim / Add shadow switch at the top of the popup, and the shots with text to read are longer (33.5 s → 40 s). Needs uploading to YouTube and the new link in the listing (the store still has the 1.0.0 video) | `store/video/out/edge-trim-promo-en-1080p.mp4` |
 
-All of them are drawn from `store/src` (`shots.html`, `promo.html`) with `node store/render.mjs [lang]`. The sushi platter is the cut-out photo from Filip's demo (`store/src/photos/sushi-platter.webp`); only the made-up logo is drawn in code, and the nearly invisible leftovers in screenshot 5 are added to the photo there (`store/src/samples.js`). The Czech versions have the same file names in `store/images/cs`, and the Czech video is `store/video/out/edge-trim-promo-cs-1080p.mp4`.
+All of them are drawn from `store/src` (`shots.html`, `promo.html`) with `node store/render.mjs [lang]`. The sushi platter is the cut-out photo from Filip's demo (`store/src/photos/sushi-platter.webp`); only the made-up logo is drawn in code, and the nearly invisible leftovers in screenshot 5 are added to the photo there (`store/src/samples.js`). The Czech versions have the same file names in `store/images/cs`, and the Czech video is `store/video/out/edge-trim-promo-cs-1080p.mp4`. Since 2026-11-09 every store language has its own five screenshots in `store/images/<code>` (`node store/render.mjs <code> shots`): the words come from `store/src/copy/<code>.json`, the popup in them is the real one in that language, the right-click menu items around Edge Trim's are Chrome's own in that language (`store/src/copy/chrome-menu.json`), and Japanese, Chinese, Korean, Thai, Hindi and Arabic use the matching Noto Sans. Arabic images read from the right; only their text is mirrored, not the layout. The promo tiles and the video stay English (and Czech).
 
 ## Permissions Justification
 
@@ -347,14 +367,16 @@ V=$(node -p "require('./manifest.json').version") && mkdir -p dist && rm -f "dis
 Then everything to upload, in one folder sorted by language (`dist/chrome-web-store`):
 
 ```bash
-V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && rm -rf "$O" && mkdir -p "$O/1-globalni-en" "$O/2-cestina-cs" && cp "dist/edge-trim-$V.zip" "$O/" && cp icons/icon128.png "$O/1-globalni-en/store-icon-128.png" && for n in 1 2 3 4 5; do cp store/images/en/screenshot-$n.png "$O/1-globalni-en/"; cp store/images/cs/screenshot-$n.png "$O/2-cestina-cs/"; done && cp store/images/en/promo-tile.png "$O/1-globalni-en/small-promo-tile-440x280.png" && cp store/images/en/promo-marquee.png "$O/1-globalni-en/marquee-promo-tile-1400x560.png" && cp store/video/out/edge-trim-promo-en-1080p.mp4 "$O/1-globalni-en/video-pro-youtube-en.mp4" && cp store/video/out/edge-trim-promo-cs-1080p.mp4 "$O/2-cestina-cs/video-pro-youtube-cs.mp4"
+V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && rm -rf "$O" && mkdir -p "$O/1-globalni-en" "$O/2-cestina-cs" && cp "dist/edge-trim-$V.zip" "$O/" && cp icons/icon128.png "$O/1-globalni-en/store-icon-128.png" && for n in 1 2 3 4 5; do cp store/images/en/screenshot-$n.png "$O/1-globalni-en/"; cp store/images/cs/screenshot-$n.png "$O/2-cestina-cs/"; done && cp store/images/en/promo-tile.png "$O/1-globalni-en/small-promo-tile-440x280.png" && cp store/images/en/promo-marquee.png "$O/1-globalni-en/marquee-promo-tile-1400x560.png" && cp store/video/out/edge-trim-promo-en-1080p.mp4 "$O/1-globalni-en/video-pro-youtube-en.mp4" && cp store/video/out/edge-trim-promo-cs-1080p.mp4 "$O/2-cestina-cs/video-pro-youtube-cs.mp4" && for c in $(ls _locales | grep -v -x -e en -e cs); do mkdir -p "$O/3-dalsi-jazyky/$c" && cp store/images/$c/screenshot-[1-5].png store/descriptions/$c.txt "$O/3-dalsi-jazyky/$c/"; done
 ```
+
+`3-dalsi-jazyky/<kód>` has the other 30 languages, each with its five screenshots and its description (`<kód>.txt`, the same file as in `store/descriptions`).
 
 ## Version History
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 1.0.1 | 2026-11-08 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. | Draft complete 2026-11-09, waiting for Submit for review |
+| 1.0.1 | 2026-11-09 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. Interface in 31 languages (the same as Subtitle Overlay's, Arabic right to left), store name "Edge Trim: Auto Crop Transparent PNG & Add Shadow" in 32 languages, descriptions and screenshots in 32 languages, new promo videos (EN, CS). | Draft complete 2026-11-09 (first submission cancelled to add the translations), waiting for Submit for review |
 | 1.0.0 | 2026-11-02 | First version. The store build of 2026-11-04 also had the shadow, "My shadows", trimming downloads and the right-click option for download links. | Published 2026-11-05 |
 
 ## Review Notes
