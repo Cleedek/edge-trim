@@ -163,5 +163,18 @@
   "What's new in version {version}": "版本 {version} 的新功能",
   "Close": "关闭",
   "Try again": "重试",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "我会通过邮件收到你的留言，仅用于回复和修复问题。在你点击\"发送\"之前，不会发送任何内容。"
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "我会通过邮件收到你的留言，仅用于回复和修复问题。在你点击\"发送\"之前，不会发送任何内容。",
+  "{n} pictures trimmed": "已裁剪 {n} 张图片",
+  "That’s {count} empty pixels gone. Nice!": "共去掉了 {count} 个空白像素。真棒！",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Edge Trim 由我一个人免费制作。为了让它继续成长，以下任何一种方式都能帮到我：",
+  "Send Filip a tip": "给 Filip 打赏",
+  "More ways to pay in the extension popup": "更多付款方式在扩展程序窗口中",
+  "Share with a friend": "分享给朋友",
+  "Copies the link": "复制链接",
+  "Write a review": "写评价",
+  "In the Chrome Web Store": "在 Chrome 应用商店",
+  "Or give it a star on GitHub": "或者在 GitHub 上点个星",
+  "You’ll only see this once.": "这个提示只会出现一次。",
+  "Close (it won’t come back)": "关闭（不会再出现）",
+  "The link is copied. Send it to someone who’d like it.": "链接已复制。发给可能用得上的人吧。"
 }

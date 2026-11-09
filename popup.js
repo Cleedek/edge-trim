@@ -53,7 +53,7 @@ async function init() {
   setupShadow(stored);
   setupSupport();
   setupFeedback({ ext: 'edge-trim', name: 'Edge Trim', i18n: TrimI18n });
-  setupWhatsNew({ slug: 'edge-trim', i18n: TrimI18n });
+  setupWhatsNew({ slug: 'edge-trim', i18n: TrimI18n }).then((news) => setupAsk(news)).catch(() => {});
   setupUiLang();
   setupAppearance();
 }
@@ -99,6 +99,11 @@ async function trimItem(item) {
   revoke(item);
   forget(item);
   item.result = result;
+  // For the support card: each picture once, also when a setting trims it again.
+  if (result.status === 'trimmed' && !item.counted) {
+    item.counted = true;
+    chrome.runtime.sendMessage({ type: 'count-trim', res: { before: result.before, box: result.box } }).catch(() => {});
+  }
   // An untouched picture is still shown, so you can see what was checked.
   const shown = result.blob || (result.status === 'tight' ? item.file : null);
   item.url = shown ? URL.createObjectURL(shown) : null;
@@ -646,4 +651,37 @@ function setupSupport() {
       setTimeout(() => { btn.textContent = label; }, 1500);
     });
   }
+}
+
+// ---------- the one-time support card (lib/support-ask.js) ----------
+
+// Not on the same opening as "What's new". Any click on it ends it for good.
+async function setupAsk(newsShown) {
+  if (newsShown) return;
+  const { trimStats, supportAsk } = await chrome.storage.local.get(['trimStats', 'supportAsk']);
+  if (!SupportAsk.due(trimStats, supportAsk)) return;
+  const card = $('askCard');
+  $('askTitle').textContent = t('{n} pictures trimmed', { n: trimStats.pictures });
+  $('askText').textContent = t('That’s {count} empty pixels gone. Nice!', { n: trimStats.pixels, count: trimStats.pixels.toLocaleString(TrimI18n.lang) })
+    + ' ' + t('I make Edge Trim on my own, for free. To keep it growing, any of these helps:');
+  $('askLogos').replaceWith($('payKofi').querySelector('.pay-logos').cloneNode(true));
+  $('askReview').href = SupportAsk.STORE + '/reviews';
+  $('askGithub').href = SupportAsk.GITHUB;
+  card.hidden = false;
+  chrome.runtime.sendMessage({ type: 'support-ask', shown: true }).catch(() => {});
+
+  const end = () => chrome.runtime.sendMessage({ type: 'support-ask', done: true }).catch(() => {});
+  const hide = () => { card.hidden = true; };
+  $('askClose').addEventListener('click', () => { end(); hide(); });
+  $('askReview').addEventListener('click', () => { end(); hide(); });
+  $('askGithub').addEventListener('click', () => { end(); hide(); });
+  // The support screen with every way to pay, as the footer button opens it.
+  $('askDonate').addEventListener('click', () => { end(); hide(); $('supportOpen').click(); });
+  $('askShare').addEventListener('click', async () => {
+    end();
+    try { await navigator.clipboard.writeText(SupportAsk.STORE); } catch (e) { $('askCopied').textContent = SupportAsk.STORE; }
+    card.classList.add('thanked');
+    $('askCopied').hidden = false;
+    setTimeout(hide, 4000);
+  });
 }

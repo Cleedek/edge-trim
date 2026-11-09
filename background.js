@@ -1,7 +1,7 @@
 // Edge Trim: the background worker. Right-click a picture on a page -> trim it, then copy or save it.
 // With "Trim downloaded pictures" on, pictures downloaded from any page are trimmed too.
 
-importScripts('lib/i18n.js', 'lib/trim.js', 'lib/whats-new.js', 'lib/goodbye.js');
+importScripts('lib/i18n.js', 'lib/trim.js', 'lib/whats-new.js', 'lib/goodbye.js', 'lib/support-ask.js');
 
 // The "why did you leave?" page Chrome opens after the extension is removed (lib/goodbye.js).
 setupGoodbye({ ext: 'edge-trim', i18n: TrimI18n });
@@ -46,12 +46,12 @@ async function run(action, src, target) {
   const dataUrl = await toDataUrl(res.blob);
   if (action === 'copy' && target) {
     const [{ result: copied } = {}] = await chrome.scripting.executeScript({ target, func: copyInPage, args: [dataUrl] }).catch(() => []);
-    if (copied) return toast(target, t('Copied the trimmed image ({w} × {h} px).', size));
+    if (copied) return trimmed(target, res, t('Copied the trimmed image ({w} × {h} px).', size));
     await save(dataUrl, name);
-    return toast(target, t('This page doesn’t allow copying, so the image was saved instead.'));
+    return trimmed(target, res, t('This page doesn’t allow copying, so the image was saved instead.'));
   }
   await save(dataUrl, name);
-  toast(target, t('Saved the trimmed image ({w} × {h} px).', size));
+  trimmed(target, res, t('Saved the trimmed image ({w} × {h} px).', size));
 }
 
 // From the worker first (it can reach any site). If the server says no, the page tries
@@ -78,6 +78,71 @@ function serverName(r) {
 
 function save(dataUrl, name) {
   return chrome.downloads.download({ url: dataUrl, filename: EdgeTrim.outputName(name), conflictAction: 'uniquify' });
+}
+
+// ---------- trimmed pictures, for the one-time support card (lib/support-ask.js) ----------
+
+// Written here only, one after another, so the popup and a right-click can't lose a count.
+let statsWrite = Promise.resolve();
+function countTrim(res) {
+  statsWrite = statsWrite.then(async () => {
+    const { trimStats: s = { pictures: 0, pixels: 0, days: 0, lastDay: '' } } = await chrome.storage.local.get('trimStats');
+    const day = new Date().toLocaleDateString('sv'); // 2026-11-09, in the person's own time zone
+    s.pictures++;
+    s.pixels += Math.max(0, res.before.w * res.before.h - res.box.w * res.box.h);
+    if (s.lastDay !== day) { s.days++; s.lastDay = day; }
+    await chrome.storage.local.set({ trimStats: s });
+  }).catch(() => {});
+  return statsWrite;
+}
+// shown: one more time it appeared; done: any click on it, for good.
+function markAsk(change) {
+  statsWrite = statsWrite.then(async () => {
+    const { supportAsk: a = { shown: 0 } } = await chrome.storage.local.get('supportAsk');
+    if (a.done) return;
+    if (change.done) a.done = true;
+    if (change.shown) a.shown = (a.shown || 0) + 1;
+    await chrome.storage.local.set({ supportAsk: a });
+  }).catch(() => {});
+  return statsWrite;
+}
+
+chrome.runtime.onMessage.addListener((msg) => {
+  if (msg?.type === 'count-trim' && msg.res?.before && msg.res?.box) countTrim(msg.res);
+  if (msg?.type === 'support-ask') markAsk(msg);
+});
+
+// A picture trimmed by right-click or as it downloaded: counted, then the usual
+// note, or, once it's due, the support card with the same note at its top.
+async function trimmed(target, res, text) {
+  await countTrim(res);
+  const { trimStats, supportAsk } = await chrome.storage.local.get(['trimStats', 'supportAsk']);
+  if (!target || !SupportAsk.due(trimStats, supportAsk)) return toast(target, text);
+  const n = trimStats.pictures;
+  const card = {
+    note: text,
+    title: t('{n} pictures trimmed', { n }),
+    lines: t('That’s {count} empty pixels gone. Nice!', { n: trimStats.pixels, count: trimStats.pixels.toLocaleString(TrimI18n.lang) }),
+    intro: t('I make Edge Trim on my own, for free. To keep it growing, any of these helps:'),
+    tip: t('Send Filip a tip'),
+    tipSub: t('You choose the amount') + ' · ' + t('No account needed'),
+    donate: t('Support the creator'),
+    more: t('More ways to pay in the extension popup'),
+    share: t('Share with a friend'), shareSub: t('Copies the link'),
+    review: t('Write a review'), reviewSub: t('In the Chrome Web Store'),
+    gh: t('Or give it a star on GitHub'),
+    once: t('You’ll only see this once.'),
+    close: t('Close (it won’t come back)'),
+    copied: t('The link is copied. Send it to someone who’d like it.'),
+    photo: chrome.runtime.getURL('icons/support/filip.jpg'),
+    logos: chrome.runtime.getURL('icons/support/pay-logos-dark.svg'),
+    kofi: SupportAsk.KOFI, store: SupportAsk.STORE, github: SupportAsk.GITHUB,
+    rtl: TrimI18n.rtl,
+  };
+  try {
+    await chrome.scripting.executeScript({ target, func: showSupportCard, args: [card] });
+    await markAsk({ shown: true });
+  } catch (e) { toast(target, text); }
 }
 
 // ---------- pictures downloaded from any page ----------
@@ -120,7 +185,7 @@ async function trimDownload(id) {
     await chrome.downloads.download({ url: originalUrl, filename: name, conflictAction: 'uniquify', saveAs: false });
     return toast(target, kept, true);
   }
-  toast(target, t('Trimmed the downloaded picture ({w} × {h} px).', { w: res.box.w, h: res.box.h }));
+  trimmed(target, res, t('Trimmed the downloaded picture ({w} × {h} px).', { w: res.box.w, h: res.box.h }));
 }
 
 // The tab the download came from: a blob: link only opens there, and it has the site's cookies.
@@ -261,4 +326,126 @@ function showToast(text, isError) {
   document.documentElement.append(host);
   requestAnimationFrame(() => box.classList.add('on'));
   setTimeout(() => { box.classList.remove('on'); setTimeout(() => host.remove(), 250); }, 2800);
+}
+
+
+// The support card, bottom right, always dark (it has its own place, apart from the note).
+// It goes by itself after 30 s untouched (counted as shown); any click ends it for good.
+function showSupportCard(c) {
+  document.getElementById('edge-trim-ask')?.remove();
+  document.getElementById('edge-trim-toast')?.remove();
+  const host = Object.assign(document.createElement('div'), { id: 'edge-trim-ask' });
+  const shadow = host.attachShadow({ mode: 'closed' });
+  const ICON = {
+    heart: '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.5S2 10 2 6a3 3 0 0 1 6-1 3 3 0 0 1 6 1c0 4-6 7.5-6 7.5Z" fill="currentColor"/></svg>',
+    share: '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 10V2M5 5l3-3 3 3M3.5 8v5.5h9V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    star: '<svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6l1.95 4.02 4.43.62-3.22 3.1.78 4.4L8 11.65l-3.94 2.09.78-4.4L1.62 6.24l4.43-.62L8 1.6Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+    github: '<svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>',
+    close: '<svg width="10" height="10" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3 3 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  };
+  shadow.innerHTML = `<style>
+    .card { all: initial; position: fixed; z-index: 2147483647; right: 20px; bottom: 20px; box-sizing: border-box;
+      width: min(310px, calc(100vw - 32px)); max-height: calc(100vh - 40px); overflow: auto;
+      display: flex; flex-direction: column; gap: 10px; padding: 12px 12px 10px; border-radius: 14px;
+      background: oklch(0.2 0.01 290 / .97); color: #fff; border: 1px solid oklch(0.36 0.014 290);
+      font: 500 13px/1.3 system-ui, -apple-system, "Segoe UI", sans-serif; box-shadow: 0 16px 40px -10px rgba(0,0,0,.55);
+      opacity: 0; transform: translateY(10px); transition: opacity .3s cubic-bezier(.25,1,.5,1), transform .3s cubic-bezier(.25,1,.5,1); }
+    .card.on { opacity: 1; transform: none; }
+    .card * { box-sizing: border-box; }
+    a, button { font: inherit; color: #fff; text-decoration: none; cursor: pointer; }
+    svg { flex: none; }
+    .note { display: flex; align-items: center; gap: 8px; padding: 0 26px 9px 2px; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 12px; color: rgba(255,255,255,.8); }
+    .note i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: oklch(0.86 0.13 150); }
+    .x { position: absolute; top: 8px; inset-inline-end: 8px; display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 7px; background: transparent; color: rgba(255,255,255,.6); }
+    .x:hover { background: rgba(255,255,255,.14); color: #fff; }
+    .hello { display: flex; flex-direction: column; gap: 3px; }
+    .hello strong { font-size: 14.5px; font-weight: 700; }
+    .hello span { font-size: 12px; color: rgba(255,255,255,.72); line-height: 1.45; }
+    .tile { display: flex; flex-direction: column; gap: 10px; padding: 11px; border-radius: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); }
+    .who { display: flex; align-items: center; gap: 10px; }
+    .who img { flex: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px rgba(255,255,255,.14); }
+    .who div { display: flex; flex-direction: column; gap: 1px; line-height: 1.3; }
+    .who strong { font-weight: 650; font-size: 13.5px; }
+    .who span { font-size: 11.5px; color: rgba(255,255,255,.65); }
+    .logos { display: block; width: 200px; max-width: 100%; height: auto; }
+    .main { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 9px 12px; border-radius: 8px; background: #7c3aed; font-weight: 650; font-size: 13.5px; }
+    .main:hover { background: #8b5cf6; }
+    .more { font-size: 11px; color: rgba(255,255,255,.6); }
+    .minor { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .minor > * { display: flex; align-items: center; gap: 8px; padding: 8px 9px; border: 0; border-radius: 9px; background: rgba(255,255,255,.1); text-align: start; }
+    .minor > *:hover { background: rgba(255,255,255,.18); }
+    .minor svg { color: rgba(255,255,255,.7); }
+    .minor div { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+    .minor b { font-weight: 600; font-size: 12.5px; }
+    .minor small { font-size: 10.5px; color: rgba(255,255,255,.55); }
+    .gh { display: inline-flex; align-items: center; justify-content: center; gap: 6px; align-self: center; padding: 2px 8px; color: rgba(255,255,255,.65); font-size: 11.5px; text-decoration: underline; text-decoration-color: rgba(255,255,255,.3); text-underline-offset: 3px; }
+    .gh:hover { color: #fff; text-decoration-color: currentColor; }
+    .once { margin: -2px 0 0; text-align: center; font-size: 10.5px; color: rgba(255,255,255,.5); }
+    .thanks { display: flex; align-items: center; gap: 8px; padding: 2px 24px 2px 2px; font-size: 12.5px; }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+  </style>`;
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+  const card = el('div', 'card');
+  card.setAttribute('role', 'dialog');
+  card.setAttribute('aria-label', c.donate);
+  if (c.rtl) card.dir = 'rtl';
+  let timer = 0;
+  const leave = () => { clearTimeout(timer); card.classList.remove('on'); setTimeout(() => host.remove(), 300); };
+  const later = () => { clearTimeout(timer); timer = setTimeout(() => (card.matches(':hover') ? later() : leave()), 30000); };
+  const end = () => { try { chrome.runtime.sendMessage({ type: 'support-ask', done: true }); } catch (e) { /* the extension was reloaded */ } };
+  const link = (cls, href) => {
+    const a = el('a', cls);
+    Object.assign(a, { href, target: '_blank', rel: 'noopener' });
+    a.addEventListener('click', () => { end(); leave(); });
+    return a;
+  };
+  const two = (big, small, tagBig = 'b', tagSmall = 'small') => { const d = el('div'); d.append(el(tagBig, '', big), el(tagSmall, '', small)); return d; };
+
+  const close = el('button', 'x');
+  close.innerHTML = ICON.close;
+  close.title = c.close;
+  close.setAttribute('aria-label', c.close);
+  close.addEventListener('click', () => { end(); leave(); });
+  const note = el('div', 'note');
+  note.append(el('i'), el('span', '', c.note));
+  const hello = el('div', 'hello');
+  hello.append(el('strong', '', c.title), el('span', '', c.lines + ' ' + c.intro));
+  const tile = el('div', 'tile');
+  const who = el('div', 'who');
+  const photo = Object.assign(el('img'), { src: c.photo, width: 38, height: 38, alt: '' });
+  photo.addEventListener('error', () => photo.remove()); // a page that blocks it: the card works without
+  who.append(photo, two(c.tip, c.tipSub, 'strong', 'span'));
+  const logos = Object.assign(el('img', 'logos'), { src: c.logos, alt: 'Google Pay, Apple Pay, PayPal, Visa, Mastercard' });
+  logos.addEventListener('error', () => logos.remove());
+  const main = link('main', c.kofi);
+  main.innerHTML = ICON.heart;
+  main.append(c.donate);
+  tile.append(who, logos, main, el('span', 'more', c.more));
+  const minor = el('div', 'minor');
+  const share = el('button');
+  share.innerHTML = ICON.share;
+  share.append(two(c.share, c.shareSub));
+  share.addEventListener('click', async () => {
+    end();
+    let ok = true;
+    try { await navigator.clipboard.writeText(c.store); } catch (e) { ok = false; }
+    const thanks = el('div', 'thanks');
+    thanks.innerHTML = ICON.share;
+    thanks.append(ok ? c.copied : c.store);
+    card.replaceChildren(close, thanks);
+    timer = setTimeout(leave, 4000);
+  });
+  const review = link('', c.store + '/reviews');
+  review.innerHTML = ICON.star;
+  review.append(two(c.review, c.reviewSub));
+  minor.append(share, review);
+  const gh = link('gh', c.github);
+  gh.innerHTML = ICON.github;
+  gh.append(c.gh);
+  card.append(close, note, hello, tile, minor, gh, el('p', 'once', c.once));
+  card.addEventListener('mouseleave', later);
+  shadow.append(card);
+  document.documentElement.append(host);
+  requestAnimationFrame(() => card.classList.add('on'));
+  later();
 }

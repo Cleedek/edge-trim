@@ -163,5 +163,18 @@
   "What's new in version {version}": "Що нового у версії {version}",
   "Close": "Закрити",
   "Try again": "Спробувати ще раз",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Я отримую твоє повідомлення на e-mail лише для відповіді та виправлення проблем. Нічого не надсилається, доки ти не натиснеш \"Надіслати\"."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Я отримую твоє повідомлення на e-mail лише для відповіді та виправлення проблем. Нічого не надсилається, доки ти не натиснеш \"Надіслати\".",
+  "{n} pictures trimmed": {"one": "{n} обрізане зображення", "few": "{n} обрізані зображення", "many": "{n} обрізаних зображень", "other": "{n} обрізаного зображення"},
+  "That’s {count} empty pixels gone. Nice!": {"one": "Це {count} порожній піксель менше. Чудово!", "few": "Це {count} порожні пікселі менше. Чудово!", "many": "Це {count} порожніх пікселів менше. Чудово!", "other": "Це {count} порожнього пікселя менше. Чудово!"},
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Я роблю Edge Trim сам і безкоштовно. Щоб він і далі розвивався, допоможе будь-що з цього:",
+  "Send Filip a tip": "Надішли Філіпу чайові",
+  "More ways to pay in the extension popup": "Більше способів оплати у вікні розширення",
+  "Share with a friend": "Поділитися з другом",
+  "Copies the link": "Копіює посилання",
+  "Write a review": "Написати відгук",
+  "In the Chrome Web Store": "У Chrome Web Store",
+  "Or give it a star on GitHub": "Або постав зірочку на GitHub",
+  "You’ll only see this once.": "Це вікно ти побачиш лише раз.",
+  "Close (it won’t come back)": "Закрити (більше не з’явиться)",
+  "The link is copied. Send it to someone who’d like it.": "Посилання скопійовано. Надішли його тому, кому воно сподобається."
 }

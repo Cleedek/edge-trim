@@ -163,5 +163,18 @@
   "What's new in version {version}": "버전 {version}의 새로운 기능",
   "Close": "닫기",
   "Try again": "다시 시도",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "메시지는 이메일로 받으며 답변과 문제 해결에만 사용합니다. 보내기를 누르기 전에는 아무것도 전송되지 않습니다."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "메시지는 이메일로 받으며 답변과 문제 해결에만 사용합니다. 보내기를 누르기 전에는 아무것도 전송되지 않습니다.",
+  "{n} pictures trimmed": "이미지 {n}개 다듬음",
+  "That’s {count} empty pixels gone. Nice!": "빈 픽셀 {count}개를 없앴어요. 멋져요!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Edge Trim는 혼자서 무료로 만들고 있어요. 계속 발전할 수 있도록 이 중 무엇이든 도움이 돼요:",
+  "Send Filip a tip": "Filip에게 팁 보내기",
+  "More ways to pay in the extension popup": "다른 결제 방법은 확장 프로그램 창에 있어요",
+  "Share with a friend": "친구에게 공유",
+  "Copies the link": "링크를 복사해요",
+  "Write a review": "리뷰 쓰기",
+  "In the Chrome Web Store": "Chrome 웹 스토어에서",
+  "Or give it a star on GitHub": "또는 GitHub에서 별 주기",
+  "You’ll only see this once.": "이 안내는 한 번만 보여요.",
+  "Close (it won’t come back)": "닫기 (다시 표시되지 않아요)",
+  "The link is copied. Send it to someone who’d like it.": "링크가 복사됐어요. 좋아할 만한 사람에게 보내 보세요."
 }

@@ -163,5 +163,18 @@
   "What's new in version {version}": "Wat is er nieuw in versie {version}",
   "Close": "Sluiten",
   "Try again": "Opnieuw proberen",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Je bericht komt per e-mail bij mij binnen, alleen om te antwoorden en problemen op te lossen. Er wordt niets verstuurd tot je op Versturen drukt."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Je bericht komt per e-mail bij mij binnen, alleen om te antwoorden en problemen op te lossen. Er wordt niets verstuurd tot je op Versturen drukt.",
+  "{n} pictures trimmed": {"one": "{n} afbeelding bijgesneden", "other": "{n} afbeeldingen bijgesneden"},
+  "That’s {count} empty pixels gone. Nice!": "Dat zijn {count} lege pixels minder. Top!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Ik maak Edge Trim in mijn eentje en gratis. Om het te laten groeien, helpt alles hiervan:",
+  "Send Filip a tip": "Stuur Filip een fooi",
+  "More ways to pay in the extension popup": "Meer manieren om te betalen in het venster van de extensie",
+  "Share with a friend": "Delen met een vriend",
+  "Copies the link": "Kopieert de link",
+  "Write a review": "Schrijf een review",
+  "In the Chrome Web Store": "In de Chrome Web Store",
+  "Or give it a star on GitHub": "Of geef het een ster op GitHub",
+  "You’ll only see this once.": "Dit zie je maar één keer.",
+  "Close (it won’t come back)": "Sluiten (komt niet terug)",
+  "The link is copied. Send it to someone who’d like it.": "De link is gekopieerd. Stuur hem naar iemand die hem leuk zou vinden."
 }

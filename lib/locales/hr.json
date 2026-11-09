@@ -163,5 +163,18 @@
   "What's new in version {version}": "Što je novo u verziji {version}",
   "Close": "Zatvori",
   "Try again": "Pokušaj ponovno",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Poruku primam e-poštom, samo da bih odgovorio i ispravio probleme. Ništa se ne šalje dok ne pritisneš Pošalji."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Poruku primam e-poštom, samo da bih odgovorio i ispravio probleme. Ništa se ne šalje dok ne pritisneš Pošalji.",
+  "{n} pictures trimmed": {"one": "{n} obrezana slika", "few": "{n} obrezane slike", "other": "{n} obrezanih slika"},
+  "That’s {count} empty pixels gone. Nice!": {"one": "To je {count} prazan piksel manje. Super!", "few": "To su {count} prazna piksela manje. Super!", "other": "To je {count} praznih piksela manje. Super!"},
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Edge Trim radim sam i besplatno. Da bi mogao dalje rasti, pomaže mi bilo što od ovoga:",
+  "Send Filip a tip": "Pošalji Filipu napojnicu",
+  "More ways to pay in the extension popup": "Više načina plaćanja u prozoru proširenja",
+  "Share with a friend": "Podijeli s prijateljem",
+  "Copies the link": "Kopira poveznicu",
+  "Write a review": "Napiši recenziju",
+  "In the Chrome Web Store": "U Chrome web-trgovini",
+  "Or give it a star on GitHub": "Ili mu daj zvjezdicu na GitHubu",
+  "You’ll only see this once.": "Ovo ćeš vidjeti samo jednom.",
+  "Close (it won’t come back)": "Zatvori (više se neće vratiti)",
+  "The link is copied. Send it to someone who’d like it.": "Poveznica je kopirana. Pošalji je nekome kome bi se mogla svidjeti."
 }

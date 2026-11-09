@@ -163,5 +163,18 @@
   "What's new in version {version}": "Co nowego w wersji {version}",
   "Close": "Zamknij",
   "Try again": "Spróbuj ponownie",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Wiadomość dostaję e-mailem, tylko po to, by odpowiedzieć i naprawić problem. Nic nie zostanie wysłane, dopóki nie naciśniesz Wyślij."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Wiadomość dostaję e-mailem, tylko po to, by odpowiedzieć i naprawić problem. Nic nie zostanie wysłane, dopóki nie naciśniesz Wyślij.",
+  "{n} pictures trimmed": {"one": "{n} przycięty obraz", "few": "{n} przycięte obrazy", "many": "{n} przyciętych obrazów", "other": "{n} przyciętego obrazu"},
+  "That’s {count} empty pixels gone. Nice!": {"one": "To {count} pusty piksel mniej. Super!", "few": "To {count} puste piksele mniej. Super!", "many": "To {count} pustych pikseli mniej. Super!", "other": "To {count} pustego piksela mniej. Super!"},
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Robię Edge Trim sam i za darmo. Żeby mógł dalej się rozwijać, pomoże mi cokolwiek z tego:",
+  "Send Filip a tip": "Wyślij Filipowi napiwek",
+  "More ways to pay in the extension popup": "Więcej sposobów płatności znajdziesz w oknie rozszerzenia",
+  "Share with a friend": "Udostępnij znajomemu",
+  "Copies the link": "Kopiuje link",
+  "Write a review": "Napisz recenzję",
+  "In the Chrome Web Store": "W Chrome Web Store",
+  "Or give it a star on GitHub": "Albo daj gwiazdkę na GitHubie",
+  "You’ll only see this once.": "Zobaczysz to tylko raz.",
+  "Close (it won’t come back)": "Zamknij (już nie wróci)",
+  "The link is copied. Send it to someone who’d like it.": "Link jest skopiowany. Wyślij go komuś, komu się przyda."
 }

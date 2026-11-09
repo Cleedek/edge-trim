@@ -163,5 +163,18 @@
   "What's new in version {version}": "ما الجديد في الإصدار {version}",
   "Close": "إغلاق",
   "Try again": "إعادة المحاولة",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "تصلني رسالتك بالبريد الإلكتروني، فقط للرد عليك وإصلاح المشكلات. لا يُرسل أي شيء حتى تضغط على إرسال."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "تصلني رسالتك بالبريد الإلكتروني، فقط للرد عليك وإصلاح المشكلات. لا يُرسل أي شيء حتى تضغط على إرسال.",
+  "{n} pictures trimmed": {"zero": "لا صور مقصوصة", "one": "صورة واحدة مقصوصة", "two": "صورتان مقصوصتان", "few": "{n} صور مقصوصة", "many": "{n} صورة مقصوصة", "other": "{n} صورة مقصوصة"},
+  "That’s {count} empty pixels gone. Nice!": "هذا يعني {count} بكسل فارغ أقل. رائع!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "أصنع Edge Trim وحدي ومجانًا. ليستمر في التطور، يساعدني أي مما يلي:",
+  "Send Filip a tip": "أرسل إكرامية إلى فيليب",
+  "More ways to pay in the extension popup": "طرق دفع أخرى في نافذة الإضافة",
+  "Share with a friend": "مشاركة مع صديق",
+  "Copies the link": "ينسخ الرابط",
+  "Write a review": "اكتب مراجعة",
+  "In the Chrome Web Store": "في سوق Chrome الإلكتروني",
+  "Or give it a star on GitHub": "أو امنحه نجمة على GitHub",
+  "You’ll only see this once.": "لن ترى هذا إلا مرة واحدة.",
+  "Close (it won’t come back)": "إغلاق (لن يظهر مجددًا)",
+  "The link is copied. Send it to someone who’d like it.": "تم نسخ الرابط. أرسله إلى من قد يعجبه."
 }

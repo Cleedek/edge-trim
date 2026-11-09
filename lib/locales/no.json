@@ -163,5 +163,18 @@
   "What's new in version {version}": "Nytt i versjon {version}",
   "Close": "Lukk",
   "Try again": "Prøv igjen",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Jeg får meldingen din på e-post, bare for å svare og rette problemer. Ingenting sendes før du trykker på Send."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Jeg får meldingen din på e-post, bare for å svare og rette problemer. Ingenting sendes før du trykker på Send.",
+  "{n} pictures trimmed": {"one": "{n} bilde beskåret", "other": "{n} bilder beskåret"},
+  "That’s {count} empty pixels gone. Nice!": "Det er {count} tomme piksler borte. Kult!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Jeg lager Edge Trim alene og gratis. For at det skal fortsette å vokse, hjelper alt dette:",
+  "Send Filip a tip": "Send Filip tips",
+  "More ways to pay in the extension popup": "Flere måter å betale på i utvidelsens vindu",
+  "Share with a friend": "Del med en venn",
+  "Copies the link": "Kopierer lenken",
+  "Write a review": "Skriv en anmeldelse",
+  "In the Chrome Web Store": "I Chrome Nettmarked",
+  "Or give it a star on GitHub": "Eller gi den en stjerne på GitHub",
+  "You’ll only see this once.": "Dette ser du bare én gang.",
+  "Close (it won’t come back)": "Lukk (kommer ikke tilbake)",
+  "The link is copied. Send it to someone who’d like it.": "Lenken er kopiert. Send den til noen som vil like den."
 }

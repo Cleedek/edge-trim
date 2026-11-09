@@ -163,5 +163,18 @@
   "What's new in version {version}": "Nouveautés de la version {version}",
   "Close": "Fermer",
   "Try again": "Réessayer",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Je reçois ton message par e-mail, uniquement pour répondre et corriger les problèmes. Rien n'est envoyé avant que tu appuies sur Envoyer."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Je reçois ton message par e-mail, uniquement pour répondre et corriger les problèmes. Rien n'est envoyé avant que tu appuies sur Envoyer.",
+  "{n} pictures trimmed": {"one": "{n} image rognée", "other": "{n} images rognées"},
+  "That’s {count} empty pixels gone. Nice!": "Ça fait {count} pixels vides en moins. Bravo !",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Je fais Edge Trim seul et gratuitement. Pour qu’il continue de grandir, tout ceci m’aide :",
+  "Send Filip a tip": "Envoie un pourboire à Filip",
+  "More ways to pay in the extension popup": "D’autres moyens de paiement dans la fenêtre de l’extension",
+  "Share with a friend": "Partager avec un ami",
+  "Copies the link": "Copie le lien",
+  "Write a review": "Écrire un avis",
+  "In the Chrome Web Store": "Sur le Chrome Web Store",
+  "Or give it a star on GitHub": "Ou mets-lui une étoile sur GitHub",
+  "You’ll only see this once.": "Tu ne verras ceci qu’une fois.",
+  "Close (it won’t come back)": "Fermer (ne reviendra pas)",
+  "The link is copied. Send it to someone who’d like it.": "Le lien est copié. Envoie-le à quelqu’un que ça intéressera."
 }

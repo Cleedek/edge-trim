@@ -163,5 +163,18 @@
   "What's new in version {version}": "{version} sürümündeki yenilikler",
   "Close": "Kapat",
   "Try again": "Tekrar dene",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Mesajın bana e-postayla ulaşır, yalnızca yanıtlamak ve sorunları düzeltmek için. Gönder'e basana kadar hiçbir şey gönderilmez."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Mesajın bana e-postayla ulaşır, yalnızca yanıtlamak ve sorunları düzeltmek için. Gönder'e basana kadar hiçbir şey gönderilmez.",
+  "{n} pictures trimmed": "{n} resim kırpıldı",
+  "That’s {count} empty pixels gone. Nice!": "Bu, {count} boş piksel eksik demek. Harika!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Edge Trim’i tek başıma ve ücretsiz yapıyorum. Büyümeye devam etmesi için bunlardan herhangi biri yardımcı olur:",
+  "Send Filip a tip": "Filip’e bahşiş gönder",
+  "More ways to pay in the extension popup": "Eklentinin penceresinde daha fazla ödeme yolu var",
+  "Share with a friend": "Bir arkadaşınla paylaş",
+  "Copies the link": "Bağlantıyı kopyalar",
+  "Write a review": "Yorum yaz",
+  "In the Chrome Web Store": "Chrome Web Mağazası’nda",
+  "Or give it a star on GitHub": "Ya da GitHub’da bir yıldız ver",
+  "You’ll only see this once.": "Bunu yalnızca bir kez göreceksin.",
+  "Close (it won’t come back)": "Kapat (bir daha gelmez)",
+  "The link is copied. Send it to someone who’d like it.": "Bağlantı kopyalandı. Beğeneceğini düşündüğün birine gönder."
 }

@@ -163,5 +163,18 @@
   "What's new in version {version}": "Co je nového ve verzi {version}",
   "Close": "Zavřít",
   "Try again": "Zkusit znovu",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Zprávu dostanu e-mailem, jen abych ti mohl odpovědět a opravit problém. Dokud nestiskneš Odeslat, nic se neposílá."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Zprávu dostanu e-mailem, jen abych ti mohl odpovědět a opravit problém. Dokud nestiskneš Odeslat, nic se neposílá.",
+  "{n} pictures trimmed": {"one": "{n} oříznutý obrázek", "few": "{n} oříznuté obrázky", "many": "{n} oříznutého obrázku", "other": "{n} oříznutých obrázků"},
+  "That’s {count} empty pixels gone. Nice!": {"one": "To je {count} prázdný pixel pryč. Paráda!", "few": "To jsou {count} prázdné pixely pryč. Paráda!", "many": "To je {count} prázdného pixelu pryč. Paráda!", "other": "To je {count} prázdných pixelů pryč. Paráda!"},
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Edge Trim dělám sám a zdarma. Aby mohl dál růst, pomůže mi cokoli z tohohle:",
+  "Send Filip a tip": "Pošli Filipovi příspěvek",
+  "More ways to pay in the extension popup": "Další způsoby platby najdeš v okně rozšíření",
+  "Share with a friend": "Sdílet s kamarádem",
+  "Copies the link": "Zkopíruje odkaz",
+  "Write a review": "Napsat recenzi",
+  "In the Chrome Web Store": "V Chrome Web Store",
+  "Or give it a star on GitHub": "Nebo dej hvězdičku na GitHubu",
+  "You’ll only see this once.": "Tohle uvidíš jen jednou.",
+  "Close (it won’t come back)": "Zavřít (už se nevrátí)",
+  "The link is copied. Send it to someone who’d like it.": "Odkaz je zkopírovaný. Pošli ho někomu, komu se bude hodit."
 }

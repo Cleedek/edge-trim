@@ -163,5 +163,18 @@
   "What's new in version {version}": "Novità della versione {version}",
   "Close": "Chiudi",
   "Try again": "Riprova",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Ricevo il tuo messaggio via email, solo per rispondere e correggere i problemi. Non viene inviato nulla finché non premi Invia."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Ricevo il tuo messaggio via email, solo per rispondere e correggere i problemi. Non viene inviato nulla finché non premi Invia.",
+  "{n} pictures trimmed": {"one": "{n} immagine ritagliata", "other": "{n} immagini ritagliate"},
+  "That’s {count} empty pixels gone. Nice!": "Sono {count} pixel vuoti in meno. Ottimo!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Faccio Edge Trim da solo e gratis. Per farlo crescere ancora, mi aiuta una qualsiasi di queste cose:",
+  "Send Filip a tip": "Manda una mancia a Filip",
+  "More ways to pay in the extension popup": "Altri modi di pagare nella finestra dell’estensione",
+  "Share with a friend": "Condividi con un amico",
+  "Copies the link": "Copia il link",
+  "Write a review": "Scrivi una recensione",
+  "In the Chrome Web Store": "Sul Chrome Web Store",
+  "Or give it a star on GitHub": "Oppure dagli una stella su GitHub",
+  "You’ll only see this once.": "Lo vedrai solo una volta.",
+  "Close (it won’t come back)": "Chiudi (non tornerà)",
+  "The link is copied. Send it to someone who’d like it.": "Il link è copiato. Invialo a qualcuno a cui potrebbe piacere."
 }

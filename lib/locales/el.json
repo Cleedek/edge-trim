@@ -163,5 +163,18 @@
   "What's new in version {version}": "Τι νέο υπάρχει στην έκδοση {version}",
   "Close": "Κλείσιμο",
   "Try again": "Δοκίμασε ξανά",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Λαμβάνω το μήνυμά σου με email, μόνο για να απαντήσω και να διορθώσω προβλήματα. Δεν αποστέλλεται τίποτα μέχρι να πατήσεις Αποστολή."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Λαμβάνω το μήνυμά σου με email, μόνο για να απαντήσω και να διορθώσω προβλήματα. Δεν αποστέλλεται τίποτα μέχρι να πατήσεις Αποστολή.",
+  "{n} pictures trimmed": {"one": "{n} εικόνα περικομμένη", "other": "{n} εικόνες περικομμένες"},
+  "That’s {count} empty pixels gone. Nice!": "Αυτό σημαίνει {count} κενά pixel λιγότερα. Τέλεια!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Φτιάχνω το Edge Trim μόνος μου και δωρεάν. Για να συνεχίσει να μεγαλώνει, βοηθάει οτιδήποτε από αυτά:",
+  "Send Filip a tip": "Στείλε ένα φιλοδώρημα στον Filip",
+  "More ways to pay in the extension popup": "Περισσότεροι τρόποι πληρωμής στο παράθυρο της επέκτασης",
+  "Share with a friend": "Κοινοποίηση σε φίλο",
+  "Copies the link": "Αντιγράφει τον σύνδεσμο",
+  "Write a review": "Γράψε μια κριτική",
+  "In the Chrome Web Store": "Στο Chrome Web Store",
+  "Or give it a star on GitHub": "Ή δώσε του ένα αστέρι στο GitHub",
+  "You’ll only see this once.": "Θα το δεις μόνο μία φορά.",
+  "Close (it won’t come back)": "Κλείσιμο (δεν θα ξαναεμφανιστεί)",
+  "The link is copied. Send it to someone who’d like it.": "Ο σύνδεσμος αντιγράφηκε. Στείλ’ τον σε κάποιον που θα του άρεσε."
 }

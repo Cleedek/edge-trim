@@ -163,5 +163,18 @@
   "What's new in version {version}": "वर्शन {version} में नया क्या है",
   "Close": "बंद करें",
   "Try again": "फिर कोशिश करें",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "आपका संदेश मुझे ईमेल से मिलता है, केवल जवाब देने और समस्याएँ ठीक करने के लिए। जब तक आप भेजें नहीं दबाते, कुछ नहीं भेजा जाता।"
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "आपका संदेश मुझे ईमेल से मिलता है, केवल जवाब देने और समस्याएँ ठीक करने के लिए। जब तक आप भेजें नहीं दबाते, कुछ नहीं भेजा जाता।",
+  "{n} pictures trimmed": "{n} तस्वीरें ट्रिम हुईं",
+  "That’s {count} empty pixels gone. Nice!": "यानी {count} खाली पिक्सेल कम। बढ़िया!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "मैं Edge Trim अकेले और मुफ़्त में बनाता हूँ। इसे आगे बढ़ाने में इनमें से कुछ भी मदद करेगा:",
+  "Send Filip a tip": "Filip को टिप भेजें",
+  "More ways to pay in the extension popup": "एक्सटेंशन की विंडो में भुगतान के और तरीके",
+  "Share with a friend": "किसी दोस्त के साथ शेयर करें",
+  "Copies the link": "लिंक कॉपी करता है",
+  "Write a review": "रिव्यू लिखें",
+  "In the Chrome Web Store": "Chrome Web Store में",
+  "Or give it a star on GitHub": "या GitHub पर स्टार दें",
+  "You’ll only see this once.": "यह आपको सिर्फ़ एक बार दिखेगा।",
+  "Close (it won’t come back)": "बंद करें (दोबारा नहीं दिखेगा)",
+  "The link is copied. Send it to someone who’d like it.": "लिंक कॉपी हो गया। इसे किसी ऐसे व्यक्ति को भेजें जिसे यह पसंद आए।"
 }

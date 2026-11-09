@@ -163,5 +163,18 @@
   "What's new in version {version}": "Noutăți în versiunea {version}",
   "Close": "Închide",
   "Try again": "Încearcă din nou",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Primesc mesajul tău pe e-mail, doar ca să răspund și să repar problemele. Nu se trimite nimic până nu apeși Trimite."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Primesc mesajul tău pe e-mail, doar ca să răspund și să repar problemele. Nu se trimite nimic până nu apeși Trimite.",
+  "{n} pictures trimmed": {"one": "{n} imagine decupată", "few": "{n} imagini decupate", "other": "{n} de imagini decupate"},
+  "That’s {count} empty pixels gone. Nice!": {"one": "Înseamnă {count} pixel gol mai puțin. Super!", "few": "Înseamnă {count} pixeli goi mai puțin. Super!", "other": "Înseamnă {count} de pixeli goi mai puțin. Super!"},
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Fac Edge Trim singur și gratuit. Ca să crească în continuare, mă ajută oricare dintre acestea:",
+  "Send Filip a tip": "Trimite-i lui Filip un bacșiș",
+  "More ways to pay in the extension popup": "Mai multe moduri de plată în fereastra extensiei",
+  "Share with a friend": "Trimite unui prieten",
+  "Copies the link": "Copiază linkul",
+  "Write a review": "Scrie o recenzie",
+  "In the Chrome Web Store": "În Chrome Web Store",
+  "Or give it a star on GitHub": "Sau dă-i o stea pe GitHub",
+  "You’ll only see this once.": "Vei vedea asta o singură dată.",
+  "Close (it won’t come back)": "Închide (nu mai revine)",
+  "The link is copied. Send it to someone who’d like it.": "Linkul e copiat. Trimite-l cuiva căruia i-ar plăcea."
 }

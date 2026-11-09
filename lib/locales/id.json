@@ -163,5 +163,18 @@
   "What's new in version {version}": "Yang baru di versi {version}",
   "Close": "Tutup",
   "Try again": "Coba lagi",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Saya menerima pesanmu lewat email, hanya untuk membalas dan memperbaiki masalah. Tidak ada yang dikirim sampai kamu menekan Kirim."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Saya menerima pesanmu lewat email, hanya untuk membalas dan memperbaiki masalah. Tidak ada yang dikirim sampai kamu menekan Kirim.",
+  "{n} pictures trimmed": "{n} gambar dipangkas",
+  "That’s {count} empty pixels gone. Nice!": "Itu berarti {count} piksel kosong hilang. Mantap!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Aku membuat Edge Trim sendiri dan gratis. Supaya terus berkembang, apa pun dari ini membantuku:",
+  "Send Filip a tip": "Kirim tip untuk Filip",
+  "More ways to pay in the extension popup": "Cara bayar lain ada di jendela ekstensi",
+  "Share with a friend": "Bagikan ke teman",
+  "Copies the link": "Menyalin tautan",
+  "Write a review": "Tulis ulasan",
+  "In the Chrome Web Store": "Di Chrome Web Store",
+  "Or give it a star on GitHub": "Atau beri bintang di GitHub",
+  "You’ll only see this once.": "Kamu hanya akan melihat ini sekali.",
+  "Close (it won’t come back)": "Tutup (tidak akan muncul lagi)",
+  "The link is copied. Send it to someone who’d like it.": "Tautan disalin. Kirim ke orang yang mungkin menyukainya."
 }

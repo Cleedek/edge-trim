@@ -163,5 +163,18 @@
   "What's new in version {version}": "Ano'ng bago sa bersyon {version}",
   "Close": "Isara",
   "Try again": "Subukan ulit",
-  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Natatanggap ko ang mensahe mo sa email, para lang sumagot at ayusin ang mga problema. Walang ipapadala hangga't hindi mo pinipindot ang Ipadala."
+  "I get your message by email, only to reply and fix problems. Nothing is sent until you press Send.": "Natatanggap ko ang mensahe mo sa email, para lang sumagot at ayusin ang mga problema. Walang ipapadala hangga't hindi mo pinipindot ang Ipadala.",
+  "{n} pictures trimmed": "{n} larawang na-trim",
+  "That’s {count} empty pixels gone. Nice!": "{count} na bakanteng pixel ang natanggal. Ayos!",
+  "I make Edge Trim on my own, for free. To keep it growing, any of these helps:": "Ako lang ang gumagawa ng Edge Trim, at libre ito. Para patuloy itong lumago, malaking tulong ang alinman dito:",
+  "Send Filip a tip": "Magpadala ng tip kay Filip",
+  "More ways to pay in the extension popup": "Iba pang paraan ng pagbabayad sa window ng extension",
+  "Share with a friend": "Ibahagi sa kaibigan",
+  "Copies the link": "Kinokopya ang link",
+  "Write a review": "Sumulat ng review",
+  "In the Chrome Web Store": "Sa Chrome Web Store",
+  "Or give it a star on GitHub": "O bigyan ito ng star sa GitHub",
+  "You’ll only see this once.": "Isang beses mo lang ito makikita.",
+  "Close (it won’t come back)": "Isara (hindi na babalik)",
+  "The link is copied. Send it to someone who’d like it.": "Nakopya ang link. Ipadala ito sa taong magugustuhan ito."
 }
