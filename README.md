@@ -2,7 +2,7 @@
 
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-7c3aed)](LICENSE)
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K1I42ACK0E)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cleedek)
 
 A Chrome extension (also Edge, Brave, Arc) that crops transparent pictures right to the edge of what's in them. Made for cut-out photos and logos exported with too much empty space around them, which makes consistent positioning painful.
 
