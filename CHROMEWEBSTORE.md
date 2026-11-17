@@ -10,7 +10,7 @@ Everything the Chrome Developer Dashboard asks for, ready to copy. The English t
 
 **Verze:** překlady jdou do 1.0.1. Filip první odeslání 1.0.1 ke kontrole 2026-11-09 zrušil, takže koncept dostal nový `edge-trim-1.0.1.zip` (zabalený až s překlady). Postup pro 1.0.1 pod touhle sekcí tím nahrazuješ.
 
-**Stav 2026-11-09:** koncept 1.0.1 v Dashboardu je kompletní a ověřený po přenačtení stránky: balíček 1.0.1 se 32 jazyky (Package → Draft), popisy ve všech 32 jazycích (přesná shoda se zdroji), 5 snímků v každém jazyce (angličtina globální, ostatní vlastní), videa (globální anglické uAGTqHALjk4, české GHCUgSnQijY), Privacy practices z prvního konceptu. Tlačítko Submit for review je aktivní. Všechno nahrál Claude přes Arc. Zbývá jen **Submit for review** (tvoje kliknutí).
+**Stav 2026-11-09:** koncept 1.0.1 v Dashboardu je kompletní a ověřený po přenačtení stránky: balíček 1.0.1 se 32 jazyky (Package → Draft), popisy ve všech 32 jazycích (přesná shoda se zdroji), 5 snímků v každém jazyce (angličtina globální, ostatní vlastní), videa (globální anglické uAGTqHALjk4, české GHCUgSnQijY), Privacy practices z prvního konceptu. Všechno nahrál Claude přes Arc. Filip ho 2026-11-09 odeslal ke kontrole (Dashboard: "Status: Pending review"). Až projde, řekni Claudovi, ať zapíše 1.0.1 do changelogu na cleedek.com a opraví tabulku Version History.
 
 1. **Balíček a upload složka:** oba příkazy ze sekce Packaging (zip, pak složka `dist/chrome-web-store`). Nahraj zip přes **Package** → **Upload new package**. Oprávnění se nemění.
 2. **Angličtina:** Description = celý blok ze sekce Store Listing (změnil se první řádek a seznam jazyků rozhraní). Screenshots = smaž pět starých a nahraj `screenshot-1.png` až `screenshot-5.png` z `1-globalni-en` v tomto pořadí.
@@ -376,7 +376,7 @@ V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && 
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 1.0.1 | 2026-11-09 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. Interface in 31 languages (the same as Subtitle Overlay's, Arabic right to left), store name "Edge Trim: Auto Crop Transparent PNG & Add Shadow" in 32 languages, descriptions and screenshots in 32 languages, new promo videos (EN, CS). | Draft complete 2026-11-09 (first submission cancelled to add the translations), waiting for Submit for review |
+| 1.0.1 | 2026-11-09 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. Interface in 31 languages (the same as Subtitle Overlay's, Arabic right to left), store name "Edge Trim: Auto Crop Transparent PNG & Add Shadow" in 32 languages, descriptions and screenshots in 32 languages, new promo videos (EN, CS). | Submitted for review 2026-11-09 (the first submission was cancelled to add the translations); pending review |
 | 1.0.0 | 2026-11-02 | First version. The store build of 2026-11-04 also had the shadow, "My shadows", trimming downloads and the right-click option for download links. | Published 2026-11-05 |
 
 ## Review Notes

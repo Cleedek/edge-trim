@@ -15,17 +15,19 @@
       <h1>Language &amp; appearance</h1>
     </div>
     <div class="prefs">
-      <div class="setting-head">
-        <label for="uiLang" class="setting-label">Language</label>
-        <select id="uiLang" class="compact"></select>
-      </div>
-      <div class="setting-head">
-        <label for="appearance" class="setting-label">Appearance</label>
-        <select id="appearance" class="compact">
+      <div class="prefs-group">
+        <h2 id="themeLabel">Appearance</h2>
+        <div id="themeSeg" class="segmented prefs-seg" role="radiogroup" aria-labelledby="themeLabel"></div>
+        <select id="appearance" hidden>
           <option value="light dark">Same as browser</option>
           <option value="dark">Dark</option>
           <option value="light">Light</option>
         </select>
+      </div>
+      <div class="prefs-group">
+        <h2 id="langLabel">Language</h2>
+        <div id="langList" class="lang-list" role="radiogroup" aria-labelledby="langLabel"></div>
+        <select id="uiLang" hidden></select>
       </div>
     </div>
   </div>

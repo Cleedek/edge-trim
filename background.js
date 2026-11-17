@@ -8,7 +8,14 @@ setupGoodbye({ ext: 'edge-trim', i18n: TrimI18n });
 const t = TrimI18n.t;
 
 // The menu is rebuilt in the new language when it changes in the popup.
-async function createMenus() {
+// Rebuilds run one after another: two at once (quick language switches) would
+// both add the same entries and Chrome refuses the second copy of an id.
+let menusQueue = Promise.resolve();
+function createMenus() {
+  menusQueue = menusQueue.then(buildMenus, buildMenus);
+  return menusQueue;
+}
+async function buildMenus() {
   await TrimI18n.load();
   await chrome.contextMenus.removeAll();
   chrome.contextMenus.create({ id: 'copy', title: t('Trim and copy image'), contexts: ['image'] });
