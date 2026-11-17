@@ -1,8 +1,18 @@
 # Chrome Web Store Listing: Edge Trim
 
-> Last Updated: 2026-11-09
+> Last Updated: 2026-11-17
 
 Everything the Chrome Developer Dashboard asks for, ready to copy. The English texts below go straight into the form; the steps in Czech are for you.
+
+## Verze 1.0.2 (2026-11-17)
+
+**Co je nové:** jednorázová karta s prosbou o podporu po 100 oříznutých obrázcích, Ko-fi jako první v "Support the creator" (ve zjednodušené čínštině Alipay přes Stripe odkaz, i na kartě podpory), obrazovka "Language & appearance" se seznamem jazyků, "Open in a tab" pod plochou pro přetažení, dva sloupce v široké kartě, větší přepínače, opravy nabídky pravého tlačítka a názvů souborů. Oprávnění se nemění. Popisy v obchodě zůstávají (popisky v uvozovkách pořád sedí na popup, `check-l10n.py`: All good).
+
+1. **Balíček:** `dist/chrome-web-store/edge-trim-1.0.2.zip` přes **Package** → **Upload new package**. (Starý `edge-trim-1.0.1.zip` je přesunutý do `dist/`.)
+2. **Snímky ve všech 32 jazycích jsou nové** (nové UI: "Open in a tab", větší přepínač, kratší popisek u stahování; popup na snímku 1 posunutý výš, aby se v ukrajinštině neusekl). Angličtina = globální z `1-globalni-en`, čeština z `2-cestina-cs`, ostatní z `3-dalsi-jazyky/<kód>`. Claude je vymění přes `store/dashboard/screens.py`.
+3. **Beze změny:** popisy, ikona, dlaždice, videa, kategorie, Privacy practices (počítadlo pro kartu podpory zůstává v prohlížeči, nic nového neodchází).
+4. **Zásady na webu:** cleedek.com/edge-trim/privacy doplněné o počítadlo karty podpory a odkazy na ní, datum 17. 11. 2026.
+5. **Save draft** a **Submit for review** (tvoje kliknutí).
 
 ## Překlady do 32 jazyků (2026-11-09, součást verze 1.0.1)
 
@@ -376,8 +386,8 @@ V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && 
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 1.0.2 | not yet | One-time support card after 100 trimmed pictures, support screen with Ko-fi first, Language & appearance screen as a list (segmented look control), right-click menus no longer doubled after quick language switches, pictures written into the page saved as "image.png". | In progress, not packaged |
-| 1.0.1 | 2026-11-09 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. Interface in 31 languages (the same as Subtitle Overlay's, Arabic right to left), store name "Edge Trim: Auto Crop Transparent PNG & Add Shadow" in 32 languages, descriptions and screenshots in 32 languages, new promo videos (EN, CS). | Submitted for review 2026-11-09 (the first submission was cancelled to add the translations); pending review |
+| 1.0.2 | 2026-11-17 | One-time support card after 100 trimmed pictures, support screen with Ko-fi first (Alipay through a Stripe link first for Simplified Chinese, also on the support card), Language & appearance screen as a list (segmented look control), "Open in a tab" under the drop area, two columns in a wide tab, bigger switches, right-click menus no longer doubled after quick language switches, pictures written into the page saved as "image.png". New screenshots in 32 languages. | Packaged 2026-11-17 (edge-trim-1.0.2.zip), not uploaded yet |
+| 1.0.1 | 2026-11-09 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. Interface in 31 languages (the same as Subtitle Overlay's, Arabic right to left), store name "Edge Trim: Auto Crop Transparent PNG & Add Shadow" in 32 languages, descriptions and screenshots in 32 languages, new promo videos (EN, CS). | Published 2026-11-10 (submitted 2026-11-09; the first submission was cancelled to add the translations) |
 | 1.0.0 | 2026-11-02 | First version. The store build of 2026-11-04 also had the shadow, "My shadows", trimming downloads and the right-click option for download links. | Published 2026-11-05 |
 
 ## Review Notes
