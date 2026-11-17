@@ -126,7 +126,7 @@ async function trimmed(target, res, text) {
   const { trimStats, supportAsk } = await chrome.storage.local.get(['trimStats', 'supportAsk']);
   if (!target || !SupportAsk.due(trimStats, supportAsk)) return toast(target, text);
   const n = trimStats.pictures;
-  const alipay = TrimI18n.lang === 'zh-CN';
+  const alipay = TrimI18n.lang.startsWith('zh');
   const card = {
     note: text,
     title: t('{n} pictures trimmed', { n }),
