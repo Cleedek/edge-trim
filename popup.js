@@ -677,6 +677,11 @@ function setupSupport() {
     localTab.hidden = false;
     selectPayTab(localTab);
   }
+  // Alipay (Filip's Stripe link) for Simplified Chinese only: it comes first and opens first.
+  if (TrimI18n.lang === 'zh-CN') {
+    $('tabAlipay').hidden = false;
+    selectPayTab($('tabAlipay'));
+  }
 
   for (const btn of document.querySelectorAll('.pay-card .copy')) {
     const label = btn.textContent;
@@ -699,7 +704,7 @@ async function setupAsk(newsShown) {
   $('askTitle').textContent = t('{n} pictures trimmed', { n: trimStats.pictures });
   $('askLines').textContent = t('That’s {count} empty pixels gone. Nice!', { n: trimStats.pixels, count: trimStats.pixels.toLocaleString(TrimI18n.lang) });
   $('askIntro').textContent = t('I make Edge Trim on my own, for free. Any support helps me keep giving it the care it deserves.');
-  $('askLogos').replaceWith($('payKofi').querySelector('.pay-logos').cloneNode(true));
+  $('askLogos').replaceWith($(TrimI18n.lang === 'zh-CN' ? 'payAlipay' : 'payKofi').querySelector('.pay-logos').cloneNode(true));
   $('askReview').href = SupportAsk.STORE + '/reviews';
   $('askGithub').href = SupportAsk.GITHUB;
   card.hidden = false;

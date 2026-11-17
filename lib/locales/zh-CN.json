@@ -178,5 +178,7 @@
   "Dragging files from a folder?": "要从文件夹拖入文件？",
   "Pictures you download from any site are swapped for a trimmed copy with the same name.": "从任何网站下载的图片都会被替换为同名的裁剪副本。",
   "Right-click a picture, or a link to one, on any page to trim it. Everything stays on this computer.": "在任意页面右键点击图片或图片链接即可裁剪。一切都在这台电脑上完成。",
-  "Language & appearance": "语言和外观"
+  "Language & appearance": "语言和外观",
+  "Alipay": "支付宝",
+  "QR code for the Alipay and card payment page": "支付宝和银行卡付款页面的二维码"
 }

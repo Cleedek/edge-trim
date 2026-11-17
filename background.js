@@ -126,6 +126,7 @@ async function trimmed(target, res, text) {
   const { trimStats, supportAsk } = await chrome.storage.local.get(['trimStats', 'supportAsk']);
   if (!target || !SupportAsk.due(trimStats, supportAsk)) return toast(target, text);
   const n = trimStats.pictures;
+  const alipay = TrimI18n.lang === 'zh-CN';
   const card = {
     note: text,
     title: t('{n} pictures trimmed', { n }),
@@ -142,8 +143,9 @@ async function trimmed(target, res, text) {
     close: t('Close (it won’t come back)'),
     copied: t('The link is copied. Send it to someone who’d like it.'),
     photo: chrome.runtime.getURL('icons/support/filip.jpg'),
-    logos: chrome.runtime.getURL('icons/support/pay-logos-dark.svg'),
-    kofi: SupportAsk.KOFI, store: SupportAsk.STORE, github: SupportAsk.GITHUB,
+    logos: chrome.runtime.getURL(alipay ? 'icons/support/pay-logos-alipay-dark.svg' : 'icons/support/pay-logos-dark.svg'),
+    logosAlt: alipay ? 'Alipay, Google Pay, Apple Pay, Visa, Mastercard' : 'Google Pay, Apple Pay, PayPal, Visa, Mastercard',
+    kofi: alipay ? SupportAsk.ALIPAY : SupportAsk.KOFI, store: SupportAsk.STORE, github: SupportAsk.GITHUB,
     rtl: TrimI18n.rtl,
   };
   try {
@@ -423,7 +425,7 @@ function showSupportCard(c) {
   const photo = Object.assign(el('img'), { src: c.photo, width: 38, height: 38, alt: '' });
   photo.addEventListener('error', () => photo.remove()); // a page that blocks it: the card works without
   who.append(photo, two(c.tip, c.tipSub, 'strong', 'span'));
-  const logos = Object.assign(el('img', 'logos'), { src: c.logos, alt: 'Google Pay, Apple Pay, PayPal, Visa, Mastercard' });
+  const logos = Object.assign(el('img', 'logos'), { src: c.logos, alt: c.logosAlt });
   logos.addEventListener('error', () => logos.remove());
   const main = link('main', c.kofi);
   main.innerHTML = ICON.heart;
