@@ -376,6 +376,7 @@ V=$(node -p "require('./manifest.json').version") && O=dist/chrome-web-store && 
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
+| 1.0.2 | not yet | One-time support card after 100 trimmed pictures, support screen with Ko-fi first, Language & appearance screen as a list (segmented look control), right-click menus no longer doubled after quick language switches, pictures written into the page saved as "image.png". | In progress, not packaged |
 | 1.0.1 | 2026-11-09 | Trim / Add shadow switch at the top of the popup (looks shown on a shaded ball until there's a picture), "Problem or idea?" feedback form, What's new card (no entry yet, so it stays hidden), "Sorry to see you go" page after removal. Interface in 31 languages (the same as Subtitle Overlay's, Arabic right to left), store name "Edge Trim: Auto Crop Transparent PNG & Add Shadow" in 32 languages, descriptions and screenshots in 32 languages, new promo videos (EN, CS). | Submitted for review 2026-11-09 (the first submission was cancelled to add the translations); pending review |
 | 1.0.0 | 2026-11-02 | First version. The store build of 2026-11-04 also had the shadow, "My shadows", trimming downloads and the right-click option for download links. | Published 2026-11-05 |
 
